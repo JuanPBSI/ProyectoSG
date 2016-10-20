@@ -1,0 +1,10 @@
+Googlebot
+Bingbot
+Slurp
+DuckDuckBot
+Baiduspider
+YandexBot
+Sogou
+Exabot
+archive.org_bot
+Teoma

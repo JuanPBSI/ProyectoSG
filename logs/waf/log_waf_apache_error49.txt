@@ -1,0 +1,3 @@
+[Wed Oct 19 18:33:16 2016] [error] [client 192.168.36.1] request failed: error reading the headers
+[Wed Oct 19 18:33:16 2016] [error] [client 192.168.36.1] client sent HTTP/1.1 request without hostname (see RFC2616 section 14.23): /password
+[Wed Oct 19 18:33:21 2016] [error] [client 192.168.36.1] request failed: error reading the headers

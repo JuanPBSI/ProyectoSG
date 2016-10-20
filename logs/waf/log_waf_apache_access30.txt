@@ -1,0 +1,3 @@
+192.168.36.1 - - [19/Oct/2016:18:29:43 -0500] "GET / HTTP/1.1" 200 9781 "-" "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
+192.168.36.1 - - [19/Oct/2016:18:29:44 -0500] "GET / HTTP/1.0" 200 9781 "-" "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
+192.168.36.1 - - [19/Oct/2016:18:29:48 -0500] "GET / HTTP/1.1" 200 9725 "-" "-"

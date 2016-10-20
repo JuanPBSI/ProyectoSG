@@ -1,0 +1,10 @@
+../
+..\
+etc/passwd
+etc/apache2
+etc/group
+etc/hosts
+etc/
+tmp/
+.htaccess
+home/

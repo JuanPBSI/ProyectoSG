@@ -1,0 +1,175 @@
+[Wed Oct 19 14:58:57 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/ruei
+[Wed Oct 19 14:58:57 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/login
+[Wed Oct 19 14:58:57 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/webapps
+[Wed Oct 19 14:58:57 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/login
+[Wed Oct 19 14:58:57 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/webct
+[Wed Oct 19 14:58:57 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/ruei
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/login
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/login
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/WebID
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/WebID
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/webapps
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/login
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/webct
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] Invalid method in request TRACK /Nessus612210524.html HTTP/1.1
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] Invalid method in request TRACK /Nessus508760737.html HTTP/1.1
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/login
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/system
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/images
+[Wed Oct 19 14:58:58 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/images
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/mve
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/nps
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/OEMSettings.ini
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/system
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/images
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/images
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/etc
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/etc
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/mve
+[Wed Oct 19 14:58:59 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/nps
+[Wed Oct 19 14:59:00 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/OEMSettings.ini
+[Wed Oct 19 14:59:00 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/etc
+[Wed Oct 19 14:59:00 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/InitialPage.asp
+[Wed Oct 19 14:59:00 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/etc
+[Wed Oct 19 14:59:00 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/PAN_help
+[Wed Oct 19 14:59:00 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/PAN_help
+[Wed Oct 19 14:59:00 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/broadWeb
+[Wed Oct 19 14:59:00 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/InitialPage.asp
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.old
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.bak
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess~
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.copy
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/PAN_help
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.tmp
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..htaccess.swp
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/PAN_help
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.1
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.~1~
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/broadWeb
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/login
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.old
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.bak
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess~
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.copy
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.tmp
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..htaccess.swp
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.1
+[Wed Oct 19 14:59:01 2016] [error] [client 192.168.35.129] client denied by server configuration: /var/www/drupal/.htaccess.~1~
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/servlet
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/UDataArea
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/tsp
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/ap
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/login
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/ssp
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/servlet
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/html
+[Wed Oct 19 14:59:02 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/UDataArea
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/sitemap.xml
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/HNAP1
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/sitemap
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/map
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/sitemap.xml
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/sitemap
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/map
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/html
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/.|.
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/.|.
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/...
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/...
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/...\\...\\...\\...\\...\\...\\...\\...\\...\\windows\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/...\\...\\...\\...\\...\\...\\...\\...\\...\\winnt\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....\\....\\....\\....\\....\\....\\....\\....\\....\\windows\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....\\....\\....\\....\\....\\....\\....\\....\\....\\winnt\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/nessus\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/nessus\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\x80..
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\x80..
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\xc0.\xc0.
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\xc0.\xc0.
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\xc0.\xc0.
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\xc0.\xc0.
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/HNAP1
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/tsp
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/ap
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/ssp
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:03 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] script '/var/www/drupal/main_internet.php' not found or unable to stat
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/ews
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/webman
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/.|.
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/.|.
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:04 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/...
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/...
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/...\\...\\...\\...\\...\\...\\...\\...\\...\\windows\\win.ini
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/...\\...\\...\\...\\...\\...\\...\\...\\...\\winnt\\win.ini
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....\\....\\....\\....\\....\\....\\....\\....\\....\\windows\\win.ini
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....\\....\\....\\....\\....\\....\\....\\....\\....\\winnt\\win.ini
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/nessus\\..\\..\\..\\..\\..\\..\\windows\\win.ini
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/nessus\\..\\..\\..\\..\\..\\..\\winnt\\win.ini
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\x80..
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\x80..
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\xc0.\xc0.
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\xc0.\xc0.
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] script '/var/www/drupal/main_internet.php' not found or unable to stat
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/ews
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\xc0.\xc0.
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/\xc0.\xc0.
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/....
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/webman
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/scripts/fake.cgi
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/cgi
+[Wed Oct 19 14:59:05 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/vsmc.html
+[Wed Oct 19 14:59:06 2016] [error] [client 192.168.35.129] script not found or unable to stat: /usr/lib/cgi-bin/index.cgi
+[Wed Oct 19 14:59:06 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/vncviewer.jar
+[Wed Oct 19 14:59:06 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/cgi
+[Wed Oct 19 14:59:06 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/vsmc.html
+[Wed Oct 19 14:59:06 2016] [error] [client 192.168.35.129] script not found or unable to stat: /usr/lib/cgi-bin/index.cgi
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/vncviewer.jar
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/SilverStream
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/active.log
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/SilverStream
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/stronghold-info
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/index.html
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/stronghold-status
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/stronghold-info
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/stronghold-status
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/images
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/index.html
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/active.log
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/servlet
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/home.htm
+[Wed Oct 19 14:59:07 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/servlet
+[Wed Oct 19 14:59:08 2016] [error] [client 192.168.35.129] File does not exist: /var/www/drupal/stcenter.nsf
