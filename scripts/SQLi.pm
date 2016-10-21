@@ -18,7 +18,6 @@ sub analizarSQLi
 	my $cont_error = 0;
 	my $cont_200 = 0;
 	my $cont_error_en_base = 0;
-	my $flag_email = 0;
 	my $i = 0;
 	# Decodificamos la URI
 	# decodifica($Recurso);
@@ -37,10 +36,6 @@ sub analizarSQLi
 			open(my $data_error_postgres, '<', $error_postgres) or die "No se puede abrir el archivo: $error_postgres\n";
 			$cont_error_en_base += get_error_postgres($time_stamp,$Recurso,$data_error_postgres,$i);
 			close($data_error_postgres);
-			if ($cont_error_en_base == 1)
-			{
-				$flag_email = 1;
-			}
 		}
 	}
 	elsif(decode($Referer) =~ /$RegEX/i)

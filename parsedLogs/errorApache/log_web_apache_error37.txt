@@ -1,6 +1,0 @@
-Wed Oct 19 14:58:19 2016<-->error<-->192.168.35.129<--> File does not exist: /var/www/drupal/favicon2.iso
-Wed Oct 19 14:58:19 2016<-->error<-->192.168.35.129<--> File does not exist: /var/www/drupal/favicon.iso
-Wed Oct 19 14:58:19 2016<-->error<-->192.168.35.129<--> File does not exist: /var/www/drupal/favicon2.iso
-Wed Oct 19 14:58:19 2016<-->error<-->192.168.35.129<--> File does not exist: /var/www/drupal/favicon.iso
-Wed Oct 19 14:58:19 2016<-->error<-->192.168.35.129<--> File does not exist: /var/www/drupal/profilemanager
-Wed Oct 19 14:58:19 2016<-->error<-->192.168.35.129<--> File does not exist: /var/www/drupal/sdk

@@ -69,10 +69,14 @@ open(my $new_error_apache, '>', $dirParsedApache.$filename3) or die "Could not o
 # Abrimos el archivo de los logs
 open(my $data_acces, '<', $rutaAccess) or die "No se puede abrir el archivo $rutaAccess\n";
 
-open(my $new_msj, '>>', $ENV{HOME}."/Proyecto/mensaje.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_SQLi, '>>', $ENV{HOME}."/Proyecto/mensajeSQL.html") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_XSS, '>>', $ENV{HOME}."/Proyecto/mensajeXSS.html") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_PATH, '>>', $ENV{HOME}."/Proyecto/mensajePATH.html") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_CRAW, '>>', $ENV{HOME}."/Proyecto/mensajeCRAW.html") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_DEFC, '>>', $ENV{HOME}."/Proyecto/mensajeDEFC.html") or die "Could not open file 'mensaje.txt' $!";
 open(my $status, '>>', $ENV{HOME}."/Proyecto/cod_status.txt") or die "Could not open file 'mensaje.txt' $!";
 open(my $stauts2, '>', $ENV{HOME}."/Proyecto/status_act.txt") or die "Could not open file 'status_act.txt' $!";
-print $new_msj "#####################################Mensaje: ".$msj_actual."######################################################\n";
+#print $new_msj "#####################################Mensaje: ".$msj_actual."######################################################\n";
 
 while (my $line1 = <$data_acces>)
 {
@@ -121,10 +125,27 @@ while (my $line1 = <$data_acces>)
 	else
 	{
 		$cont_PATH++;
-		print $new_msj "#-------------------------------PATH TRANSVERSAL----------------------------------#\n";
-		print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
-		print $new_msj "$arreglo[3]\n";
-		print $new_msj "#---------------------------------------------------------------------------------#\n";
+		#print $new_msj "#-------------------------------PATH TRANSVERSAL----------------------------------#\n";
+		#print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
+		#print $new_msj "$arreglo[3]\n";
+		#print $new_msj "#---------------------------------------------------------------------------------#\n";
+		print $new_msj_PATH "			<tr>\n";
+		print $new_msj_PATH "				<td>$arreglo[0]</td>\n";
+		print $new_msj_PATH "				<td>$arreglo[1]</td>\n";
+		print $new_msj_PATH "				<td>$arreglo[2]</td>\n";
+		print $new_msj_PATH "				<td>$arreglo[3]</td>\n";
+		print $new_msj_PATH "				<td>$arreglo[7]</td>\n";
+		if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
+		{
+			print $new_msj_PATH '				<td style = "color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
+		}
+		elsif($arreglo[5] =~ /2..\b/i)
+		{
+			print $new_msj_PATH '				<td style = "color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
+		}
+		print $new_msj_PATH "				<td>$arreglo[6]</td>\n";
+		print $new_msj_PATH "				<td>$arreglo[8]</td>\n";
+		print $new_msj_PATH "			</tr>\n";
 	}
 	if($diagnostico_XSS == 0)
 	{
@@ -135,20 +156,62 @@ while (my $line1 = <$data_acces>)
 		$cont_error_en_base += $aux4;
 		if ($aux1 != 0)
 		{
-			print $new_msj "#-------------------------------SQL INJECTION-------------------------------------#\n";
-			print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
-			print $new_msj "$arreglo[3]\n";
-			print $new_msj "$arreglo[7]\n";
-			print $new_msj "#---------------------------------------------------------------------------------#\n";
+			#print $new_msj "#-------------------------------SQL INJECTION-------------------------------------#\n";
+			#print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
+			#print $new_msj "$arreglo[3]\n";
+			#print $new_msj "$arreglo[7]\n";
+			#print $new_msj "#---------------------------------------------------------------------------------#\n";
+			print $new_msj_SQLi "			<tr>\n";
+			print $new_msj_SQLi "				<td>$arreglo[0]</td>\n";
+			print $new_msj_SQLi "				<td>$arreglo[1]</td>\n";
+			print $new_msj_SQLi "				<td>$arreglo[2]</td>\n";
+			print $new_msj_SQLi "				<td>$arreglo[3]</td>\n";
+			print $new_msj_SQLi "				<td>$arreglo[7]</td>\n";
+			if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
+			{
+				print $new_msj_SQLi '				<td style = "color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
+			}
+			elsif($arreglo[5] =~ /2..\b/i)
+			{
+				print $new_msj_SQLi '				<td style = "color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
+			}
+			print $new_msj_SQLi "				<td>$arreglo[6]</td>\n";
+			if ($aux4 == 1)
+			{
+				print $new_msj_SQLi '				<td style = "color : red; font-weight: bold;">'."SI</td>\n";
+			}
+			else
+			{
+				print $new_msj_SQLi '				<td style = "color : green; font-weight: bold;">'."NO</td>\n";
+			}
+			print $new_msj_SQLi "				<td>$arreglo[8]</td>\n";
+			print $new_msj_SQLi "			</tr>\n";
 		}
 	}
 	else
 	{
 		$cont_XSS++;
-		print $new_msj "#-------------------------------CROSS SITE SCRIPTING------------------------------#\n";
-		print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
-		print $new_msj "$arreglo[3]\n";
-		print $new_msj "#---------------------------------------------------------------------------------#\n";
+		#print $new_msj "#-------------------------------CROSS SITE SCRIPTING------------------------------#\n";
+		#print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
+		#print $new_msj "$arreglo[3]\n";
+		#print $new_msj "#---------------------------------------------------------------------------------#\n";
+		print $new_msj_XSS "			<tr>\n";
+		print $new_msj_XSS "				<td>$arreglo[0]</td>\n";
+		print $new_msj_XSS "				<td>$arreglo[1]</td>\n";
+		print $new_msj_XSS "				<td>$arreglo[2]</td>\n";
+		print $new_msj_XSS "				<td>$arreglo[3]</td>\n";
+		print $new_msj_XSS "				<td>$arreglo[7]</td>\n";
+		if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
+		{
+			print $new_msj_XSS '				<td style = "color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
+		}
+		elsif($arreglo[5] =~ /2..\b/i)
+		{
+			print $new_msj_XSS '				<td style = "color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
+		}
+		print $new_msj_XSS "				<td>$arreglo[6]</td>\n";
+		print $new_msj_XSS "				<td>$arreglo[8]</td>\n";
+		print $new_msj_XSS "			</tr>\n";
 	}
 
     if($diagnostico_XSS == 0 && $arreglo[7] eq "-")
@@ -202,10 +265,10 @@ while (my $line1 = <$data_acces>)
 }
 $nullFlag=0;
 
-print $new_msj "#####################################Mensaje: ".$msj_actual." END #################################################\n";
+#print $new_msj "#####################################Mensaje: ".$msj_actual." END #################################################\n";
 
 $cont_errores_postgres = SQLi::errorPostgres($dirParsedPostgres.$log_postgres);
-print $status "$cont_PATH ; $cont_XSS ; $cont_encuentros ; $cont_error ; $cont_200 ; $cont_errores_postgres ; $cont_error_en_base\n";
+print $status "$cont_PATH;$cont_XSS;$cont_encuentros;$cont_error;$cont_200;$cont_errores_postgres;$cont_error_en_base\n";
 print $stauts2 "$cont_PATH;$cont_XSS;$cont_encuentros";
 print "$cont_PATH ; $cont_XSS ; $cont_encuentros\n";
 close $data_acces;

@@ -17,7 +17,7 @@ import smtplib
 try:
 	map(os.remove,glob('./parsedLogs/*/log_*'))
 	map(os.remove,glob('./logs/*/log_*'))
-	print "logs OK!"
+	print "logs OK (limpios)!"
 except:
 	print "logs OK!"
 
@@ -38,7 +38,7 @@ def banner():
 Origen = "unam.cert.log.send@gmail.com"
 Administrador = "juan.as1991@gmail.com"
 passwd = "hola123.,"
-def send_email(user, pwd, recipient, subject, html, text):
+def sendEmail(user, pwd, recipient, subject, html, text):
 	gmail_user = user
 	gmail_pwd = pwd
 	From = user
@@ -57,7 +57,7 @@ def send_email(user, pwd, recipient, subject, html, text):
 		server.ehlo()
 		server.starttls()
 		server.login(gmail_user, gmail_pwd)
-		server.sendmail(From, to, msg.as_string()j)
+		server.sendmail(From, to, msg.as_string())
 		server.close()
 		print 'successfully sent the mail'
 	except Exception as cadena:
@@ -145,14 +145,44 @@ class eviaMail(threading.Thread):
 		print "Saliendo: " + self.name
 
 def send_mail(mail):
+	parseo = subprocess.Popen(["perl", ".cmd.perl" ], stdout=subprocess.PIPE)
+	outputL, errL = parseo.communicate()
+	lineas_inicio = int(outputL)
 	while 1:
-		f = open('status_act.txt', 'r')
-		resultados = f.readline()
-		res = resultados.split(";")
-		if int(resultados[0]) > 10 or int(resultados[1]) > 10 or int(resultados[2]) > 10:
-			send_email(mail["from"], mail["pass"], mail["to"], mail["asunto"], mail["html"], mail["text"]):
-			time.sleep(900)
-		f.close();
+		parseo = subprocess.Popen(["perl", ".cmd.perl" ], stdout=subprocess.PIPE)
+		outputL, errL = parseo.communicate()
+		lineas_actuales = int(outputL)
+		if (lineas_actuales - lineas_inicio) != 0:
+			time.sleep(1)
+			lastLine = subprocess.Popen(["tail", "-1", "cod_status.txt" ], stdout=subprocess.PIPE)
+			outputLast, errLast = lastLine.communicate()
+			Values = outputLast.split(';')
+			#print $status "$cont_PATH;$cont_XSS;$cont_encuentros;$cont_error;$cont_200;$cont_errores_postgres;$cont_error_en_base\n";
+			cont_PATH = int(Values[0])
+			cont_XSS = int(Values[1])
+			cont_encuentros = int(Values[2])
+			cont_error = int(Values[3])
+			cont_200 = int(Values[4])
+			cont_errores_postgres = int(Values[5])
+			cont_error_en_base = int(Values[6])
+			lineas_inicio = lineas_actuales;
+								
+			if cont_PATH > 10 or cont_encuentros > 10 or cont_XSS > 10:
+				mail["html"] += "\n    <h1>Seccion 1 : Match </h1>\n"
+				mail["html"] += "\n    <h3>No. de match SQL injection: " + str(cont_encuentros) + "</h3>\n"
+				mail["html"] += "\n    <h3>No. de match Cross Site Scripting: " + str(cont_XSS) + "</h3>\n"
+				mail["html"] += "\n    <h3>No. de match Path Transversal: " + str(cont_PATH) + "</h3>\n"
+				mail["html"] += "\n    <h1>No. Seccion 2 : Herramientas Identificadas </h1>\n"
+				sendEmail(mail["from"], mail["pass"], mail["to"], mail["asunto"], mail["html"], mail["text"])
+				print "Tal ves te esten atacando amigito ;) !!!!!"
+				time.sleep(900)
+		
+		
+				
+		#f = open('status_act.txt', 'r')
+		#resultados = f.readline()
+		#res = resultados.split(";")
+		#f.close();
 
 def init_SQli(pathWeb, pathWebE, pathWaf, pathPostgres, filenames, flag):
 	count = 1;
@@ -353,18 +383,14 @@ html = """\
 <html>
   <head></head>
   <body>
-    <p>Hi!<br>
-       How are you?<br>
-       Here is the <a href="https://www.python.org">link</a> you wanted.
-    </p>
-  </body>
-</html>
+    <h1>Se registro un aumento en la actividad maliciosa</h1>
 """
 
-mail = ["unam.cert.log.send@gmail.com", "hola123.,", "juan.as1991@gmail.com", "Envio de reporte de posbles ataques", html, text]
+mail = {"from":"unam.cert.log.send@gmail.com", "pass":"hola123.,", "to":"juan_as1991@hotmail.com", "asunto":"Envio de reporte de posbles ataques", "html":html, "text":text}
+
 try:
-	#Mail = eviaMail(3,"hilo mail",flag)
-	#Mail.start();
+	Mail = eviaMail(3,"hilo mail",mail)
+	Mail.start();
 	pass
 except Exception as cadena:
 	print "Error: " + format(cadena)	
