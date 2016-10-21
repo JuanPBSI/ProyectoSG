@@ -10,6 +10,9 @@ import subprocess
 import shutil
 import os
 from glob import glob
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
 # Eliminamos los archivos de losgs anteriores en cada ejecucion
 try:
 	map(os.remove,glob('./parsedLogs/*/log_*'))
@@ -25,13 +28,40 @@ f.write("#----------------------------------------------------------------------
 f.truncate()
 f.close()
 def banner():
-	print ".______    _______   ______     __    ___     _______     __    __  .__   __.      ___      .___  ___.          ______  _______ .______     .___________."
-	print "|   _  \  |   ____| /      |   /_ |  / _ \   /  _____|   |  |  |  | |  \ |  |     /   \     |   \/   |         /      ||   ____||   _  \    |           |"
-	print "|  |_)  | |  |__   |  ,----'    | | | | | | |  |  __     |  |  |  | |   \|  |    /  ^  \    |  \  /  |  ______|  ,----'|  |__   |  |_)  |   `---|  |----`"
-	print "|   _  <  |   __|  |  |         | | | | | | |  | |_ |    |  |  |  | |  . `  |   /  /_\  \   |  |\/|  | |______|  |     |   __|  |      /        |  |     "
-	print "|  |_)  | |  |____ |  `----.    | | | |_| | |  |__| |    |  `--'  | |  |\   |  /  _____  \  |  |  |  |        |  `----.|  |____ |  |\  \----.   |  |     "
-	print "|______/  |_______| \______|    |_|  \___/   \______|     \______/  |__| \__| /__/     \__\ |__|  |__|         \______||_______|| _| `._____|   |__|     "
-                                                                                                                                                    
+	print " __    ___     _______     __    __  .__   __.      ___      .___  ___.          ______  _______ .______     .___________."
+	print "/_ |  / _ \   /  _____|   |  |  |  | |  \ |  |     /   \     |   \/   |         /      ||   ____||   _  \    |           |"
+	print " | | | | | | |  |  __     |  |  |  | |   \|  |    /  ^  \    |  \  /  |  ______|  ,----'|  |__   |  |_)  |   `---|  |----`"
+	print " | | | | | | |  | |_ |    |  |  |  | |  . `  |   /  /_\  \   |  |\/|  | |______|  |     |   __|  |      /        |  |     "
+	print " | | | |_| | |  |__| |    |  `--'  | |  |\   |  /  _____  \  |  |  |  |        |  `----.|  |____ |  |\  \----.   |  |     "
+	print " |_|  \___/   \______|     \______/  |__| \__| /__/     \__\ |__|  |__|         \______||_______|| _| `._____|   |__| 	 "
+
+Origen = "unam.cert.log.send@gmail.com"
+Administrador = "juan.as1991@gmail.com"
+passwd = "hola123.,"
+def send_email(user, pwd, recipient, subject, html, text):
+	gmail_user = user
+	gmail_pwd = pwd
+	From = user
+	to = recipient
+
+	msg = MIMEMultipart('alternative')
+	msg['Subject'] = subject
+	msg['From'] = From
+	msg['To'] = to
+	part1 = MIMEText(text, 'plain')
+	part2 = MIMEText(html, 'html')
+	msg.attach(part1)
+	msg.attach(part2)
+	try:
+		server = smtplib.SMTP("smtp.gmail.com", 587)
+		server.ehlo()
+		server.starttls()
+		server.login(gmail_user, gmail_pwd)
+		server.sendmail(From, to, msg.as_string()j)
+		server.close()
+		print 'successfully sent the mail'
+	except Exception as cadena:
+		print "Error en la conexion SHH: " + format(cadena)
 
 # Definimos los datos de los servidores a monitoear
 servidor_web = {"ip": "192.168.36.130",
@@ -112,13 +142,18 @@ class eviaMail(threading.Thread):
 	def run(self):
 		print "Iniciando: " + self.name
 		send_mail(self.mail)
-		print "|Saliendo: " + self.name
+		print "Saliendo: " + self.name
 
 def send_mail(mail):
 	while 1:
-		if mail == 1:
-			print "dentro"
-	
+		f = open('status_act.txt', 'r')
+		resultados = f.readline()
+		res = resultados.split(";")
+		if int(resultados[0]) > 10 or int(resultados[1]) > 10 or int(resultados[2]) > 10:
+			send_email(mail["from"], mail["pass"], mail["to"], mail["asunto"], mail["html"], mail["text"]):
+			time.sleep(900)
+		f.close();
+
 def init_SQli(pathWeb, pathWebE, pathWaf, pathPostgres, filenames, flag):
 	count = 1;
 	file_log_web = pathWeb + str(count) + ".txt"
@@ -312,9 +347,25 @@ try:
 except Exception as cadena:
 	print "Error: " + format(cadena)
 
+
+text = "Enviamos el siguiente correo por que se cree que su servidor esta bajo ataque:\nRecomendamos realizar las modificaciones pertinentes\n"
+html = """\
+<html>
+  <head></head>
+  <body>
+    <p>Hi!<br>
+       How are you?<br>
+       Here is the <a href="https://www.python.org">link</a> you wanted.
+    </p>
+  </body>
+</html>
+"""
+
+mail = ["unam.cert.log.send@gmail.com", "hola123.,", "juan.as1991@gmail.com", "Envio de reporte de posbles ataques", html, text]
 try:
-	Mail = eviaMail(3,"hilo mail",flag)
-	Mail.start();
+	#Mail = eviaMail(3,"hilo mail",flag)
+	#Mail.start();
+	pass
 except Exception as cadena:
 	print "Error: " + format(cadena)	
 #Creamos un lock para que corran de manera sincronizada

@@ -70,6 +70,8 @@ open(my $new_error_apache, '>', $dirParsedApache.$filename3) or die "Could not o
 open(my $data_acces, '<', $rutaAccess) or die "No se puede abrir el archivo $rutaAccess\n";
 
 open(my $new_msj, '>>', $ENV{HOME}."/Proyecto/mensaje.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $status, '>>', $ENV{HOME}."/Proyecto/cod_status.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $stauts2, '>', $ENV{HOME}."/Proyecto/status_act.txt") or die "Could not open file 'status_act.txt' $!";
 print $new_msj "#####################################Mensaje: ".$msj_actual."######################################################\n";
 
 while (my $line1 = <$data_acces>)
@@ -203,7 +205,8 @@ $nullFlag=0;
 print $new_msj "#####################################Mensaje: ".$msj_actual." END #################################################\n";
 
 $cont_errores_postgres = SQLi::errorPostgres($dirParsedPostgres.$log_postgres);
-#print "$cont_encuentros ; $cont_error ; $cont_200 ; $cont_errores_postgres ; $cont_error_en_base\n";
+print $status "$cont_PATH ; $cont_XSS ; $cont_encuentros ; $cont_error ; $cont_200 ; $cont_errores_postgres ; $cont_error_en_base\n";
+print $stauts2 "$cont_PATH;$cont_XSS;$cont_encuentros";
 print "$cont_PATH ; $cont_XSS ; $cont_encuentros\n";
 close $data_acces;
 
