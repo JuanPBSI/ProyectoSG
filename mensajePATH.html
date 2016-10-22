@@ -21,6 +21,7 @@
 			font-size: 0.8em;
 		}
 		.demo td {
+			word-break: break-all;
 			border:1px dotted #C0C0C0;
 			text-align:center;
 			padding:5px;
@@ -33,44 +34,24 @@
 		<div style="background:#5E0000; text-align:center; color : white; font-family: verdana; font-size: 2em;">Path Transversal</div>
 		<thead>
 		<tr>
-			<th>IP</th>
-			<th>Fecha</th>
-			<th>Metodo</th>
-			<th>Recurso</th>
-			<th>Referer</th>
-			<th>Codigo<br></th>
-			<th>Tamano en bytes<br></th>
-			<th>User-Agent</th>
+			<th style="width:8%;" >IP</th>
+			<th style="width:8%;" >Fecha</th>
+			<th style="width:4%;" >Metodo</th>
+			<th style="width:30%;" >Recurso</th>
+			<th style="width:21%;" >Referer</th>
+			<th style="width:4%;" >Codigo<br></th>
+			<th style="width:4%;" >Tamano en bytes<br></th>
+			<th style="width:21%;" >User-Agent</th>
 		</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>192.168.35.129</td>
-				<td>20/Oct/2016:21:43:53</td>
-				<td>GET</td>
-				<td>/?q=node%2F1&TOue%3D4653%20AND%201%3D1%20UNION%20ALL%20SELECT%201%2C2%2C3%2Ctable_name%20FROM%20information_schema.tables%20WHERE%202%3E1--%20..%2F..%2F..%2Fetc%2Fpasswd</td>
-				<td>http://www.drupal.vulne.proyecto.mx:80/</td>
-				<td style = "color : green; font-weight: bold;">200</td>
-				<td>3455</td>
-				<td>sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)</td>
-			</tr>
-			<tr>
-				<td>192.168.35.129</td>
-				<td>20/Oct/2016:21:47:56</td>
-				<td>GET</td>
-				<td>/?q=node%2F1&ITBP%3D1046%20AND%201%3D1%20UNION%20ALL%20SELECT%201%2C2%2C3%2Ctable_name%20FROM%20information_schema.tables%20WHERE%202%3E1--%20..%2F..%2F..%2Fetc%2Fpasswd</td>
-				<td>http://www.drupal.vulne.proyecto.mx:80/</td>
-				<td style = "color : green; font-weight: bold;">200</td>
-				<td>3449</td>
-				<td>sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)</td>
-			</tr>
-			<tr>
-				<td>192.168.35.129</td>
-				<td>20/Oct/2016:21:47:56</td>
-				<td>GET</td>
-				<td>/?q=node%2F1&ITBP%3D1046%20AND%201%3D1%20UNION%20ALL%20SELECT%201%2C2%2C3%2Ctable_name%20FROM%20information_schema.tables%20WHERE%202%3E1--%20..%2F..%2F..%2Fetc%2Fpasswd</td>
-				<td>http://www.drupal.vulne.proyecto.mx:80/</td>
-				<td style = "color : green; font-weight: bold;">200</td>
-				<td>3449</td>
-				<td>sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)</td>
+				<td style="width:8%;">192.168.35.129</td>
+				<td style="width:8%;">21/Oct/2016:14:43:59</td>
+				<td style="width:4%;">GET</td>
+				<td style="width:30%; text-align:left;">/?q=node/1&Yltb=5393 AND 1=1 UNION ALL SELECT 1,2,3,table_name FROM information_schema.tables WHERE 2>1-- ../../../etc/passwd</td>
+				<td style="width:21%; text-align:left;">http://www.drupal.vulne.proyecto.mx:80/</td>
+				<td style = "width:4%; color : green; font-weight: bold;">200</td>
+				<td style="width:4%;">3449</td>
+				<td style="width:21%; text-align:left;" id="User-Agent">sqlmap/1.0-dev-2041e47 (http://sqlmap.org)</td>
 			</tr>

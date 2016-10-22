@@ -21,6 +21,7 @@
 			font-size: 0.8em;
 		}
 		.demo td {
+			word-break: break-all;
 			border:1px dotted #C0C0C0;
 			text-align:center;
 			padding:5px;
@@ -33,34 +34,24 @@
 		<div style="background:#0C580A; text-align:center; color : white; font-family: verdana; font-size: 2em;">Cross Site Scripting XSS</div>
 		<thead>
 		<tr>
-			<th>IP</th>
-			<th>Fecha</th>
-			<th>Metodo</th>
-			<th>Recurso</th>
-			<th>Referer</th>
-			<th>Codigo<br></th>
-			<th>Tamano en bytes<br></th>
-			<th>User-Agent</th>
+			<th style="width:8%;" >IP</th>
+			<th style="width:8%;" >Fecha</th>
+			<th style="width:4%;" >Metodo</th>
+			<th style="width:30%;" >Recurso</th>
+			<th style="width:21%;" >Referer</th>
+			<th style="width:4%;" >Codigo<br></th>
+			<th style="width:4%;" >Tamano en bytes<br></th>
+			<th style="width:21%;" >User-Agent</th>
 		</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>192.168.35.129</td>
-				<td>20/Oct/2016:21:43:55</td>
-				<td>GET</td>
-				<td>/?q=node%2F1%27BXWc%3C%27%22%3EfXbK</td>
-				<td>http://www.drupal.vulne.proyecto.mx:80/</td>
-				<td style = "color : red; font-weight: bold;">404</td>
-				<td>2765</td>
-				<td>sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)</td>
-			</tr>
-			<tr>
-				<td>192.168.35.129</td>
-				<td>20/Oct/2016:21:48:00</td>
-				<td>GET</td>
-				<td>/?q=node%2F1%27oUVn%3C%27%22%3EVXBw</td>
-				<td>http://www.drupal.vulne.proyecto.mx:80/</td>
-				<td style = "color : red; font-weight: bold;">404</td>
-				<td>2767</td>
-				<td>sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)</td>
+				<td style="width:8%;">192.168.35.129</td>
+				<td style="width:8%;">21/Oct/2016:14:45:00</td>
+				<td style="width:4%;">GET</td>
+				<td style="width:30%; text-align:left;">/?q=node/1'QJUE<'">cagV</td>
+				<td style="width:21%; text-align:left;">http://www.drupal.vulne.proyecto.mx:80/</td>
+				<td style = "width:4%; color : red; font-weight: bold;">404</td>
+				<td style="width:4%;">2763</td>
+				<td style="width:21%; text-align:left;">sqlmap/1.0-dev-2041e47 (http://sqlmap.org)</td>
 			</tr>

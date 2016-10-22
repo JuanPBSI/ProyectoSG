@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import threading
 import time
@@ -27,8 +28,15 @@ f.write("#------------Se econtraron las siguientes lineas con contenido sopechos
 f.write("#---------------------------------------------------------------------------------#\n\n")
 f.truncate()
 f.close()
+
+f = open("mensaje.txt", 'r+')
+f.write("0;0;0;0;0;0;0\n")
+f.write("#------------Se econtraron las siguientes lineas con contenido sopechoso----------#\n")
+
+f.truncate()
+f.close()
 def banner():
-	print " __    ___     _______     __    __  .__   __.      ___      .___  ___.          ______  _______ .______     .___________."
+	print "\n __    ___     _______     __    __  .__   __.      ___      .___  ___.          ______  _______ .______     .___________."
 	print "/_ |  / _ \   /  _____|   |  |  |  | |  \ |  |     /   \     |   \/   |         /      ||   ____||   _  \    |           |"
 	print " | | | | | | |  |  __     |  |  |  | |   \|  |    /  ^  \    |  \  /  |  ______|  ,----'|  |__   |  |_)  |   `---|  |----`"
 	print " | | | | | | |  | |_ |    |  |  |  | |  . `  |   /  /_\  \   |  |\/|  | |______|  |     |   __|  |      /        |  |     "
@@ -59,9 +67,9 @@ def sendEmail(user, pwd, recipient, subject, html, text):
 		server.login(gmail_user, gmail_pwd)
 		server.sendmail(From, to, msg.as_string())
 		server.close()
-		print 'successfully sent the mail'
+		print 'Se envio correo electronico!!!'
 	except Exception as cadena:
-		print "Error en la conexion SHH: " + format(cadena)
+		print "Error al envio del correo" + format(cadena)
 
 # Definimos los datos de los servidores a monitoear
 servidor_web = {"ip": "192.168.36.130",
@@ -145,9 +153,10 @@ class eviaMail(threading.Thread):
 		print "Saliendo: " + self.name
 
 def send_mail(mail):
-	parseo = subprocess.Popen(["perl", ".cmd.perl" ], stdout=subprocess.PIPE)
+	parseo = subprocess.Popen(["perl", ".cmd.perl", "0" ], stdout=subprocess.PIPE)
 	outputL, errL = parseo.communicate()
 	lineas_inicio = int(outputL)
+	cont_time = 0
 	while 1:
 		parseo = subprocess.Popen(["perl", ".cmd.perl" ], stdout=subprocess.PIPE)
 		outputL, errL = parseo.communicate()
@@ -166,19 +175,62 @@ def send_mail(mail):
 			cont_errores_postgres = int(Values[5])
 			cont_error_en_base = int(Values[6])
 			lineas_inicio = lineas_actuales;
-								
-			if cont_PATH > 10 or cont_encuentros > 10 or cont_XSS > 10:
-				mail["html"] += "\n    <h1>Seccion 1 : Match </h1>\n"
-				mail["html"] += "\n    <h3>No. de match SQL injection: " + str(cont_encuentros) + "</h3>\n"
-				mail["html"] += "\n    <h3>No. de match Cross Site Scripting: " + str(cont_XSS) + "</h3>\n"
-				mail["html"] += "\n    <h3>No. de match Path Transversal: " + str(cont_PATH) + "</h3>\n"
-				mail["html"] += "\n    <h1>No. Seccion 2 : Herramientas Identificadas </h1>\n"
-				sendEmail(mail["from"], mail["pass"], mail["to"], mail["asunto"], mail["html"], mail["text"])
-				print "Tal ves te esten atacando amigito ;) !!!!!"
-				time.sleep(900)
-		
-		
+
+			# si es una herramienta generará muchas peticiones
+			if (cont_PATH > 30 or cont_encuentros > 30 or cont_XSS > 30) and (cont_time == 0):
+			
+				ipCount = subprocess.Popen(["perl", ".cmd.perl", "1" ], stdout=subprocess.PIPE)
+				outputIP1, errIP1 = ipCount.communicate()
+				ipCount = subprocess.Popen(["perl", ".cmd.perl", "2" ], stdout=subprocess.PIPE)
+				outputIP2, errIP2 = ipCount.communicate()
+				ipCount = subprocess.Popen(["perl", ".cmd.perl", "3" ], stdout=subprocess.PIPE)
+				outputIP3, errIP3 = ipCount.communicate()
+
+				userCount = subprocess.Popen(["perl", ".cmd.perl", "4" ], stdout=subprocess.PIPE)
+				outputU1, errU1 = userCount.communicate()
+				userCount = subprocess.Popen(["perl", ".cmd.perl", "5" ], stdout=subprocess.PIPE)
+				outputU2, errU1 = userCount.communicate()
+				userCount = subprocess.Popen(["perl", ".cmd.perl", "6" ], stdout=subprocess.PIPE)
+				outputU3, errU1 = userCount.communicate()
 				
+				mail["html"] += "\n    <h1>Seccion 1 : Resumen de los hallazgos </h1>\n"
+				mail["html"] += "    <br><p>SQL injection: </p><br>\n"
+				mail["html"] += "    <p>------> Num. detecciones: " + str(cont_encuentros) + "</p>\n"
+				mail["html"] += "    <p>------> IP de origen [cantidad][IP]: </p>\n<p>" + str(outputIP1) + "</p>\n"
+				mail["html"] += "    <p>------> Aplicación de origen [cantidad][IP]: </p>\n<p>" + str(outputU1) + "</p>\n"
+
+				mail["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
+				mail["html"] += "    <p>------> Num. detecciones: " + str(cont_XSS) + "</p>\n"
+				mail["html"] += "    <p>------> IP de origen [cantidad][IP]: </p>\n<p>" + str(outputIP2) + "</p>\n"
+				mail["html"] += "    <p>------> Aplicación de origen [cantidad][IP]: </p>\n<p>" + str(outputU2) + "</p>\n"
+
+				mail["html"] += "    <br><p>Path Transversal: </p><br>\n"
+				mail["html"] += "    <p>------> Num. detecciones: " + str(cont_PATH) + "</p><br>\n"
+				mail["html"] += "    <p>------> IP de origen [cantidad][IP]: </p>\n<p>" + str(outputIP3) + "</p>\n"
+				mail["html"] += "    <p>------> Aplicación de origen [cantidad][IP]: </p>\n<p>" + str(outputU3) + "</p>\n"
+
+				mail["html"] += "    <br><h1>Seccion 2 : Detalles </h1><br>\n"
+				f = open("mensajeSQL.html", 'r+')
+				sqliHtml = f.read()
+				f.close()
+				f = open("mensajeXSS.html", 'r+')
+				xssHtml = f.read()
+				f.close()
+				f = open("mensajePATH.html", 'r+')
+				pathHtml = f.read()
+				f.close()
+				mail["html"] += sqliHtml
+				mail["html"] += xssHtml
+				mail["html"] += pathHtml
+				sendEmail(mail["from"], mail["pass"], mail["to"], mail["asunto"], mail["html"], mail["text"])
+				print u"Tal ves te esten atacando amiguito ಠ_ಠ !!!!!"
+				cont_time = cont_time + 1;
+			if (cont_time != 0):
+				cont_time = cont_time + 1;
+
+			if (cont_time == 800):
+				cont_time = 0;
+
 		#f = open('status_act.txt', 'r')
 		#resultados = f.readline()
 		#res = resultados.split(";")

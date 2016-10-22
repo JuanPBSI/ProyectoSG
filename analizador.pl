@@ -74,9 +74,22 @@ open(my $new_msj_XSS, '>>', $ENV{HOME}."/Proyecto/mensajeXSS.html") or die "Coul
 open(my $new_msj_PATH, '>>', $ENV{HOME}."/Proyecto/mensajePATH.html") or die "Could not open file 'mensaje.txt' $!";
 open(my $new_msj_CRAW, '>>', $ENV{HOME}."/Proyecto/mensajeCRAW.html") or die "Could not open file 'mensaje.txt' $!";
 open(my $new_msj_DEFC, '>>', $ENV{HOME}."/Proyecto/mensajeDEFC.html") or die "Could not open file 'mensaje.txt' $!";
+
+open(my $new_msj_SQLi2, '>', $ENV{HOME}."/Proyecto/mensajeSQL.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_XSS2, '>', $ENV{HOME}."/Proyecto/mensajeXSS.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_PATH2, '>', $ENV{HOME}."/Proyecto/mensajePATH.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_CRAW2, '>', $ENV{HOME}."/Proyecto/mensajeCRAW.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_DEFC2, '>', $ENV{HOME}."/Proyecto/mensajeDEFC.txt") or die "Could not open file 'mensaje.txt' $!";
+
 open(my $status, '>>', $ENV{HOME}."/Proyecto/cod_status.txt") or die "Could not open file 'mensaje.txt' $!";
 open(my $stauts2, '>', $ENV{HOME}."/Proyecto/status_act.txt") or die "Could not open file 'status_act.txt' $!";
 #print $new_msj "#####################################Mensaje: ".$msj_actual."######################################################\n";
+
+my @Sqli;
+my @XSS;
+my @DEFC;
+my @Path;
+my @Craw;
 
 while (my $line1 = <$data_acces>)
 {
@@ -129,22 +142,23 @@ while (my $line1 = <$data_acces>)
 		#print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
 		#print $new_msj "$arreglo[3]\n";
 		#print $new_msj "#---------------------------------------------------------------------------------#\n";
+		print $new_msj_PATH2  "$arreglo[0]|$arreglo[1]|$arreglo[8]\n";
 		print $new_msj_PATH "			<tr>\n";
-		print $new_msj_PATH "				<td>$arreglo[0]</td>\n";
-		print $new_msj_PATH "				<td>$arreglo[1]</td>\n";
-		print $new_msj_PATH "				<td>$arreglo[2]</td>\n";
-		print $new_msj_PATH "				<td>$arreglo[3]</td>\n";
-		print $new_msj_PATH "				<td>$arreglo[7]</td>\n";
+		print $new_msj_PATH '				<td style="width:8%;">'."$arreglo[0]</td>\n";
+		print $new_msj_PATH '				<td style="width:8%;">'."$arreglo[1]</td>\n";
+		print $new_msj_PATH '				<td style="width:4%;">'."$arreglo[2]</td>\n";
+		print $new_msj_PATH '				<td style="width:30%; text-align:left;">'."$recurso</td>\n";
+		print $new_msj_PATH '				<td style="width:21%; text-align:left;">'."$arreglo[7]</td>\n";
 		if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
 		{
-			print $new_msj_PATH '				<td style = "color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
+			print $new_msj_PATH '				<td style = "width:4%; color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
 		}
 		elsif($arreglo[5] =~ /2..\b/i)
 		{
-			print $new_msj_PATH '				<td style = "color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
+			print $new_msj_PATH '				<td style = "width:4%; color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
 		}
-		print $new_msj_PATH "				<td>$arreglo[6]</td>\n";
-		print $new_msj_PATH "				<td>$arreglo[8]</td>\n";
+		print $new_msj_PATH '				<td style="width:4%;">'."$arreglo[6]</td>\n";
+		print $new_msj_PATH '				<td style="width:21%; text-align:left;" id="User-Agent">'."$arreglo[8]</td>\n";
 		print $new_msj_PATH "			</tr>\n";
 	}
 	if($diagnostico_XSS == 0)
@@ -161,30 +175,31 @@ while (my $line1 = <$data_acces>)
 			#print $new_msj "$arreglo[3]\n";
 			#print $new_msj "$arreglo[7]\n";
 			#print $new_msj "#---------------------------------------------------------------------------------#\n";
+			print $new_msj_SQLi2 "$arreglo[0]|$arreglo[1]|$arreglo[8]\n";
 			print $new_msj_SQLi "			<tr>\n";
-			print $new_msj_SQLi "				<td>$arreglo[0]</td>\n";
-			print $new_msj_SQLi "				<td>$arreglo[1]</td>\n";
-			print $new_msj_SQLi "				<td>$arreglo[2]</td>\n";
-			print $new_msj_SQLi "				<td>$arreglo[3]</td>\n";
-			print $new_msj_SQLi "				<td>$arreglo[7]</td>\n";
+			print $new_msj_SQLi '				<td style="width:8%;">'."$arreglo[0]</td>\n";
+			print $new_msj_SQLi '				<td style="width:8%;">'."$arreglo[1]</td>\n";
+			print $new_msj_SQLi '				<td style="width:4%;">'."$arreglo[2]</td>\n";
+			print $new_msj_SQLi '				<td style="width:30%; text-align:left;">'."$recurso</td>\n";
+			print $new_msj_SQLi '				<td style="width:21%; text-align:left;">'."$arreglo[7]</td>\n";
 			if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
 			{
-				print $new_msj_SQLi '				<td style = "color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
+				print $new_msj_SQLi '				<td style = "width:4%; color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
 			}
 			elsif($arreglo[5] =~ /2..\b/i)
 			{
-				print $new_msj_SQLi '				<td style = "color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
+				print $new_msj_SQLi '				<td style = "width:4%; color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
 			}
-			print $new_msj_SQLi "				<td>$arreglo[6]</td>\n";
+			print $new_msj_SQLi '				<td style="width:4%;">'."$arreglo[6]</td>\n";
 			if ($aux4 == 1)
 			{
-				print $new_msj_SQLi '				<td style = "color : red; font-weight: bold;">'."SI</td>\n";
+				print $new_msj_SQLi '				<td style = "width:4%; color : red; font-weight: bold;">'."SI</td>\n";
 			}
 			else
 			{
-				print $new_msj_SQLi '				<td style = "color : green; font-weight: bold;">'."NO</td>\n";
+				print $new_msj_SQLi '				<td style = "width:4%; color : green; font-weight: bold;">'."NO</td>\n";
 			}
-			print $new_msj_SQLi "				<td>$arreglo[8]</td>\n";
+			print $new_msj_SQLi '				<td style="width:17%; text-align:left;">'."$arreglo[8]</td>\n";
 			print $new_msj_SQLi "			</tr>\n";
 		}
 	}
@@ -195,22 +210,23 @@ while (my $line1 = <$data_acces>)
 		#print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
 		#print $new_msj "$arreglo[3]\n";
 		#print $new_msj "#---------------------------------------------------------------------------------#\n";
+		print $new_msj_XSS2  "$arreglo[0]|$arreglo[1]|$arreglo[8]\n";
 		print $new_msj_XSS "			<tr>\n";
-		print $new_msj_XSS "				<td>$arreglo[0]</td>\n";
-		print $new_msj_XSS "				<td>$arreglo[1]</td>\n";
-		print $new_msj_XSS "				<td>$arreglo[2]</td>\n";
-		print $new_msj_XSS "				<td>$arreglo[3]</td>\n";
-		print $new_msj_XSS "				<td>$arreglo[7]</td>\n";
+		print $new_msj_XSS '				<td style="width:8%;">'."$arreglo[0]</td>\n";
+		print $new_msj_XSS '				<td style="width:8%;">'."$arreglo[1]</td>\n";
+		print $new_msj_XSS '				<td style="width:4%;">'."$arreglo[2]</td>\n";
+		print $new_msj_XSS '				<td style="width:30%; text-align:left;">'."$recurso</td>\n";
+		print $new_msj_XSS '				<td style="width:21%; text-align:left;">'."$arreglo[7]</td>\n";
 		if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
 		{
-			print $new_msj_XSS '				<td style = "color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
+			print $new_msj_XSS '				<td style = "width:4%; color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
 		}
 		elsif($arreglo[5] =~ /2..\b/i)
 		{
-			print $new_msj_XSS '				<td style = "color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
+			print $new_msj_XSS '				<td style = "width:4%; color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
 		}
-		print $new_msj_XSS "				<td>$arreglo[6]</td>\n";
-		print $new_msj_XSS "				<td>$arreglo[8]</td>\n";
+		print $new_msj_XSS '				<td style="width:4%;">'."$arreglo[6]</td>\n";
+		print $new_msj_XSS '				<td style="width:21%; text-align:left;">'."$arreglo[8]</td>\n";
 		print $new_msj_XSS "			</tr>\n";
 	}
 
