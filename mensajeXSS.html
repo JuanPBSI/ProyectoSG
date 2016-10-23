@@ -2,17 +2,17 @@
   <head></head>
   <body>
 	<style>
-		.demo {
+		.XSS {
 			width:100%;
 			border:1px dotted #C0C0C0;
 			border-collapse:collapse;
 			padding:5px;
 		}
-		.demo caption {
+		.XSS caption {
 			caption-side:top;
 			text-align:center;
 		}
-		.demo th {
+		.XSS th {
 			border:1px dotted #C0C0C0;
 			padding:5px;
 			background:#088C05;
@@ -20,7 +20,7 @@
 			color : white;
 			font-size: 0.8em;
 		}
-		.demo td {
+		.XSS td {
 			word-break: break-all;
 			border:1px dotted #C0C0C0;
 			text-align:center;
@@ -28,9 +28,10 @@
 			background:#D4FED3;
 			font-family: verdana;
 			color : #626567;
+			font-size: 0.6em;
 		}
 	</style>
-	<table class="demo">
+	<table class="XSS">
 		<div style="background:#0C580A; text-align:center; color : white; font-family: verdana; font-size: 2em;">Cross Site Scripting XSS</div>
 		<thead>
 		<tr>
@@ -45,13 +46,3 @@
 		</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td style="width:8%;">192.168.35.129</td>
-				<td style="width:8%;">21/Oct/2016:14:45:00</td>
-				<td style="width:4%;">GET</td>
-				<td style="width:30%; text-align:left;">/?q=node/1'QJUE<'">cagV</td>
-				<td style="width:21%; text-align:left;">http://www.drupal.vulne.proyecto.mx:80/</td>
-				<td style = "width:4%; color : red; font-weight: bold;">404</td>
-				<td style="width:4%;">2763</td>
-				<td style="width:21%; text-align:left;">sqlmap/1.0-dev-2041e47 (http://sqlmap.org)</td>
-			</tr>

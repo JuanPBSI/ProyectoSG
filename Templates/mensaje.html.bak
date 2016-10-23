@@ -1,9 +1,6 @@
-<html>
-  <head></head>
-  <body>	
-	<style>
+<style>
 		.demo {
-			width:400px;
+			width:100%;
 			border:1px dotted #C0C0C0;
 			border-collapse:collapse;
 			padding:5px;

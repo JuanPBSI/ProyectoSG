@@ -18,6 +18,9 @@ import smtplib
 try:
 	map(os.remove,glob('./parsedLogs/*/log_*'))
 	map(os.remove,glob('./logs/*/log_*'))
+	cp = subprocess.Popen(["perl", ".cmd.perl", "7" ], stdout=subprocess.PIPE)
+	outputcp, errcp = cp.communicate()
+	shutil.copy(glob('Templates/*'),'./')
 	print "logs OK (limpios)!"
 except:
 	print "logs OK!"
@@ -87,6 +90,17 @@ servidor_bd = {"ip": "192.168.36.131", "usuario": "root",
 			   "pass":"ola123",
 			   "log_postgres_error":"/var/log/postgresql/postgresql-9.1-main.log"}
 
+			   
+def getfromPerl(outputL):
+	ip=[]
+	cont=[]
+	allLines=[]
+	for str in outputL.split(' '):
+		if not (str == ''):
+			allLines.append(str.strip())
+	cont=allLines[0::2]
+	ip=allLines[1::2]
+	return cont, ip
 # Creamos los acceso por SSH para la extraccion de archvios de los servidores y definimos las lineas de inicio para cada log de cada servidor
 # Servidor WEB
 try:
@@ -193,21 +207,35 @@ def send_mail(mail):
 				userCount = subprocess.Popen(["perl", ".cmd.perl", "6" ], stdout=subprocess.PIPE)
 				outputU3, errU1 = userCount.communicate()
 				
+				contIP1, ip1 = getfromPerl(outputIP1)
+				contIP2, ip2 = getfromPerl(outputIP2)
+				contIP3, ip3 = getfromPerl(outputIP3)
+
+				contUser1, agent1 = getfromPerl(outputU1)
+				contUser2, agent2 = getfromPerl(outputU2)
+				contUser3, agent3 = getfromPerl(outputU3)
+
 				mail["html"] += "\n    <h1>Seccion 1 : Resumen de los hallazgos </h1>\n"
 				mail["html"] += "    <br><p>SQL injection: </p><br>\n"
 				mail["html"] += "    <p>------> Num. detecciones: " + str(cont_encuentros) + "</p>\n"
-				mail["html"] += "    <p>------> IP de origen [cantidad][IP]: </p>\n<p>" + str(outputIP1) + "</p>\n"
-				mail["html"] += "    <p>------> Aplicación de origen [cantidad][IP]: </p>\n<p>" + str(outputU1) + "</p>\n"
+				for inx, ip in enumerate(ip1):
+					mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP1[inx] + "</b></p>\n"
+				for inx, agent in enumerate(agent1):
+					mail["html"] += "    <p>------> User-Agent: <b>" + agent + "</b>  Cantidad: <b>" + contUser1[inx] + "</b></p>\n"
 
 				mail["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
 				mail["html"] += "    <p>------> Num. detecciones: " + str(cont_XSS) + "</p>\n"
-				mail["html"] += "    <p>------> IP de origen [cantidad][IP]: </p>\n<p>" + str(outputIP2) + "</p>\n"
-				mail["html"] += "    <p>------> Aplicación de origen [cantidad][IP]: </p>\n<p>" + str(outputU2) + "</p>\n"
+				for inx, ip in enumerate(ip2):
+					mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP2[inx] + "</b></p>\n"
+				for inx, agent in enumerate(agent2):
+					mail["html"] += "    <p>------> User-Agent: <b>" + agent + "</b>  Cantidad: <b>" + contUser2[inx] + "</b></p>\n"
 
 				mail["html"] += "    <br><p>Path Transversal: </p><br>\n"
 				mail["html"] += "    <p>------> Num. detecciones: " + str(cont_PATH) + "</p><br>\n"
-				mail["html"] += "    <p>------> IP de origen [cantidad][IP]: </p>\n<p>" + str(outputIP3) + "</p>\n"
-				mail["html"] += "    <p>------> Aplicación de origen [cantidad][IP]: </p>\n<p>" + str(outputU3) + "</p>\n"
+				for inx, ip in enumerate(ip3):
+					mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP3[inx] + "</b></p>\n"
+				for inx, agent in enumerate(agent3):
+					mail["html"] += "    <p>------> User-Agent: <b>" + agent + "</b>  Cantidad: <b>" + contUser3[inx] + "</b></p>\n"
 
 				mail["html"] += "    <br><h1>Seccion 2 : Detalles </h1><br>\n"
 				f = open("mensajeSQL.html", 'r+')
