@@ -1,0 +1,24 @@
+
+
+
+[Ataque] [IP] [User Agent] [Periodo de tiempo]: [Crawler] [192.168.36.129] [sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)] [24/Oct/2016:23:36:33 - 24/Oct/2016:23:37:05]
+[RecursoDistinto][Codigo de estado]:
+
+0.
+[/.
+
+
+
+[Ataque] [IP] [User Agent] [Periodo de tiempo]: [Crawler] [192.168.36.129] [sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)] [24/Oct/2016:23:37:05 - 24/Oct/2016:23:37:36]
+[RecursoDistinto][Codigo de estado]:
+
+0.
+[/.
+
+
+
+[Ataque] [IP] [User Agent] [Periodo de tiempo]: [Crawler] [192.168.36.129] [sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)] [24/Oct/2016:23:37:36 - 24/Oct/2016:23:38:05]
+[RecursoDistinto][Codigo de estado]:
+
+[/.
+0.

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Builder" content="Fortuneware México"/>
+<meta name="Author" content="Fortuneware México"> 
+<meta name="CopyRight" content="(c) 2014 Grupo Financiero Inbursa"/>
+
+<title>Grupo Financiero Inbursa</title>
+<meta name="keywords" content="Banco, Inbursa, credito, tarjeta, cheque, inversiones, Grupo, Financiero"> 
+<meta name="description" content="Grupo Financiero Inbursa">
+
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<!--meta name="robots" CONTENT="all, index, follow"-->
+
+<meta name="robots" content="noindex,nofollow">
+
+
+<link rel="shortcut icon" href="/storage/favicon.ico">
+<link href="/storage/favicon.ico" rel="icon" type="image/ico" />
+<link href="/storage/safari-touch-icon.png" rel="apple-touch-icon-precomposed" type="image/png" />
+<link href="/storage/safari-ipad-icon.png" rel="apple-touch-icon-precomposed" sizes="72x72" type="image/png" />
+<link href="/storage/safari-iphone-icon.png" rel="apple-touch-icon-precomposed" sizes="114x114" type="image/png" />
+
+<script language="javascript" src="/includes/FWWindowsFunctions.js"></script>
+<script language="JavaScript" src="includes/functions.js"></script>
+<script language="javascript" src="../Includes/functions.js"></script>
+
+<link href="/storage/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/storage/styles.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+      <script src="/storage/bootstrap/js/html5shiv.js"></script>
+      <script src="/storage/bootstrap/js/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NHT549"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NHT549');</script>
+<!-- End Google Tag Manager -->
+
+<script src="/storage/bootstrap/js/jquery.min.js"></script>
+<script src="/storage/bootstrap/js/bootstrap.min.js"></script>
+
+
+<!-- Inicio header-->
+<div class="container-fluid head">
+	<div class="container">
+  	<!--location id="loc"loc100"-->
+
+<div style="MIN-HEIGHT: 110px; PADDING-TOP: 20px" class="row">
+	
+<div class="col-md-4 col-sm-12 col-xs-12"><a href="/portal/">
+			<img class="img-responsive" src="/storage/logo-gfi.png" /></a></div>
+	
+<div class="col-md-4 col-sm-12 col-xs-12"><strong></strong></div></div><script>
+	function doSearch() {
+		var control;
+		
+		if (SForm.buscado.value != '') { 
+			control = validaComillas(SForm.buscado.value);
+			if (control){
+				document.SForm.submit();
+				return true;
+			}else{
+				alert('La cantidad de Comillas ingresadas no es valida, por favor reviselas...');
+				SForm.buscado.focus();
+				return false;
+			}
+		} else { 
+			alert('Debe ingresar una palabra para ejecutar la busqueda'); 
+			SForm.buscado.focus();
+			return false;
+		}
+	}
+
+	function validaComillas(param){
+			var rta;
+			var arr;
+			var cadena;
+			
+			rta = false;
+			cadena = param;
+			arr = cadena.split("\"");
+			if (arr.length > 1){
+				if (((arr.length - 1)% 2) != 0) {
+					rta = false;
+				}else{
+					rta = true;
+				}		
+			}else{
+				rta = true;
+			}
+			return(rta);
+		}		
+</script>
+
+<div class="row" style="padding-top:18px; padding-bottom:12px">
+    <div class="col-md-12">
+      <div style="width:255px; height:34px; padding:3px 3px 3px 16px; background-image:url(/storage/search_bkg.png); margin:0 auto">
+      <form action="index.asp?page=modules/search/search_acc.asp" method="post" name="SForm" id="SForm">
+      <input type="text" name="buscado" onselectstart="return true" style=" border:none; color:#fff; background-color:transparent; height:28px; width:200px"/>
+      <input type="hidden" name="sort_field" value="id_module">
+      
+      <span onclick="doSearch();" style="border:none; height:28px; width:24px; margin-left:6px; cursor:pointer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    
+    <input type="hidden" name="doc_expand" value="false" />
+    <input type="hidden" name="id_content" value="0" />
+    <input type="hidden" name="id_category" value="0" />
+    <input type="hidden" name="no_reg_page" value="10" />
+    <input type="hidden" name="no_page" value="1" />
+    <input type="hidden" name="search_date" />
+    <input type="hidden" name="dosearch" value="true" />
+    <input type="hidden" name="module" value="document" />
+  </form>
+      </div>
+    </div>
+  </div><?xml version="1.0" encoding="UTF-16"?><div class="row" xmlns:fo="http://www.w3.org/1999/XSL/Format"><div class="col-md-2 hidden-xs hidden-sm"></div><div class="col-md-8 col-sm-12 col-xs-12"><nav class="navbar navbar-default" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mnu-ppal"><span class="sr-only">Menu</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><span class="navbar-brand hidden-sm hidden-md hidden-lg">Menú Principal</span></div><div class="collapse navbar-collapse" id="mnu-ppal"><ul class="nav navbar-nav"><li><a href="?id_category=11">Personas</a></li><li><a href="?id_category=15">Empresas</a></li><li><a href="?id_category=16">Acerca del Grupo</a></li><li><a href="?id_category=17">Inbursa cerca de ti</a></li></ul></div></nav></div><div class="col-md-2 hidden-xs hidden-sm"></div></div>
+	</div>
+</div>
+
+<!--location id="loc"loc101"-->
+
+<div class="container">
+	
+<div style="PADDING-BOTTOM: 0px; PADDING-TOP: 10px" class="row">
+		
+<div style="TEXT-ALIGN: right" class="col-md-10 col-sm-6 col-xs-6">
+			<img src="/storage/ico_tel.gif" /> 
+			<span class="txt-001">54 47 80 00 | 01 800 90 90000 </span>&nbsp;&nbsp;&nbsp;<a href="/portal/?page=Document/doc_view_section.asp&amp;id_document=6900" target="_blank"> 
+				<img onmouseover="$(this).attr('src', '/storage/boton-video-portal-over.png')" onmouseout="$(this).attr('src', '/storage/boton-video-portal.png')" src="/storage/boton-video-portal.png" width="160" height="30" /> </a></div>
+		
+<div style="TEXT-ALIGN: center" class="col-md-2 col-sm-6 col-xs-6"><a href="https://www.facebook.com/InbursaGfi" target="_blank">
+				<img src="/storage/ico_facebook.gif" /> </a><a href="https://twitter.com/bancoinbursa" target="_blank">
+				<img src="/storage/ico_tweeter.gif" /> </a><a href="https://www.youtube.com/user/InbursaBanco" target="_blank">
+				<img src="/storage/ico_youtube.gif" /> </a></div></div>
+	
+<div style="PADDING-BOTTOM: 10px; PADDING-TOP: 6px" class="row">
+		
+<div class="col-md-2">&nbsp;</div>
+		
+<div style="BACKGROUND-IMAGE: url(/storage/hr_01.gif); BACKGROUND-POSITION: center 50%; HEIGHT: 5px" class="col-md-8">&nbsp;</div>
+		
+<div class="col-md-2">&nbsp;</div></div>
+	
+<div>&nbsp;</div></div>
+    
+<!-- Fin Header-->
+  
+<!--Inicio izquierda, content, derecha-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"> 
+     <!--location id="loc"loc200"--><div class="tit-lat">Acceso Clientes
+<script>
+	//<![CDATA[
+	function showHide_mnu_lat(){   obj = document.getElementById('mnu-lat');   if (obj.className == 'mnu-lat hidden-xs hidden-sm') {    obj.className ='mnu-lat';    }   else {    obj.className ='mnu-lat hidden-xs hidden-sm';    }   }
+	//]] >
+	</script> 
+	
+<div id="ico_menu" class="hidden-lg hidden-md pull-right"><a class="lnk-001" href="javascript:showHide_mnu_lat();">
+			<span class="glyphicon glyphicon-align-justify"></span></a></div></div>
+
+<div class="spacer_18">&nbsp;</div>
+
+<div id="mnu-lat" class="mnu-lat hidden-xs hidden-sm">
+	
+<ul> 
+	<li><a href="https://afore.inbursa.com:4013/PortalAfore/" target="_blank">Afore</a> 
+	</li> 
+	<li><a href="https://asesores.inbursa.com/PortalAsesores/toEnvia.do" target="_blank"> 
+				 Asesores</a> </li> 
+	<li><a href="http://www.cfcredit.com.mx/chclientesnetNew/" target="_blank">CF Credit</a> </li> 
+	<li><a href="https://www.bancoinbursa.com/PortalCreditos/useraccessLoginCreditos.asp" target="_blank">EDC Cr&eacute;ditos</a> </li> 
+	<li><a href="https://vale.inbursa.com/login/login.jsp" target="_blank">InburGas / Inburvale</a> 
+	</li> 
+	<li><a href="https://inbursamf.inbursa.com/" target="_blank">InbuRed</a> </li> 
+	<li><a href="https://casadebolsa.inbursa.com:4020/Portal-CasaBolsa/" target="_blank"> 
+				 Inversi&oacute;n Burs&aacute;til</a> </li> 
+	<li><a href="https://servicios.inbursa.com/PagoPolizasGFI/deducible/captura.aspx" target="_blank"> 
+				 Pago de Deducibles</a> </li> 
+	<li><a href="https://servicios.inbursa.com/PagoPolizasGFI/" target="_blank"> 
+				 Pago de P&oacute;lizas de Seguro</a> </li> 
+	<li><a href="https://asesores.inbursa.com/PortalAsesores/toEnviaPunto.do" 
+				 target="_blank">Punto Electr&oacute;nico</a> </li> 
+	<li><a href="https://asesores.inbursa.com/PortalAsesores/toEnvia.do?Acceso=1" 
+				 target="_blank">Seguros</a> </li> 
+	<li><a href="https://apps.inbursa.com/InLi/TDC.html" target="_blank">Tarjeta de Cr&eacute;dito</a> 
+	</li> 
+	<li><a href="https://www.bancoinbursa.com/login/useraccess.asp" target="_blank">Tu Banca en  
+				 la Red</a> </li> 
+	<li><a href="https://asesores.inbursa.com:4018/CotizadoresMovil/GastosMedicosMayoresUNAM/toInicia.do" 
+				 target="_blank">UNAM Gastos M&eacute;dicos</a> </li> 
+	<li><a href="https://www.inbursa.com/portal/?page=Document/doc_view_section.asp&id_document=1422">M&aacute;s Accesos</a> 
+	</li> 
+</ul>
+<div class="spacer_18">&nbsp;</div></div>
+
+ 
+    </div>
+    <div class="col-md-8">
+    
+	<!-- Inicio HomePage-->
+    <!--location id="loc"loc301"-->
+<div id="132" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#132" data-slide-to="0" class="active"></li><li data-target="#132" data-slide-to="1" class="active"></li><li data-target="#132" data-slide-to="2" class="active"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active"><p class="text-center"><a href="https://cotizatuseguro.inbursa.com:4041/negocio-quimera/mvc/others/autotalPublico/init?ca=PUBLICO&pa=P"><img alt="bCotizador Seguros Autos" src="/storage/bnr_cotizador_autotal.jpg" class="img-responsive center-block"/></a></p></div><div class="item "><p class="text-center"><a href="https://www.inbursa.com/portal/?page=Document/doc_view_section.asp&id_document=1048&id_category=44"><img alt="ci-móvil TDC" src="/storage/bnr_imoviltdc.jpg" class="img-responsive center-block"/></a></p></div><div class="item "><p class="text-center"><a target="_blank" href="http://www.puntosinfin.com/"><img alt="dPuntoSinFin" src="/storage/banner_puntosinfín.jpg" class="img-responsive center-block"/></a></p></div>
+        </div>
+        <a class="left carousel-control" href="#132" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#132" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+
+<div class="spacer_24">&nbsp;</div>
+
+<div class="row">
+	
+<div class="col-md-3 col-xs-6 col-001 icoHome icoHomeBorderR">Facturas<br />
+		<br />
+		<br />
+		<a href="?page=Document/doc_view_section.asp&amp;id_document=3664&amp;">
+			<img alt="Facturas" src="/storage/ico_prodPpal_01.png" /></a><br />
+		<br />
+		</div>
+	
+<div class="col-md-3 col-xs-6 col-001 icoHome">Estado de Cuenta y<br />
+		Servicios <br />
+		<br />
+		<a href="https://asesores.inbursa.com/PortalAsesores/toEnvia.do?Acceso=1" target="_blank">
+			<img alt="Facturas" src="/storage/ico_prodPpal_02.png" /></a><br />
+		<br />
+		</div>
+	
+<div class="col-md-3 col-xs-6 col-001 icoHome icoHomeBorderR icoHomeBorderL">Trámites<br />
+		<br />
+		<br />
+		<a href="https://asesores.inbursa.com:4018/CotizadoresMovil/tramites/toInicio.do" target="_blank">
+			<img alt="Facturas" src="/storage/ico_prodPpal_06.png" /></a><br />
+		<br />
+		</div>
+	
+<div class="col-md-3 col-xs-6 col-001 icoHome">Red Médica<br />
+		<br />
+		<br />
+		<a href="http://www.segurosinbursa.com/SegurosInbursa/RegenLinea/GMM/DirMedico/bprovnomed.asp" target="_blank">
+			<img alt="Facturas" src="/storage/redmedica.png" /></a><br />
+		<br />
+		</div></div>
+
+<div class="spacer_24">&nbsp;</div>
+
+<script> 
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41405021-1', 'inbursa.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 hidden-md hidden-lg" style="PADDING-TOP: 32px">
+    <ul class="nav nav-tabs">
+      <li class="active"><a role="tab" href="#Divisas" data-toggle="tab">Divisas</a></li>
+      <!--<li><a role="tab" href="#Pagare" data-toggle="tab">Pagaré</a> </li>-->
+      <li><a role="tab" href="#Fondos" data-toggle="tab">Fondos</a> </li>
+      <li><a role="tab" href="#Tasas" data-toggle="tab">Tasas</a> </li>
+    </ul>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" style="PADDING-TOP: 32px">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="active imgDivisa">
+	<a role="tab" href="#Divisas" data-toggle="tab">
+		Divisas
+        </a>
+      </li>
+      <!--<li><a role="tab" href="#Pagare" data-toggle="tab">Pagaré</a> </li>-->
+      <li class="imgFondos">
+	<a role="tab" href="#Fondos" data-toggle="tab">
+		Fondos
+	</a>
+      </li>
+      <li class="imgTasa">
+	<a role="tab" href="#Tasas" data-toggle="tab">
+		Tasas
+	</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9 col-xs-12 col-sm-12">
+    <div class="tab-content">
+      <div id="Divisas" class="tab-pane fade active in">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="50%" class="TitleDivisa">
+		Divisa (al
+                30/05/2016
+                )</th>
+              <th width="25%" class="text-center TitleDivisa">Compra</th>
+              <th width="25%" class="text-center TitleDivisa">Venta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dólar</td>
+              <td class="text-center">$
+                18.05</td>
+              <td class="text-center">$
+                18.65</td>
+            </tr>
+            <tr>
+              <td>Euro</td>
+              <td class="text-center">$
+                20.20</td>
+              <td class="text-center">$
+                20.90</td>
+            </tr>
+            <tr>
+              <td>Centenario</td>
+              <td class="text-center">$
+                22000</td>
+              <td class="text-center">$
+                28000</td>
+            </tr>
+            <tr>
+              <td>Plata</td>
+              <td class="text-center">$
+                250</td>
+              <td class="text-center">$
+                450</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="Fondos" class="tab-pane fade">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="50%" class="TitleDivisa">Fondos Deuda</th>
+              <th width="25%" class="text-center TitleDivisa">Tasa anualizada<br />
+                <!--Anualizado 30 días-->
+		últimos 30 días
+	      </th>
+              <th width="25%" class="text-center TitleDivisa">Tasa anualizada<br /> últimos 12 meses
+                <!--Anualizado 12 meses--></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dinbur1</td>
+              <td class="text-center">
+                2.30%</td>
+              <td class="text-center">
+                1.84%</td>
+            </tr>
+            <tr>
+              <td>Dinbur2</td>
+              <td class="text-center">
+                2.21%</td>
+              <td class="text-center">
+                1.71%</td>
+            </tr>
+          </tbody>
+        </table>
+	<table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="50%" class="TitleDivisa">Fondos Renta Variable</th>
+              <th width="25%" class="text-center TitleDivisa">Tasa anualizada<br /> últimos 30 días
+                <!--Anualizado 30 días--></th>
+              <th width="25%" class="text-center TitleDivisa">Tasa anualizada<br /> últimos 12 meses
+                <!--Anualizado 12 meses--></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fonibur</td>
+              <td class="text-center">
+                -1.98%</td>
+              <td class="text-center">
+                -6.17%</td>
+            </tr>
+            <tr>
+              <td>Inbursa</td>
+              <td class="text-center">
+                -2.09%</td>
+              <td class="text-center">
+                -5.98%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--<div id="Pagare" class="tab-pane fade">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="40%">Rango de Inversión</th>
+              <th width="15%" class="text-center">Tasa (*)<br />
+                91 días</th>
+              <th width="15%" class="text-center">Tasa (*)<br />
+                360 días</th>
+              <th width="15%" class="text-center">GAT<br />
+                91 días</th>
+              <th width="15%" class="text-center">GAT<br />
+                360 días</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>De $10,000 a $99,000</td>
+              <td class="text-center">2.13</td>
+              <td class="text-center">3.43</td>
+              <td class="text-center">2.14</td>
+              <td class="text-center">3.43
+                %</td>
+            </tr>
+            <tr>
+              <td>De $100,000 a $299,000</td>
+              <td class="text-center">2.76</td>
+              <td class="text-center">3.61</td>
+              <td class="text-center">2.78</td>
+              <td class="text-center">3.61
+                %</td>
+            </tr>
+            <tr>
+              <td>De $300,000 a $499,000</td>
+              <td class="text-center">3.18</td>
+              <td class="text-center">3.73</td>
+              <td class="text-center">3.21</td>
+              <td class="text-center">3.73
+                %</td>
+            </tr>
+            <tr>
+              <td>De $500,000 a $999,000</td>
+              <td class="text-center">3.18</td>
+              <td class="text-center">3.73</td>
+              <td class="text-center">3.21</td>
+              <td class="text-center">3.73
+                %</td>
+            </tr>
+            <tr>
+              <td>De $1,000,000 en Adelante</td>
+              <td class="text-center">3.18</td>
+              <td class="text-center">3.73</td>
+              <td class="text-center">3.21</td>
+              <td class="text-center">3.73
+                %</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="col-005 text-right">(*) Tasas Brutas sin comisiones</p>
+      </div>-->
+      <div id="Tasas" class="tab-pane fade">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th width="50%">&nbsp;</th>
+              <th width="25%" class="text-center TitleDivisa">Tasa Bruta al<br />
+                30/05/2016</th>
+              <th width="25%" class="text-center TitleDivisa">Tasa Bruta<br />
+                anualizado15</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>cete Diario</td>
+              <td class="text-center">3.90
+                %</td>
+              <td class="text-center">3.17
+                %</td>
+            </tr>
+            <tr>
+              <td>cete Anualizado</td>
+              <td class="text-center">3.90
+                %</td>
+              <td class="text-center">3.17
+                %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="spacer_48">&nbsp;</div>
+</div>
+
+
+<div class="row">
+	
+<div class="col-md-12 col-xs-12 text-center">&nbsp;</div>
+	
+<div class="col-md-12 col-xs-12 text-center"><a href="http://www.clikisalud.net/" target="_blank">
+			<img src="/storage/acc_logo_I.gif" /></a> <a href="http://fundacioncarlosslim.org/" target="_blank">
+			<img style="WIDTH: 124px; HEIGHT: 37px" border="0" alt="" src="/storage/acc_logo_IV.gif" width="124" height="37" /></a> <a href="http://capacitate.fundacioncarlosslim.org/" target="_blank">
+			<img style="WIDTH: 143px; HEIGHT: 39px" border="0" alt="" src="/storage/acc_logo_V.gif" width="143" height="39" /></a> <a href="http://www.heroesporlavida.org/" target="_blank">
+			<img style="WIDTH: 90px; HEIGHT: 53px" border="0" alt="" src="/storage/acc_logo_08.gif" width="90" height="53" /> 
+			
+<div class="spacer_48">&nbsp;</div></a></div></div>
+
+	<!-- Fin HomePage-->
+  	
+    </div>
+    <div class="col-md-2">
+    	<!--location id="loc"loc400"-->
+
+<div class="tit-lat">Banca Electrónica</div>
+
+<div class="spacer_12">&nbsp;</div>
+
+<div style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; PADDING-TOP: 0px" id="botonesAcceso">
+	
+<div class="spacer_12"><a class="btn btn-web btn-block btn-sm" href="https://www.bancoinbursa.com/login/useraccess.asp" target="_blank">
+			<span style="FONT-SIZE: 8pt">Tu Banca en la Red</span></a> 
+		<span style="FONT-SIZE: 8pt"></span></div>
+	
+<div class="spacer_12">&nbsp;</div>
+	
+<div class="spacer_12">
+		<span style="FONT-SIZE: 8pt"></span></div>
+	
+<div class="spacer_12">
+		<span style="FONT-SIZE: 8pt"></span></div>
+	
+<div class="spacer_12">
+		<span style="FONT-SIZE: 8pt"></span></div><a class="btn btn-inbured btn-block btn-sm" href="https://inbursamf.inbursa.com/" target="_blank">
+		<span style="FONT-SIZE: 8pt">InbuRed </span></a></div>
+
+<div class="spacer_18">&nbsp;</div>
+
+<div>&nbsp;</div>
+
+<div class="row">
+	
+<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4 text-center"><a href="https://www.bancoinbursa.com/TCInfinitus/useraccessLoginTC.asp" target="_blank">
+			<img class="img-responsive img-thumbnail" src="/storage/bnr_tdcwalmart.jpg" /> </a>
+		
+<div class="spacer_18">&nbsp;</div></div>
+	
+<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4 text-center"><a href="https://www.inbursa.com/portal/?page=Document/doc_view_section.asp&amp;id_document=7667&amp;id_category=34" target="_self">
+			<img class="img-responsive img-thumbnail" src="/storage/bnr_consar.jpg" /> </a>
+		
+<div class="spacer_18">&nbsp;</div></div>
+	
+<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4 text-center"><a href="https://www.inbursa.com/portal/?page=Document/doc_view_section.asp&amp;id_document=6741" target="_self">
+			<img class="img-responsive img-thumbnail" src="/storage/bner_cotizador-lateral.jpg" /> </a></div></div>
+
+<div>&nbsp;</div>
+    </div>
+  </div>
+</div>
+<!--Fin izquierda, content, derecha-->
+
+<!-- Inicio Footer-->
+<!--location id="loc"loc500"-->
+
+<div class="container">
+	
+<div class="row">
+		
+<h6 class="col-md-12 text-center"></h6>
+		
+<p class="col-md-12 text-center"><a class="lnk-005" href="http://www.ipab.org.mx" target="_blank">
+				<span style="FONT-SIZE: 10pt">
+					<img src="/storage/IPAB.png" /></span></a> 
+			<span style="FONT-SIZE: 10pt">| </span><a class="lnk-005" href="http://www.condusef.gob.mx" target="_blank">
+				<span style="FONT-SIZE: 10pt">
+					<img src="/storage/condusef.png" /></span></a> 
+			<span style="FONT-SIZE: 10pt">| </span><a class="lnk-005" href="http://www.ine.mx" target="_blank">
+				<span style="FONT-SIZE: 10pt">
+					<img src="/storage/INE_l.png" /></span></a> 
+			<span style="FONT-SIZE: 10pt">| </span><a class="lnk-005" href="http://www.sat.gob.mx" target="_blank">
+				<span style="FONT-SIZE: 10pt">
+					<img src="/storage/SAT.png" /></span></a> 
+			<span style="FONT-SIZE: 10pt">| </span><a class="lnk-005" href="http://www.buro.gob.mx/inicio.php" target="_blank">
+				<span style="FONT-SIZE: 10pt">
+					<img src="/storage/buro.png" /></span> </a></p></div>
+	
+<div class="spacer_18">&nbsp;</div>
+	
+<div class="row">
+		
+<div class="col-md-12">
+			
+<div class="footer">
+				
+<p><a href="/storage/Aviso_Privacidad.pdf" target="_blank">Aviso de Privacidad</a> Copyright (C) 2016 Grupo Financiero Inbursa. <a href="?page=Document/doc_view_section.asp&amp;id_document=1429">Costos y Comisiones</a> <a href="/storage/CondicionesdeUso.pdf" target="_blank">Condiciones de Uso</a></p></div></div></div></div>
+
+<div class="spacer_12">&nbsp;</div>
+
+<div class="container-fluid">
+	
+<div class="row">
+		
+<div class="col-md-12">
+			<img class="img-responsive" src="/storage/footer_bkg.png" /> </div></div></div>
+<!-- Fin Footer-->
+<iframe style="HEIGHT: 0px; WIDTH: 0px" height="0" src="/portal/_blank.html" frameborder="0" width="0" name="frm_actions"></iframe>
+
+</body>
+</html>5oÂi      WL§,WL§-<‚çä       .:https://www.inbursa.com/Portal/?id_category=1 necko:classified 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html
+Server: Microsoft-IIS/8.0
+X-Powered-By: ASP.NET
+Date: Mon, 30 May 2016 20:48:40 GMT
+ charset windows-1252 uncompressed-len 0 predictor::resource-count 49 predictor::https://www.inbursa.com/includes/FWWindowsFunctions.js 1,1,1464641324,0 predictor::https://www.inbursa.com/Portal/includes/functions.js 1,1,1464641324,0 predictor::https://www.inbursa.com/Includes/functions.js 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bootstrap/css/bootstrap.min.css 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/styles.css 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bootstrap/js/jquery.min.js 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bootstrap/js/bootstrap.min.js 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/logo-gfi.png 1,1,1464641324,0 predictor::https://www.googletagmanager.com/gtm.js?id=GTM-NHT549 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/ico_tel.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/boton-video-portal.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/ico_facebook.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/ico_tweeter.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/ico_youtube.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bnr_cotizador_autotal.jpg 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bnr_imoviltdc.jpg 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/banner_puntosinf%C3%ADn.jpg 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/ico_prodPpal_01.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/ico_prodPpal_02.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/ico_prodPpal_06.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/redmedica.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/acc_logo_I.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/acc_logo_IV.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/acc_logo_V.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/acc_logo_08.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bnr_tdcwalmart.jpg 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bnr_consar.jpg 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bner_cotizador-lateral.jpg 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/IPAB.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/condusef.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/INE_l.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/SAT.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/buro.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/footer_bkg.png 1,1,1464641324,0 predictor::https://www.google-analytics.com/analytics.js 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/header_bkg.jpg 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/search_bkg.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/mnu_sup_bkg.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/hr_01.gif 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/botonesApiTasaHover.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/botonesApiTasa.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/btn_web_bkg.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/btn_inbured_bkg.png 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/fonts/dp-medium.woff 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/bootstrap/fonts/glyphicons-halflings-regular.woff 1,1,1464641324,0 predictor::https://www.inbursa.com/storage/fonts/dp-medium.ttf 1,1,1464641324,0 predictor::https://www.googleadservices.com/pagead/conversion_async.js 1,1,1464641324,0 predictor::https://www.google-analytics.com/r/collect?v=1&_v=j43&a=1520343953&t=pageview&_s=1&dl=https%3A%2F%2Fwww.inbursa.com%2FPortal%2F%3Fid_category%3D1&ul=en-us&de=windows-1252&dt=Grupo%20Financiero%20Inbursa&sd=24-bit&sr=1360x768&vp=1345x605&je=0&_u=AEAAAAABI~&jid=1948567235&cid=144186352.1464641325&tid=UA-41405021-1&_r=1&z=988215232 1,1,1464641324,0 predictor::https://googleads.g.doubleclick.net/pagead/viewthroughconversion/963246842/?random=1464641325767&cv=8&fst=1464641325767&num=1&fmt=3&guid=ON&u_h=768&u_w=1360&u_ah=737&u_aw=1360&u_cd=24&u_his=3&u_tz=-300&u_java=false&u_nplug=1&u_nmime=1&frm=0&url=https%3A//www.inbursa.com/Portal/%3Fid_category%3D1&tiba=Grupo%20Financiero%20Inbursa&async=1 1,1,1464641324,0   e$

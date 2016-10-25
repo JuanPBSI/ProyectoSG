@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Terminal Emulator
+Encoding=UTF-8
+Exec=exo-open --launch TerminalEmulator
+Icon=utilities-terminal
+StartupNotify=false
+Terminal=false
+Comment=Use the command line
+Type=Application
+Categories=Utility;X-XFCE;X-Xfce-Toplevel;
+X-XFCE-Source=file:///usr/share/applications/exo-terminal-emulator.desktop

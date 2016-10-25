@@ -1,0 +1,33 @@
+[CLIENT] 0x20001d
+  [CLIENT_LEADER] 0x200001
+  [RES_NAME] xfce4-session
+  [RES_CLASS] Xfce4-session
+  [WM_NAME] xfce4-session
+  [GEOMETRY] (526,237,307,293)
+  [GEOMETRY-MAXIMIZED] (526,237,307,293)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x0
+[CLIENT] 0x2200006
+  [CLIENT_LEADER] 0x2200001
+  [WINDOW_ROLE] gnome-terminal-window-c33bba39-d811-4f4a-a61b-a772040d4bc0
+  [RES_NAME] gnome-terminal-server
+  [RES_CLASS] Gnome-terminal
+  [WM_NAME] root@kali: ~
+  [WM_COMMAND] (1) "gnome-terminal-server"
+  [GEOMETRY] (3,60,735,457)
+  [GEOMETRY-MAXIMIZED] (3,60,735,457)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10000
+[CLIENT] 0x2000007
+  [CLIENT_LEADER] 0x2000001
+  [RES_NAME] nm-connection-editor
+  [RES_CLASS] Nm-connection-editor
+  [WM_NAME] Network Connections
+  [WM_COMMAND] (1) "nm-connection-editor"
+  [GEOMETRY] (483,278,400,300)
+  [GEOMETRY-MAXIMIZED] (483,278,400,300)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x0

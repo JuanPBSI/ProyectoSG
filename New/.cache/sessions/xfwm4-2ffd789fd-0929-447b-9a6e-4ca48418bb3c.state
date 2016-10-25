@@ -1,0 +1,37 @@
+[CLIENT] 0x20001d
+  [CLIENT_ID] 10e4575619000146120957400000010350000
+  [CLIENT_LEADER] 0x200001
+  [RES_NAME] xfce4-session
+  [RES_CLASS] Xfce4-session
+  [WM_NAME] xfce4-session
+  [WM_COMMAND] (1) "xfce4-session"
+  [GEOMETRY] (526,237,307,293)
+  [GEOMETRY-MAXIMIZED] (526,237,307,293)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x0
+[CLIENT] 0xc00f0d
+  [CLIENT_ID] 203f58365-61eb-41c8-8a90-8c9192909209
+  [CLIENT_LEADER] 0xc00001
+  [WINDOW_ROLE] Thunar-1461225866-1603727864
+  [RES_NAME] Thunar
+  [RES_CLASS] Thunar
+  [WM_NAME] getPassword - File Manager
+  [WM_COMMAND] (1) "Thunar"
+  [GEOMETRY] (0,60,1360,708)
+  [GEOMETRY-MAXIMIZED] (720,288,640,480)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10300
+[CLIENT] 0x2200006
+  [CLIENT_LEADER] 0x2200001
+  [WINDOW_ROLE] gnome-terminal-window-13d7620c-7046-4bc8-b462-b5fee34d4cc7
+  [RES_NAME] gnome-terminal-server
+  [RES_CLASS] Gnome-terminal
+  [WM_NAME] root@kali: ~
+  [WM_COMMAND] (1) "gnome-terminal-server"
+  [GEOMETRY] (3,60,1212,457)
+  [GEOMETRY-MAXIMIZED] (3,60,1212,457)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10000

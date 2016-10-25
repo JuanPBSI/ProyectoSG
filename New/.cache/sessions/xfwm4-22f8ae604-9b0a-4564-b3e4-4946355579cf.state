@@ -1,0 +1,22 @@
+[CLIENT] 0x20001d
+  [CLIENT_LEADER] 0x200001
+  [RES_NAME] xfce4-session
+  [RES_CLASS] Xfce4-session
+  [WM_NAME] xfce4-session
+  [GEOMETRY] (526,237,307,293)
+  [GEOMETRY-MAXIMIZED] (526,237,307,293)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x0
+[CLIENT] 0x2000004
+  [CLIENT_ID] 23942cf11-eb1a-47d0-8f81-acb291b500e2
+  [CLIENT_LEADER] 0x2000001
+  [RES_NAME] x-terminal-emulator
+  [RES_CLASS] X-terminal-emulator
+  [WM_NAME] root@jarmenta: ~
+  [WM_COMMAND] (1) "x-terminal-emulator"
+  [GEOMETRY] (3,60,657,378)
+  [GEOMETRY-MAXIMIZED] (3,60,657,378)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10000

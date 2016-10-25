@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Iceweasel
+Encoding=UTF-8
+Exec=iceweasel %u
+Icon=iceweasel
+StartupNotify=true
+Terminal=false
+Comment=Browse the World Wide Web
+GenericName=Web Browser
+X-GNOME-FullName=Iceweasel Web Browser
+X-MultipleArgs=false
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
+StartupWMClass=Iceweasel
+X-XFCE-Source=file:///usr/share/applications/iceweasel.desktop

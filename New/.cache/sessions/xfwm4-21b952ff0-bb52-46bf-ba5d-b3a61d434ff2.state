@@ -1,0 +1,25 @@
+[CLIENT] 0x2400006
+  [CLIENT_LEADER] 0x2400001
+  [WINDOW_ROLE] gnome-terminal-window-9d90031b-4a7d-41bc-a2dc-f16136bd309a
+  [RES_NAME] gnome-terminal-server
+  [RES_CLASS] Gnome-terminal
+  [WM_NAME] root@kali: ~
+  [WM_COMMAND] (1) "gnome-terminal-server"
+  [GEOMETRY] (0,60,1360,708)
+  [GEOMETRY-MAXIMIZED] (3,60,735,457)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10300
+[CLIENT] 0x1e00094
+  [CLIENT_ID] 220b7078c-6d99-4ff7-b9ca-71f1d400c4c6
+  [CLIENT_LEADER] 0x1e00001
+  [WINDOW_ROLE] browser
+  [RES_NAME] Navigator
+  [RES_CLASS] Iceweasel
+  [WM_NAME] Apache2 Debian Default Page: It works - Iceweasel
+  [WM_COMMAND] (1) "iceweasel"
+  [GEOMETRY] (0,60,1360,708)
+  [GEOMETRY-MAXIMIZED] (0,60,1360,708)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10300

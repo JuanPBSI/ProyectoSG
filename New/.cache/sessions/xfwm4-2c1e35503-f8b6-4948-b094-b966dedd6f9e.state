@@ -1,0 +1,24 @@
+[CLIENT] 0x20001d
+  [CLIENT_ID] 1005af7227000146377251700000010530000
+  [CLIENT_LEADER] 0x200001
+  [RES_NAME] xfce4-session
+  [RES_CLASS] Xfce4-session
+  [WM_NAME] xfce4-session
+  [WM_COMMAND] (1) "xfce4-session"
+  [GEOMETRY] (526,237,307,293)
+  [GEOMETRY-MAXIMIZED] (526,237,307,293)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x0
+[CLIENT] 0x2000004
+  [CLIENT_ID] 268cc0af7-9a4f-4689-9dfe-f661e2c2e5c1
+  [CLIENT_LEADER] 0x2000001
+  [RES_NAME] x-terminal-emulator
+  [RES_CLASS] X-terminal-emulator
+  [WM_NAME] root@kali: ~
+  [WM_COMMAND] (1) "x-terminal-emulator"
+  [GEOMETRY] (3,60,657,378)
+  [GEOMETRY-MAXIMIZED] (3,60,657,378)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10000

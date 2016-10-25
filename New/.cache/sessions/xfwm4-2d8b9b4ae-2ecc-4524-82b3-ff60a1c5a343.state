@@ -1,0 +1,23 @@
+[CLIENT] 0x2000004
+  [CLIENT_ID] 27e7be270-3067-408e-8ae7-0d6756659ea6
+  [CLIENT_LEADER] 0x2000001
+  [RES_NAME] x-terminal-emulator
+  [RES_CLASS] X-terminal-emulator
+  [WM_NAME] root@jarmenta: ~
+  [WM_COMMAND] (1) "x-terminal-emulator"
+  [GEOMETRY] (3,60,681,513)
+  [GEOMETRY-MAXIMIZED] (3,60,657,378)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10000
+[CLIENT] 0x2200043
+  [CLIENT_LEADER] 0x2200001
+  [RES_NAME] xfce4-notifyd
+  [RES_CLASS] Xfce4-notifyd
+  [WM_NAME] xfce4-notifyd
+  [WM_COMMAND] (1) "xfce4-notifyd"
+  [GEOMETRY] (964,47,380,97)
+  [GEOMETRY-MAXIMIZED] (964,47,380,97)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x8000

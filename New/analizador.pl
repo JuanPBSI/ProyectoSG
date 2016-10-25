@@ -86,7 +86,7 @@ open(my $new_msj_XSS2, '>', "./mensajeXSS.txt") or die "Could not open file 'men
 open(my $new_msj_PATH2, '>', "./mensajePATH.txt") or die "Could not open file 'mensaje.txt' $!";
 open(my $new_msj_CRAW2, '>', "./mensajeCRAW.txt") or die "Could not open file 'mensaje.txt' $!";
 open(my $new_msj_DEFC2, '>', "./mensajeDEFC.txt") or die "Could not open file 'mensaje.txt' $!";
-open(my $new_crawler, '>', "./CrawlerData.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_crawler, '>>', "./CrawlerData.txt") or die "Could not open file 'mensaje.txt' $!";
 
 open(my $status, '>>', "./cod_status.txt") or die "Could not open file 'mensaje.txt' $!";
 open(my $stauts2, '>', "./status_act.txt") or die "Could not open file 'status_act.txt' $!";
@@ -302,7 +302,7 @@ if($analizarCrawler == 1 )
     foreach my $ipUserAgent(keys %hashCrawler)
 	{
 		my %recursosDistintos = %{$hashCrawler{$ipUserAgent}};
-        print "\n\n\n[Ataque] [IP] [User Agent] [Periodo de tiempo]: $ipUserAgent\n[RecursoDistinto][Codigo de estado]:\n\n";
+        print $new_crawler "\n\n\n[Ataque] [IP] [User Agent] [Periodo de tiempo]: $ipUserAgent\n[RecursoDistinto][Codigo de estado]:\n\n";
         foreach my $recurso(keys %recursosDistintos)
 		{
 			print $new_crawler "$recurso.\n";
@@ -313,6 +313,6 @@ if($analizarCrawler == 1 )
 $cont_errores_postgres = SQLi::errorPostgres($log_postgres);
 print $status "$cont_PATH;$cont_XSS;$cont_encuentros;$cont_error;$cont_200;$cont_errores_postgres;$cont_error_en_base\n";
 print $stauts2 "$cont_PATH;$cont_XSS;$cont_encuentros;$cont_DEF;$cont_CRAW";
-print "$cont_PATH ; $cont_XSS ; $cont_encuentros ; $cont_DEF ; $cont_CRAW\n";
+print "Salida PATH: \[$cont_PATH\], XSS: \[$cont_XSS\], SQLi: \[$cont_encuentros\], Defacement: \[$cont_DEF\], Crawler: \[$cont_CRAW\]\n";
 
 

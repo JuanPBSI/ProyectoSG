@@ -1,0 +1,12 @@
+[CLIENT] 0x2200006
+  [CLIENT_LEADER] 0x2200001
+  [WINDOW_ROLE] gnome-terminal-window-2040b901-cf77-457e-876c-85ba8c4c41bd
+  [RES_NAME] gnome-terminal-server
+  [RES_CLASS] Gnome-terminal
+  [WM_NAME] root@kali: ~
+  [WM_COMMAND] (1) "gnome-terminal-server"
+  [GEOMETRY] (3,60,735,457)
+  [GEOMETRY-MAXIMIZED] (3,60,735,457)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10000

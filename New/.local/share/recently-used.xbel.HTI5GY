@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///root/Downloads/sublime-text_build-3103_i386.deb" added="2016-04-19T01:10:36Z" modified="2016-04-19T01:11:10Z" visited="2016-04-19T01:10:37Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-deb"/>
+        <bookmark:applications>
+          <bookmark:application name="Iceweasel" exec="&apos;iceweasel %u&apos;" modified="2016-04-19T01:10:36Z" count="1"/>
+          <bookmark:application name="File Roller" exec="&apos;file-roller&apos;" modified="2016-04-19T01:11:10Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///root/Video.avi" added="2016-04-20T03:31:25Z" modified="2016-04-20T03:31:25Z" visited="2016-04-20T03:31:26Z">
+    <title>Video.avi</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="video/x-msvideo"/>
+        <bookmark:groups>
+          <bookmark:group>Totem</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Videos" exec="&apos;totem %u&apos;" modified="2016-04-20T03:31:25Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///root/test.avi" added="2016-04-20T04:09:31Z" modified="2016-04-20T04:09:31Z" visited="2016-04-20T04:09:32Z">
+    <title>test.avi</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="video/x-msvideo"/>
+        <bookmark:groups>
+          <bookmark:group>Totem</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Videos" exec="&apos;totem %u&apos;" modified="2016-04-20T04:09:31Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///root/Vid0_FCF8AE3E5337.avi" added="2016-04-20T04:37:38Z" modified="2016-04-20T04:37:38Z" visited="2016-04-20T04:37:38Z">
+    <title>Vid0_FCF8AE3E5337.avi</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="video/x-msvideo"/>
+        <bookmark:groups>
+          <bookmark:group>Totem</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Videos" exec="&apos;totem %u&apos;" modified="2016-04-20T04:37:38Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///root/Vid1330_FCF8AE3E5337.avi" added="2016-04-20T04:48:15Z" modified="2016-04-20T04:48:15Z" visited="2016-04-20T04:48:15Z">
+    <title>Vid1330_FCF8AE3E5337.avi</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="video/x-msvideo"/>
+        <bookmark:groups>
+          <bookmark:group>Totem</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Videos" exec="&apos;totem %u&apos;" modified="2016-04-20T04:48:15Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///root/Vid1926_FCF8AE3E5337.avi" added="2016-04-20T05:46:21Z" modified="2016-04-20T05:46:21Z" visited="2016-04-20T05:46:22Z">
+    <title>Vid1926_FCF8AE3E5337.avi</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="video/x-msvideo"/>
+        <bookmark:groups>
+          <bookmark:group>Totem</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Videos" exec="&apos;totem %u&apos;" modified="2016-04-20T05:46:21Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///root/Vid2488_FCF8AE3E5337.avi" added="2016-04-20T05:47:50Z" modified="2016-04-20T05:47:50Z" visited="2016-04-20T05:47:51Z">
+    <title>Vid2488_FCF8AE3E5337.avi</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="video/x-msvideo"/>
+        <bookmark:groups>
+          <bookmark:group>Totem</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Videos" exec="&apos;totem %u&apos;" modified="2016-04-20T05:47:50Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///root/getVID/Vid2460_FCF8AE3E5337.avi" added="2016-04-20T21:22:45Z" modified="2016-04-20T21:22:45Z" visited="2016-04-20T21:22:45Z">
+    <title>Vid2460_FCF8AE3E5337.avi</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="video/x-msvideo"/>
+        <bookmark:groups>
+          <bookmark:group>Totem</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Videos" exec="&apos;totem %u&apos;" modified="2016-04-20T21:22:45Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///root/getVID/Vid1037_FCF8AE3E5337.avi" added="2016-04-21T04:20:36Z" modified="2016-04-21T04:20:36Z" visited="2016-04-21T04:20:36Z">
+    <title>Vid1037_FCF8AE3E5337.avi</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="video/x-msvideo"/>
+        <bookmark:groups>
+          <bookmark:group>Totem</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="Videos" exec="&apos;totem %u&apos;" modified="2016-04-21T04:20:36Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

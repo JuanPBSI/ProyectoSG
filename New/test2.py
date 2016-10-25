@@ -310,8 +310,19 @@ def init_SQli(file_name2, tipo_log, folder, sitios):
 				proceso = subprocess.Popen(["perl", "./analizador.pl", accesLog, errorLog, postgresLog, str(count), site], stdout=subprocess.PIPE)
 				output, err = proceso.communicate()
 				print "Error Script analizador.pl: " + str(err)
-				print "Salida PATH, XSS, SQLi: " + str(output)
+				print str(output)
 			count = count + 1
+
+def getfromPerl(outputL):
+	ip=[]
+	cont=[]
+	allLines=[]
+	for str in outputL.split(' '):
+		if not (str == ''):
+			allLines.append(str.strip())
+	cont=allLines[0::2]
+	ip=allLines[1::2]
+	return cont, ip
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------#
 #----------------------------------------------------------------Hilos--------------------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -410,7 +421,7 @@ shell_list = [shell_web, shell_waf, shell_bd]
 
 # Creacion de los hilos
 try:
-	log_thread = logThread(1,"Hilo: Obtencion logs", srv_list, shell_list, path_list, lineas_inicio, 10, file_name_list, server_index, 2000, file_name_list2, site_list, folder_list)
+	log_thread = logThread(1,"Hilo: Obtencion logs", srv_list, shell_list, path_list, lineas_inicio, 30, file_name_list, server_index, 3000, file_name_list2, site_list, folder_list)
 	log_thread.start()
 	pass
 except Exception as cadena:

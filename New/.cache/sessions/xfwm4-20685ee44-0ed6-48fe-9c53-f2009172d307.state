@@ -1,0 +1,12 @@
+[CLIENT] 0x2000004
+  [CLIENT_ID] 254d4246f-df3b-4a75-b987-10a1aa50587c
+  [CLIENT_LEADER] 0x2000001
+  [RES_NAME] x-terminal-emulator
+  [RES_CLASS] X-terminal-emulator
+  [WM_NAME] root@jarmenta: ~
+  [WM_COMMAND] (1) "x-terminal-emulator"
+  [GEOMETRY] (3,60,1353,618)
+  [GEOMETRY-MAXIMIZED] (3,60,657,378)
+  [SCREEN] 0
+  [DESK] 0
+  [FLAGS] 0x10000
