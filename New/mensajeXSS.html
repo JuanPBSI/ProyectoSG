@@ -1,0 +1,48 @@
+<html>
+  <head></head>
+  <body>
+	<style>
+		.XSS {
+			width:100%;
+			border:1px dotted #C0C0C0;
+			border-collapse:collapse;
+			padding:5px;
+		}
+		.XSS caption {
+			caption-side:top;
+			text-align:center;
+		}
+		.XSS th {
+			border:1px dotted #C0C0C0;
+			padding:5px;
+			background:#088C05;
+			font-family: verdana;
+			color : white;
+			font-size: 0.8em;
+		}
+		.XSS td {
+			word-break: break-all;
+			border:1px dotted #C0C0C0;
+			text-align:center;
+			padding:5px;
+			background:#D4FED3;
+			font-family: verdana;
+			color : #626567;
+			font-size: 0.6em;
+		}
+	</style>
+	<table class="XSS">
+		<div style="background:#0C580A; text-align:center; color : white; font-family: verdana; font-size: 2em;">Cross Site Scripting XSS</div>
+		<thead>
+		<tr>
+			<th style="width:8%;" >IP</th>
+			<th style="width:8%;" >Fecha</th>
+			<th style="width:4%;" >Metodo</th>
+			<th style="width:30%;" >Recurso</th>
+			<th style="width:21%;" >Referer</th>
+			<th style="width:4%;" >Codigo<br></th>
+			<th style="width:4%;" >Tamano en bytes<br></th>
+			<th style="width:21%;" >User-Agent</th>
+		</tr>
+		</thead>
+		<tbody>
