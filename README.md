@@ -1,6 +1,6 @@
 # Proyecto: Herramienta Para monitoreo de bitácoras relacionadas con servicios web
 	Elaboró: José Juan Armenta Segura
-		 Diego Alfonso Serrano Gillén
+			 Diego Alfonso Serrano Gillén
 # Instalacion rápida
 	1) Copiar o clonar este repositorio
 	2) Ejecutar con permisos de administrador (root) el script installServer.sh
