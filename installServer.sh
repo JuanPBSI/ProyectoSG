@@ -31,13 +31,10 @@ cp -R Proyecto/ /home/$usuario/
 chown -R $usuario:$usuario /home/$usuario/Proyecto
 chmod -R 755 /home/$usuario/Proyecto
 
-# Necesario para crear las imagenes fuera de un ambiente grafico
-export MPLBACKEND="agg"
-
 echo "=== Se instalaran los paquetes correspondientes: es necesariio tener conexión a internet ==="
 apt-get update
 apt-get install openssh-server python-pip  build-essential libssl-dev libffi-dev python-dev -y
-apt-get install python-pandas python-reportlab python-numpy python-matplotlib 
+apt-get install python-pandas python-reportlab python-numpy python-matplotlib -y
 clear
 echo "=== INSTALAR SERVER ==="echo
 echo
@@ -50,6 +47,8 @@ pip install termcolor
 cpan MIME::Base64
 cpan URI::Encode
 cpan Date::Parse
+# Necesario para crear las imagenes fuera de un ambiente grafico 
+sed -i -e 's/backend      : TkAgg/backend      : Agg/g' /etc/matplotlibrc
 clear
 echo "=== INSTALAR SERVER ==="
 echo
