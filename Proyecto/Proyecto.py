@@ -1,5 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
+#######################################################################################################
+######	Elaboró: José Juan Armenta Segura
+######			 Diego Alfonso Serrano Gillén
+######	Proyecto: Herramienta Para monitoreo de bitácoras relacionadas con servicios web
+######	Decima Generacón de becarios en Seguridad Informática
+#######################################################################################################
+
+# Modulos necesarios para la ejecución
 import threading, time, pysftp, spur, sys, os, subprocess, shutil, os, re, smtplib, urllib2
 from termcolor import colored
 from glob import glob
@@ -21,9 +30,10 @@ from reportlab.lib.units import cm
 from reportlab.platypus import Frame, Image
 from matplotlib import gridspec
 from os.path import expanduser
-# Necesario para crear las imagenes fuera de un ambiente grafico
 
+# Obtenemos la carpeta home del usuario actual
 home = expanduser("~")
+# Necesario para crear las imagenes fuera de un ambiente grafico
 os.environ["MPLBACKEND"] = "agg"
 
 # Eliminamos los archivos de losgs anteriores en cada ejecucion
@@ -36,11 +46,8 @@ try:
 	print "logs OK (limpios)!"
 except:
 	print "logs OK!"
-# Datos del correo electronico
-Origen = "unam.cert.log.send@gmail.com"
-Administrador = "juan.as1991@gmail.com"
-passwd = "hola123.,"	
 
+# Arreglos utilizados para almacenar la informacion de los servidores, cuerpo de correo electronico
 servidor_web = {"ip": " ",
 				"usuario": " ", 
 				"pass":" ", 
@@ -106,6 +113,7 @@ logcfg = {"time_log":0,
 		"max_size_log":0,
 		"tiempoReportes":0}
 
+# Clase bcolors: necesaria para mostrar colores de letra en la terminal
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -118,6 +126,7 @@ class bcolors:
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------#
 #-------------------------------------------------------------Funciones-------------------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------#
+# Función banner: Muestra la fecha y el banner del proyecto
 def banner():
 	os.system("clear")
 	print colored("\n __    ___     _______     __    __  .__   __.      ___      .___  ___.            ______  _______ .______     .___________.", 'green')
@@ -130,6 +139,7 @@ def banner():
 	outputDate, errDate = fecha.communicate()
 	print "\n" + outputDate + "\n"
 
+# Función clean: Copia el template usado en el envío de correo electrónico, se llama cada vez que se envia un eMail
 def clean():
 	shutil.copy('./Templates/mensajeSQL.html','./')
 	shutil.copy('./Templates/mensajeCRAW.html','./')
@@ -137,6 +147,7 @@ def clean():
 	shutil.copy('./Templates/mensajePATH.html','./')
 	shutil.copy('./Templates/mensajeDEFC.html','./')
 
+# Función loadConfig: Carga las variables del archivo de configuración
 def loadConfig(conFilesPath):
 	try:
 		f = open("config.conf",'r')
@@ -244,12 +255,13 @@ def loadConfig(conFilesPath):
 		Sitios_listas[Site_name] = [servidor_web["file_name_list2"][-2],servidor_web["file_name_list2"][-1],servidor_waf["file_name_list2"][-2],servidor_waf["file_name_list2"][-1]]
 		f.close()	
 
+# Función connectSSH: Crea las conexiones SSH hacia los servidores
+# 					  Se conecta por medio de llaves para evitar el uso de contraseñas, es necesario corre el script installSHH.sh para que funcione
+#					  Correctamente
 def connectSSH(server, servidor):
 	shell = ''
 	srv = ''
 	try:
-		#srv = pysftp.Connection(host=servidor["ip"], username=servidor["usuario"], password=servidor["pass"])
-		#shell = spur.SshShell(hostname=servidor["ip"], username=servidor["usuario"], password=servidor["pass"],  missing_host_key=spur.ssh.MissingHostKey.accept)
 		srv = pysftp.Connection(host=servidor["ip"], username=servidor["usuario"], private_key=home+'/.ssh/id_rsa')
 		shell = spur.SshShell(hostname=servidor["ip"], username=servidor["usuario"], private_key_file=home+'/.ssh/id_rsa',missing_host_key=spur.ssh.MissingHostKey.accept)
 		for log in servidor["logs"]:
@@ -261,6 +273,9 @@ def connectSSH(server, servidor):
 		print "Error en la conexion SHH: " + format(cadena)
 	return shell, srv
 
+# Función get_log_servidor: Genera y carga los logs de los servidores remotos, unicamente toma las lineas nuevas generadas en los logs de cada servidor
+#							Independientemente del tamaño de los logs, y almacena los resultados en el directorio logs/nombre_sitio_web/(AccessWaf, AccessWeb,....)
+#							Agrega un número seriado al final del nombre del archivo
 def get_log_servidor(srv, shell, pathSrv, lineas_inicio, tiempo_logs, file_name, server_index, lineas_MAX, file_name2, sitios, folder):
 	count_log = 1
 	ruta_destino = [''] * len(lineas_inicio)
@@ -340,15 +355,21 @@ def get_log_servidor(srv, shell, pathSrv, lineas_inicio, tiempo_logs, file_name,
 			break;
 		count_log = count_log + 1
 
-def init_SQli(file_name2, tipo_log, folder, sitios, mail):
+# Función init_analizer: Parsea los logs utilizando el script Mod_parseo.pl. Ejecuta sobre las lineas parseadas los scrpts: analizador.pl y modSecurity.pl.
+#						 Mod_parseo.pl: Parsea los logs contenidos en el direcorio logs/
+#						 analizador.pl: Analiza cada linea de los logs parseados buscando coincidencias para ataques SQL injetion, XSS, Path traversal, Crawler/Spidering y Defacement
+#						 modSecurity.pl: Busca todas las coincidencias con los ataques: SQL injetion, XSS, Path traversal, Crawler/Spidering y Defacement y los almacena en un log llamado: ModSec.log
+def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 	count = 1;
 	flag = 0;
 	file_name = file_name2
 	contador_mail = 0
 	while 1:
 		time.sleep(1)
+		# Parsea los logs utilizando el script Mod_parseo.pl, el resultado es guardado en el directorio parsedLogs/
 		for i,file in enumerate(file_name):
 			file_log = "./logs/" + sitios[i] + "/" + folder[i] + "/" + file_name2[i] + str(count) + ".txt"
+			# Espera hasta que todos los logs esten parseados
 			if os.path.isfile(file_log):
 				try:
 					if not os.path.exists("./parsedLogs/" + sitios[i]):
@@ -362,7 +383,6 @@ def init_SQli(file_name2, tipo_log, folder, sitios, mail):
 					print "Error: " + format(cadena)
 					break;
 				flag = 1
-				#print file_parsedlog
 			else:
 				flag = 0
 		flagDetectionOnly = 0
@@ -402,9 +422,11 @@ def init_SQli(file_name2, tipo_log, folder, sitios, mail):
 				output, err = proceso.communicate()
 				print "Error Script analizador.pl: " + str(err)
 				print colored(str(output),'green')
+				# Los resultados son enviados a la funcion send_mail que determinará si se debe enviar correo o no
 				contador_mail = send_mail(mail, site, contador_mail)
 			count = count + 1
 
+# Funcion getfromPerl: separa el formato del comando unique -c para obtener las ip y la cantidad por separado
 def getfromPerl(outputL):
 	ip=[]
 	cont=[]
@@ -416,12 +438,14 @@ def getfromPerl(outputL):
 	ip=allLines[1::2]
 	return cont, ip
 
+# Funcion autolabel: Genera la etiqueta con la cantidad sobre la grafica de barras, utiliado para la generación de graficas
 def autolabel(rects,ax):
 	for rect in rects:
 		height = rect.get_height()
 		if not height==0:
 			ax.text(rect.get_x() + rect.get_width()/2., 1*height,'%d' % int(height),ha='center', va='bottom', fontsize=12)
 
+# Funcion grafica: Genera graficas de barras para los reportes
 def graficar(path):
 	today = date.today()
 	f = open(path)
@@ -525,6 +549,8 @@ def graficar(path):
 	plt.close(fig4)
 	plt.close(fig5)
 
+# Funcion send_mail_reporte: Envia reportes periodicamente por correo electronico
+#							 Con la variable tiempoReportes del archivo de configuracion config.conf se puede determinar el tiempo de envio de reportes en horas
 def send_mail_reporte(mail_report):
 	while 1:
 		tiempo = logcfg["tiempoReportes"]
@@ -593,6 +619,7 @@ def send_mail_reporte(mail_report):
 		report = ['img/report1.png','img/report2.png','img/report3.png','img/report4.png','img/report5.png']
 		sendEmailMIME(mail_report["from"], mail_report["pass"], mail_report["to"], "Reporte de actividad maliciosa [" + format(today) + "]", mail_report["html"], report)
 
+# Funcion send_mail: comprueba se hay evento con los datos enviados de los scripts: analizador.pl y modSecurity.pl, y si lo hay envia correo
 def send_mail(mail, sitio, cont_time):
 	file = open('status_act.txt', 'r')
 	resultados = file.readline()
@@ -692,6 +719,7 @@ def send_mail(mail, sitio, cont_time):
 		cont_time = 0;
 	return cont_time
 
+# Funcion sendEmail: configura para poder enviar correo con HTML
 def sendEmail(user, pwd, recipient, subject, html, text):
 	print "adentro"
 	mail["flag-mail"] = 0
@@ -718,6 +746,7 @@ def sendEmail(user, pwd, recipient, subject, html, text):
 	except Exception as cadena:
 		print "Error al envio del correo" + format(cadena)
 
+# Funcion sendEmail: configura para poder enviar correo con HTML e imagenes adjuntas
 def sendEmailMIME(user, pwd, recipient, subject, html, images):
 	print "adentro"
 	mail["flag-mail"] = 0
@@ -747,7 +776,7 @@ def sendEmailMIME(user, pwd, recipient, subject, html, images):
 		msgImage.add_header('Content-ID', '<image' + str(i+1) + '>')
 		msgRoot.attach(msgImage)
 	
-	# Limpia los archivos que contienen la info
+	# Limpia los archivos que contienen la info utilizada para los reportes
 	open("./mensajeSQL.txt", 'w').close()
 	open("./mensajeXSS.txt", 'w').close()
 	open("./mensajePATH.txt", 'w').close()
@@ -779,7 +808,7 @@ class analiticThread(threading.Thread):
 		self.mail = mail
 	def run(self):
 		print "Iniciando: " + self.name
-		init_SQli(self.file_name2, self.tipo_log, self.folder, self.sitios, self.mail)
+		init_analizer(self.file_name2, self.tipo_log, self.folder, self.sitios, self.mail)
 		print "Saliendo: " + self.name
 
 class mailReportThread(threading.Thread):
@@ -823,6 +852,7 @@ shell_waf, srv_waf = connectSSH("WAF", servidor_waf)
 shell_mod, srv_mod = connectSSH("MODsec", servidor_modsec)
 shell_bd, srv_bd = connectSSH("BD", servidor_bd)
 
+# Creamos las listas con la informacion de los servidores
 path_list = []
 server_index = []
 lineas_inicio = []
@@ -832,6 +862,7 @@ file_name_list2 = []
 folder_list = []
 log_type_list = []
 
+# Creamos las listas con la informacion de los servidores
 for i, path in enumerate(servidor_web["logs"]):
 	path_list.append(path)
 	server_index.append(servidor_web["serverIndex"][i])
@@ -872,6 +903,7 @@ log_type_list.append(servidor_modsec["log_type"][0])
 srv_list = [srv_web, srv_waf, srv_bd]
 shell_list = [shell_web, shell_waf, shell_bd]
 
+# Inicializamos la informacion del correo electronico
 text = "Enviamos el siguiente correo por que se cree que su servidor esta bajo ataque:\nRecomendamos realizar las modificaciones pertinentes\n"
 html = """\
 <html>
@@ -918,6 +950,7 @@ threadLock = threading.Lock()
 threads = []
 threads.append(log_thread)
 threads.append(analisis_thread)
+threads.append(mail_thread)
 
 
 banner()
@@ -925,11 +958,18 @@ while 1:
 	if not log_thread.isAlive():
 		print "Hilo log: die"
 		print "El programa se detendra ya que el hilo es crucial para la operacion..."
-		print "ejecute [rm ./logs/*/log_* && rm ./parsedLogs/*/log_*] en la carpeta de proyecto"
+		print "ejecute [rm  -R ./logs/* && rm -R ./parsedLogs/*] en la carpeta de proyecto"
+		exit()
 		break;
 	if not analisis_thread.isAlive():
 		print "Hilo analizador: die"
 		print "El programa se detendra ya que el hilo es crucial para la operacion..."
-		print "ejecute [rm ./logs/*/log_* && rm ./parsedLogs/*/log_*] en la carpeta de proyecto"
+		print "ejecute [rm  -R ./logs/* && rm -R ./parsedLogs/*] en la carpeta de proyecto"
+		exit()
+		break;
+	if not analisis_thread.isAlive():
+		print "Hilo correo: die"
+		print "El programa se detendra ya que el hilo es crucial para la operacion..."
+		exit()
 		break;
 
