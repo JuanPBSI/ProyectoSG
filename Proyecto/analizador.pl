@@ -84,12 +84,19 @@ open(my $new_msj_PATH, '>>', "./mensajePATH.html") or die "Could not open file '
 open(my $new_msj_CRAW, '>>', "./mensajeCRAW.html") or die "Could not open file 'mensaje.txt' $!";
 open(my $new_msj_DEFC, '>>', "./mensajeDEFC.html") or die "Could not open file 'mensaje.txt' $!";
 
-open(my $new_msj_SQLi2, '>>', "./mensajeSQL.txt") or die "Could not open file 'mensaje.txt' $!";
-open(my $new_msj_XSS2, '>>', "./mensajeXSS.txt") or die "Could not open file 'mensaje.txt' $!";
-open(my $new_msj_PATH2, '>>', "./mensajePATH.txt") or die "Could not open file 'mensaje.txt' $!";
-open(my $new_msj_CRAW2, '>>', "./mensajeCRAW.txt") or die "Could not open file 'mensaje.txt' $!";
-open(my $new_msj_DEFC2, '>>', "./mensajeDEFC.txt") or die "Could not open file 'mensaje.txt' $!";
-open(my $new_crawler, '>>', "./CrawlerData.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_SQLi2, '>', "./mensajeSQL.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_XSS2, '>', "./mensajeXSS.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_PATH2, '>', "./mensajePATH.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_CRAW2, '>', "./mensajeCRAW.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_DEFC2, '>', "./mensajeDEFC.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_crawler, '>', "./CrawlerData.txt") or die "Could not open file 'mensaje.txt' $!";
+
+open(my $new_msj_SQLi3, '>>', "extra/mensajeSQL.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_XSS3, '>>', "extra/mensajeXSS.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_PATH3, '>>', "extra/mensajePATH.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_CRAW3, '>>', "extra/mensajeCRAW.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_DEFC3, '>>', "extra/mensajeDEFC.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_crawler2, '>>', "extra/CrawlerData.txt") or die "Could not open file 'mensaje.txt' $!";
 
 open(my $status, '>>', "./cod_status.txt") or die "Could not open file 'mensaje.txt' $!";
 open(my $stauts2, '>', "./status_act.txt") or die "Could not open file 'status_act.txt' $!";
@@ -130,6 +137,9 @@ while (my $line1 = <$data_acces>)
 	{
 		$recursoDecodificado=utilerias::urlDecoder($recurso);	    
 	}
+	else{
+		$recursoDecodificado = $recurso
+	}
 	if($analizarPatTrasversal == 1)
 	{
 		#Si analizarPT devuelve 0, no encontro nada, si retorna 1 solo encontro un ataque PT en el access.log, si hay 2 encontro algo en el access.log y error.log
@@ -150,6 +160,7 @@ while (my $line1 = <$data_acces>)
 		#print $new_msj "$arreglo[3]\n";
 		#print $new_msj "#---------------------------------------------------------------------------------#\n";
 		print $new_msj_PATH2  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
+		print $new_msj_PATH3  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
 		print $new_msj_PATH "			<tr>\n";
 		print $new_msj_PATH '				<td style="width:8%;">'."$arreglo[0]</td>\n";
 		print $new_msj_PATH '				<td style="width:8%;">'."$arreglo[1]</td>\n";
@@ -187,6 +198,7 @@ while (my $line1 = <$data_acces>)
 			#print $new_msj "$arreglo[7]\n";
 			#print $new_msj "#---------------------------------------------------------------------------------#\n";
 			print $new_msj_SQLi2 "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
+			print $new_msj_SQLi3 "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
 			print $new_msj_SQLi "			<tr>\n";
 			print $new_msj_SQLi '				<td style="width:8%;">'."$arreglo[0]</td>\n";
 			print $new_msj_SQLi '				<td style="width:8%;">'."$arreglo[1]</td>\n";
@@ -226,6 +238,7 @@ while (my $line1 = <$data_acces>)
 		#print $new_msj "$arreglo[3]\n";
 		#print $new_msj "#---------------------------------------------------------------------------------#\n";
 		print $new_msj_XSS2  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
+		print $new_msj_XSS3  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
 		print $new_msj_XSS "			<tr>\n";
 		print $new_msj_XSS '				<td style="width:8%;">'."$arreglo[0]</td>\n";
 		print $new_msj_XSS '				<td style="width:8%;">'."$arreglo[1]</td>\n";
@@ -252,6 +265,7 @@ while (my $line1 = <$data_acces>)
 	{
 		$cont_DEF++;
 		print $new_msj_DEFC2  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
+		print $new_msj_DEFC3  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
 		print $new_msj_DEFC "			<tr>\n";
 		print $new_msj_DEFC '				<td style="width:10%;">'."$arreglo[2]</td>\n";
 		print $new_msj_DEFC '				<td style="width:90%; text-align:left;">'."$arreglo[3]</td>\n";
@@ -335,6 +349,7 @@ if($analizarCrawler == 1 )
     foreach my $ipUserAgent(keys %hashCrawler)
 	{
 		print $new_msj_CRAW2  "$ipUserAgent|$dirActual\n";
+		print $new_msj_CRAW3  "$ipUserAgent|$dirActual\n";
 		my %recursosDistintos = %{$hashCrawler{$ipUserAgent}};
 		print $new_msj_CRAW '		<div style="background:#C0C0C0; text-align:center; color : white; font-family: verdana; font-size: 1em;">' + "\n\n\n[Ataque] [IP] [User Agent] [Periodo de tiempo]: $ipUserAgent\n[RecursoDistinto][Codigo de estado]:\n\n" + '</div>';
 		print $new_msj_CRAW '		<thead>';

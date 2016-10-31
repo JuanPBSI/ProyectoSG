@@ -52,6 +52,42 @@ elsif ($select == 12)
 {
 	$cmd = `awk "NR==$cont" cod_status.txt`;
 }
+elsif ($select == 13)
+{
+	$cmd = `grep -i "sql" ModSecReport.log | cut -d"[" -f 3 | cut -d"]" -f 1 | sort | uniq -c`;
+}
+elsif ($select == 14)
+{
+	$cmd = `grep -i "xss" ModSecReport.log | cut -d"[" -f 3 | cut -d"]" -f 1 | sort | uniq -c`;
+}
+elsif ($select == 15)
+{
+	$cmd = `grep -i "sql" ModSec.log | cut -d"[" -f 3 | cut -d"]" -f 1 | sort | uniq -c`;
+}
+elsif ($select == 16)
+{
+	$cmd = `grep -i "xss" ModSec.log | cut -d"[" -f 3 | cut -d"]" -f 1 | sort | uniq -c`;
+}
+elsif ($select == 17)
+{
+	$cmd = `cat extra/mensajeSQL.txt | cut -d"|" -f 1 | sort | uniq -c`;
+}
+elsif ($select == 18)
+{
+	$cmd = `cat extra/mensajeXSS.txt | cut -d"|" -f 1 | sort | uniq -c`;
+}
+elsif ($select == 19)
+{
+	$cmd = `cat extra/mensajePATH.txt | cut -d"|" -f 1 | sort | uniq -c`;
 
+}
+elsif ($select == 20)
+{
+	$cmd = `cat extra/mensajeCRAW.txt | cut -d"[" -f 3 | cut -d "]" -f 1 | sort | uniq -c`;
+}
+elsif ($select == 21)
+{
+	$cmd = `cat extra/mensajeDEFC.txt | cut -d"|" -f 1 | sort | uniq -c`;
+}
 chomp $cmd;
 print $cmd;
