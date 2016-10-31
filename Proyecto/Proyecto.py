@@ -597,10 +597,10 @@ def send_mail_reporte(mail_report):
 		mail_report["html"] += "    <br><p>SQL injection: </p><br>\n"
 		for inx, ip in enumerate(ip3):
 			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP3[inx] + "</b></p>\n"
-		mail_report["html"] += "    <br><p>Defacement: </p><br>\n"
+		mail_report["html"] += "    <br><p>Crawler: </p><br>\n"
 		for inx, ip in enumerate(ip4):
 			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP4[inx] + "</b></p>\n"
-		mail_report["html"] += "    <br><p>Crawler: </p><br>\n"
+		mail_report["html"] += "    <br><p>Defacement: </p><br>\n"
 		for inx, ip in enumerate(ip5):
 			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP5[inx] + "</b></p>\n"
 		mail_report["html"] += "\n    <h1>Secci&oacuten 2 : Resumen de los hallazgos ModSecurity</h1>\n"
