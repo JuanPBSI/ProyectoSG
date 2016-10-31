@@ -20,6 +20,7 @@ from reportlab.lib import utils
 from reportlab.lib.units import cm
 from reportlab.platypus import Frame, Image
 from matplotlib import gridspec
+from os.path import expanduser
 # Necesario para crear las imagenes fuera de un ambiente grafico
 
 home = expanduser("~")
@@ -247,10 +248,10 @@ def connectSSH(server, servidor):
 	shell = ''
 	srv = ''
 	try:
-		srv = pysftp.Connection(host=servidor["ip"], username=servidor["usuario"], password=servidor["pass"])
-		#srv = pysftp.Connection(host=servidor["ip"], username=servidor["usuario"], private_key='/root/.ssh/id_rsa')
-		#shell = spur.SshShell(hostname=servidor["ip"], username=servidor["usuario"], private_key_file='/root/.ssh/id_rsa',missing_host_key=spur.ssh.MissingHostKey.accept)
-		shell = spur.SshShell(hostname=servidor["ip"], username=servidor["usuario"], password=servidor["pass"],  missing_host_key=spur.ssh.MissingHostKey.accept)
+		#srv = pysftp.Connection(host=servidor["ip"], username=servidor["usuario"], password=servidor["pass"])
+		#shell = spur.SshShell(hostname=servidor["ip"], username=servidor["usuario"], password=servidor["pass"],  missing_host_key=spur.ssh.MissingHostKey.accept)
+		srv = pysftp.Connection(host=servidor["ip"], username=servidor["usuario"], private_key=home+'/.ssh/id_rsa')
+		shell = spur.SshShell(hostname=servidor["ip"], username=servidor["usuario"], private_key_file=home+'/.ssh/id_rsa',missing_host_key=spur.ssh.MissingHostKey.accept)
 		for log in servidor["logs"]:
 			result = shell.run(["sh", "-c", "wc -l " + log + " | cut -d' ' -f1"])
 			servidor["Lineas_inicio_log"].append(result.output.rstrip())
@@ -530,8 +531,7 @@ def graficar(path):
 def send_mail_reporte(mail_report):
 	while 1:
 		tiempo = logcfg["tiempoReportes"]
-		#time.sleep(tiempo*3600)
-		#time.sleep(tiempo*60)
+		time.sleep(tiempo*3600)
 		time.sleep(1)
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "1" ], stdout=subprocess.PIPE)
 		outputIP1, errIP1 = ipCount.communicate()
