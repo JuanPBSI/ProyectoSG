@@ -20,6 +20,9 @@ from reportlab.lib import utils
 from reportlab.lib.units import cm
 from reportlab.platypus import Frame, Image
 from matplotlib import gridspec
+# Necesario para crear las imagenes fuera de un ambiente grafico
+os.environ["MPLBACKEND"] = "agg"
+
 # Eliminamos los archivos de losgs anteriores en cada ejecucion
 try:
 	map(os.remove,glob('./parsedLogs/*/*/*'))
