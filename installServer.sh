@@ -47,7 +47,8 @@ pip install termcolor
 cpan MIME::Base64
 cpan URI::Encode
 cpan Date::Parse
-# Necesario para crear las imagenes fuera de un ambiente grafico 
+chmod 755 /etc/modsecurity/modsecurity.conf
+# Necesario para crear las imagenes fuera de un ambiente grafico
 sed -i -e 's/backend      : TkAgg/backend      : Agg/g' /etc/matplotlibrc
 clear
 echo "=== INSTALAR SERVER ==="

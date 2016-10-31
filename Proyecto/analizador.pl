@@ -361,6 +361,6 @@ if (($cont_PATH + $cont_XSS + $cont_encuentros + $cont_encuentros_ref + $cont_en
 {
 	print $status "\[$mday\/$mon\/$year $hour:$min:$sec\];$cont_PATH;$cont_XSS;$cont_encuentros;$cont_encuentros_ref;$cont_encuentros_user;$cont_DEF;$cont_CRAW;$cont_encuentros_mail\n";
 }
-my sum = $cont_encuentros + $cont_encuentros_ref + $cont_encuentros_user + $cont_encuentros_mail;
+my $sum = $cont_encuentros + $cont_encuentros_ref + $cont_encuentros_user;
 print $stauts2 "$cont_PATH;$cont_XSS;$cont_encuentros;$cont_encuentros_ref;$cont_encuentros_user;$cont_DEF;$cont_CRAW;$cont_encuentros_mail";
 print "Salida PATH: \[$cont_PATH\], XSS: \[$cont_XSS\], SQLi: \[$sum\], Defacement: \[$cont_DEF\], Crawler: \[$cont_CRAW\]\n";

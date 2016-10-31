@@ -634,7 +634,8 @@ def send_mail(mail, sitio, cont_time):
 	cont_CRAW = int(res[6])
 	cont_encuentros_mail = int(res[7])	
 	#if ( (cont_PATH > 1) or (cont_encuentros > 30) or (cont_XSS > 30) or (cont_encuentros_user > 30) or (cont_encuentros_ref > 30) or (cont_encuentros_mail > 1) or (cont_DEF > 1) or (cont_CRAW > 1) ):
-	if ( (cont_PATH > 1) or (cont_encuentros > 30) or (cont_XSS > 30) or (cont_encuentros_user > 30) or (cont_encuentros_ref > 30) or (cont_encuentros_mail > 1) or (cont_DEF > 1) or (cont_CRAW > 1) ) and (cont_time <= len(Sitios_listas)):
+	# Si en script analizador.pl genera eventos eniara correo electronico
+	if ( (cont_PATH > 1) or (cont_encuentros > 30) or (cont_XSS > 1) or (cont_encuentros_user > 30) or (cont_encuentros_ref > 30) or (cont_encuentros_mail > 1) or (cont_DEF > 1) or (cont_CRAW > 1) ) and (cont_time <= len(Sitios_listas)):
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "1" ], stdout=subprocess.PIPE)
 		outputIP1, errIP1 = ipCount.communicate()
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "2" ], stdout=subprocess.PIPE)
