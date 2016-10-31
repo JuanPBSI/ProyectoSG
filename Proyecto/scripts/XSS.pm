@@ -89,10 +89,10 @@ sub analizarXSS{
 
 	close(LISTA);
 	if($flagError == 1){
-	    #print "XSS fallido:  ".  $linea. $tiempo. " ".$recurso."\n";
+#	    print "XSS fallido:  ".  $linea. $tiempo. " ".$recurso."\n";
 	    $diagnostico=2;
 	}elsif ($flagEtiqueta == 1 || $flagLista == 1){
-	    #print "XSS exitoso:  ".$linea. $tiempo. " ".$recurso."\n";
+#	    print "XSS exitoso:  ".$linea. $tiempo. " ".$recurso."\n";
 	    $diagnostico=1;
 	}
 

@@ -14,7 +14,10 @@ sub analizarSQLi
 	my $new_error_apache = $_[7];
 	my $error_postgres = $_[8];
 
+	my $cont_encuentros_mail = 0;
 	my $cont_encuentros = 0;
+	my $cont_encuentros_ref = 0;
+	my $cont_encuentros_user = 0;
 	my $cont_error = 0;
 	my $cont_200 = 0;
 	my $cont_error_en_base = 0;
@@ -36,19 +39,23 @@ sub analizarSQLi
 			open(my $data_error_postgres, '<', $error_postgres) or die "No se puede abrir el archivo: $error_postgres\n";
 			$cont_error_en_base += get_error_postgres($time_stamp,$Recurso,$data_error_postgres,$i);
 			close($data_error_postgres);
+			if ($cont_encuentros > 0 && $cont_200 > 0 && $cont_error_en_base == 0)
+			{
+				$cont_encuentros_mail++;
+			}
 		}
 	}
-	elsif(decode($Referer) =~ /$RegEX/i)
+	if(decode($Referer) =~ /$RegEX/i)
 	{
 		print $new_error_apache decode($linea)."\n";
-		$cont_encuentros++;
+		$cont_encuentros_ref++;
 	}
-	elsif(decode($userAgent) =~ /$RegEX/i)
+	if(decode($userAgent) =~ /$RegEX/i)
 	{
 		print $new_error_apache decode($linea)."\n";
-		$cont_encuentros++;
+		$cont_encuentros_user++;
 	}
-	my @result = ($cont_encuentros, $cont_error, $cont_200, $cont_error_en_base);
+	my @result = ($cont_encuentros, $cont_encuentros_ref, $cont_encuentros_user, $cont_error, $cont_200, $cont_error_en_base, $cont_encuentros_mail);
 	return @result;
 }
 #---------------------------------------------------------------------------------------------------------------------
