@@ -21,6 +21,8 @@ from reportlab.lib.units import cm
 from reportlab.platypus import Frame, Image
 from matplotlib import gridspec
 # Necesario para crear las imagenes fuera de un ambiente grafico
+
+home = expanduser("~")
 os.environ["MPLBACKEND"] = "agg"
 
 # Eliminamos los archivos de losgs anteriores en cada ejecucion
@@ -246,6 +248,8 @@ def connectSSH(server, servidor):
 	srv = ''
 	try:
 		srv = pysftp.Connection(host=servidor["ip"], username=servidor["usuario"], password=servidor["pass"])
+		#srv = pysftp.Connection(host=servidor["ip"], username=servidor["usuario"], private_key='/root/.ssh/id_rsa')
+		#shell = spur.SshShell(hostname=servidor["ip"], username=servidor["usuario"], private_key_file='/root/.ssh/id_rsa',missing_host_key=spur.ssh.MissingHostKey.accept)
 		shell = spur.SshShell(hostname=servidor["ip"], username=servidor["usuario"], password=servidor["pass"],  missing_host_key=spur.ssh.MissingHostKey.accept)
 		for log in servidor["logs"]:
 			result = shell.run(["sh", "-c", "wc -l " + log + " | cut -d' ' -f1"])
