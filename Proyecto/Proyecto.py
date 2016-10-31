@@ -119,7 +119,7 @@ class bcolors:
 #-------------------------------------------------------------Funciones-------------------------------------------------------------------------------------#
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------#
 def banner():
-	#os.system("clear")
+	os.system("clear")
 	print colored("\n __    ___     _______     __    __  .__   __.      ___      .___  ___.            ______  _______ .______     .___________.", 'green')
 	print colored("/_ |  / _ \   /  _____|   |  |  |  | |  \ |  |     /   \     |   \/   |           /      ||   ____||   _  \    |           |", 'green')
 	print colored(" | | | | | | |  |  __     |  |  |  | |   \|  |    /  ^  \    |  \  /  |  ______  |  ,----'|  |__   |  |_)  |   `---|  |----`", 'green')
@@ -367,22 +367,20 @@ def init_SQli(file_name2, tipo_log, folder, sitios, mail):
 				flag = 0
 		flagDetectionOnly = 0
 		#------Comprueba se ModSecurity esta activado----------#
-		# try:
-			# srv_list[1].get(servidor_modsec["rutaWafConfig"])
-			# f = open("modsecurity.conf")
-			# try:
-				# for line in f:
-					# if re.search('SecRuleEngine DetectionOnly', line):
-						# flagDetectionOnly = 1
-						# f.close()
-						# break;
-				# else:
-					# flagDetectionOnly = 0
-			# except Exception as cadena:
-				# print "Error en el archivo de configuracion: " + format(cadena)
-		# except Exception as cadena:
-			# print "El archivo de configuracion no se puede abrir: " + format(cadena)
-		flagDetectionOnly = 1
+		try:
+			f = open(servidor_modsec["rutaWafConfig"])
+			try:
+				for line in f:
+					if re.search('SecRuleEngine DetectionOnly', line):
+						flagDetectionOnly = 1
+						break;
+				else:
+					flagDetectionOnly = 0
+			except Exception as cadena:
+				print "Error en el archivo de configuracion: " + format(cadena)
+			f.close()
+		except Exception as cadena:
+			print "El archivo de configuracion no se puede abrir: " + format(cadena)
 		#--------------------#
 		if flag == 1:
 			for site in Sitios_listas:
@@ -417,7 +415,6 @@ def getfromPerl(outputL):
 	cont=allLines[0::2]
 	ip=allLines[1::2]
 	return cont, ip
-
 
 def autolabel(rects,ax):
 	for rect in rects:
@@ -647,23 +644,14 @@ def send_mail(mail, sitio, cont_time):
 		mail["html"] += "    <p>------> Num. detecciones: <b>" + str(sum) + "</b></p>\n"
 		for inx, ip in enumerate(ip1):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP1[inx] + "</b></p>\n"
-		#if int(cont_encuentros_user) >= 1:
-		#	mail["html"] += "    <p>------> User-Agent: <b>Se encontraron peticiones SQL en el User-Argent</b>  Cantidad: <b>" + contUser1[inx] + "</b></p>\n"
-		#else:
-		#	for inx, agent in enumerate(agent1):
-		#		mail["html"] += "    <p>------> User-Agent: <b>" + agent + "</b>  Cantidad: <b>" + contUser1[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
 		mail["html"] += "    <p>------> Num. detecciones: " + str(cont_XSS) + "</p>\n"
 		for inx, ip in enumerate(ip2):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP2[inx] + "</b></p>\n"
-		#for inx, agent in enumerate(agent2):
-		#	mail["html"] += "    <p>------> User-Agent: <b>" + agent + "</b>  Cantidad: <b>" + contUser2[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Path Traversal: </p><br>\n"
 		mail["html"] += "    <p>------> Num. detecciones: " + str(cont_PATH) + "</p><br>\n"
 		for inx, ip in enumerate(ip3):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP3[inx] + "</b></p>\n"
-		#for inx, agent in enumerate(agent3):
-		#	mail["html"] += "    <p>------> User-Agent: <b>" + agent + "</b>  Cantidad: <b>" + contUser3[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Crawler: </p><br>\n"
 		mail["html"] += "    <p>------> Num. detecciones: " + str(cont_CRAW) + "</p><br>\n"
 		for inx, ip in enumerate(ip4):
@@ -672,8 +660,6 @@ def send_mail(mail, sitio, cont_time):
 		mail["html"] += "    <p>------> Num. detecciones: " + str(cont_DEF) + "</p><br>\n"
 		for inx, ip in enumerate(ip5):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP5[inx] + "</b></p>\n"
-		#for inx, agent in enumerate(agent5):
-		#	mail["html"] += "    <p>------> User-Agent: <b>" + agent + "</b>  Cantidad: <b>" + contUser5[inx] + "</b></p>\n"
 		mail["html"] += "    <br><h1>Seccion 2 : Detalles </h1><br>\n"
 		f = open("mensajeSQL.html", 'r+')
 		sqliHtml = f.read()
@@ -760,6 +746,14 @@ def sendEmailMIME(user, pwd, recipient, subject, html, images):
 
 		msgImage.add_header('Content-ID', '<image' + str(i+1) + '>')
 		msgRoot.attach(msgImage)
+	
+	# Limpia los archivos que contienen la info
+	open("./mensajeSQL.txt", 'w').close()
+	open("./mensajeXSS.txt", 'w').close()
+	open("./mensajePATH.txt", 'w').close()
+	open("./mensajeCRAW.txt", 'w').close()
+	open("./mensajeDEFC.txt", 'w').close()
+	open("./CrawlerData.txt", 'w').close()
 	try:
 		server = smtplib.SMTP("smtp.gmail.com", 587)
 		server.ehlo()
@@ -890,8 +884,7 @@ mail["html"] = html
 mail["text"] = text
 
 mail_report = mail
-#mail = {"from":"unam.cert.log.send@gmail.com", "pass":"hola123.,", "to":"juan_as1991@hotmail.com", "asunto":"Envio de reporte de posbles ataques", "html":html, "text":text}
-#sendEmailMIME(mail_report["from"], mail_report["pass"], mail_report["to"], mail_report["asunto"], mail_report["html"], 'img/report.png')
+
 # Creacion de los hilos
 try:
 	log_thread = logThread(1,"Hilo: Obtencion logs", srv_list, shell_list, path_list, lineas_inicio, logcfg["time_log"], file_name_list, server_index, logcfg["max_size_log"], file_name_list2, site_list, folder_list)
@@ -939,28 +932,4 @@ while 1:
 		print "El programa se detendra ya que el hilo es crucial para la operacion..."
 		print "ejecute [rm ./logs/*/log_* && rm ./parsedLogs/*/log_*] en la carpeta de proyecto"
 		break;
-#print "Escriba [q] para salir"
-	#salir = raw_input()
-	#if salir == 'q':
-	#	print "Saliendo...."
-	#	Mail.stop()
-	#	log_thread.stop()
-	#	sqli_thread.stop()
-	#	break;
-		
-	# if not web_acces_thread.isAlive():
-		# print "Hilo access wweb: die"
-	# if not web_error_thread.isAlive():
-		# print "Hilo error web: die"
-	# if not waf_acces_thread.isAlive():
-		# print "Hilo access waf: die"
-	# if not waf_error_thread.isAlive():
-		# print "Hilo waf_error: die"
-	# if not bd_thread.isAlive():
-		# print "Hilo BD: die"
-	# pass
-	#os.system("clear")
 
-#get_log_servidor(srv_list, shell_list, path_list, lineas_inicio, 10, file_name_list, server_index, 2000, file_name_list2, site_list, folder_list)
-
-#init_SQli(file_name_list2, log_type_list, folder_list, site_list)
