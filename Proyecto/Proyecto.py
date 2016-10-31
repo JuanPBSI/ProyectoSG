@@ -412,7 +412,7 @@ def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 					proceso = subprocess.Popen(["perl", "./modSecurity.pl",errorWAF, auditWAF], stdout=subprocess.PIPE)
 					output, err = proceso.communicate()
 					print "Error Script ./modSecurity.pl: " + str(err)
-					#print "Salida ModSecurity: " + str(output)
+					print "Salida ModSecurity: " + str(output)
 				#------------------------------------------#
 				print u"\nAnálisis para el sitio: "+ colored("[" + site + "]", 'yellow')
 				accesLog = Sitios_listas[site][2] + str(count) + ".txt"

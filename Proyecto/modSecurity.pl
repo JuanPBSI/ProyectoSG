@@ -33,7 +33,7 @@ my $recurso;
 my $userAgent;
 # Abrimos el archivo error.log de apache
 open(my $logError, '<', $logErrorPath) or die "No se puede abrir el archivo $logErrorPath\n";
-open(my $ModSec, '>>', "./ModSec.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $ModSec, '>>', "./ModSec.log") or die "Could not open file 'ModSec.log' $!";
 while (my $lineaError = <$logError>){
     chomp $lineaError;
 #   Si se usa la expresion donde contiene las palabras "Inbound Anomaly Score Exceeded" significa que esun ataque y modsecurity da una conclusion, la expresion comentada solo da aquellos
@@ -99,3 +99,5 @@ foreach my $id(keys %alertas){
     print $ModSec "ID: $id $alertas{$id}\n\n";
 }
 close($ModSec);
+my $detectModSec = `wc -l ModSec.log | cut -d" " -f 1`
+print "Detecciones ModSecurity: \[$detectModSec\] Ver archivo: ModSec.log para mas información"
