@@ -18,7 +18,7 @@ my $analizarXSS=$Config{'analizarXSS'};
 my $analizarSQLi=$Config{'analizarSQLi'};
 my $analizarCrawler=$Config{'analizarCrawler'};
 my $analizarDefacement=$Config{'analizarDefacement'};
-my $analizarPatTrasversal=$Config{'analizarPatTrasversal'};
+my $analizarPathTrasversal=$Config{'analizarPathTrasversal'};
 
 
 #Datos para el crawler
@@ -140,7 +140,7 @@ while (my $line1 = <$data_acces>)
 	else{
 		$recursoDecodificado = $recurso
 	}
-	if($analizarPatTrasversal == 1)
+	if($analizarPathTrasversal == 1)
 	{
 		#Si analizarPT devuelve 0, no encontro nada, si retorna 1 solo encontro un ataque PT en el access.log, si hay 2 encontro algo en el access.log y error.log
 		$diagnostico_PATH = PathTraversal::analizarPT($recurso,$recursoDecodificado,$arreglo[1],$arreglo[5],$dirListas,$dirApacheError,$log_ApacheError,$toleranciaError);
