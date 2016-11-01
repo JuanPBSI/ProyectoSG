@@ -39,7 +39,7 @@ analizarXSS=1
 analizarSQLi=1
 analizarCrawler=1
 analizarDefacement=1
-analizarPatTrasversal=1
+analizarPathTrasversal=1
 
 ######################################## OTROS ########################################
 
