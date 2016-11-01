@@ -260,17 +260,18 @@ while (my $line1 = <$data_acces>)
 	if($diagnostico_PATH == 0 && $analizarDefacement == 1 && $diagnostico_XSS == 0 && $diagnostico_SQLi == 0)
 	{
 	    $diagnostico_DEF = Defacement::analizarDefacement($arreglo[2],$arreglo[5]);
+		if($diagnostico_DEF > 0)
+		{
+			$cont_DEF++;
+			print $new_msj_DEFC2  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
+			print $new_msj_DEFC3  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
+			print $new_msj_DEFC "			<tr>\n";
+			print $new_msj_DEFC '				<td style="width:10%;">'."$arreglo[2]</td>\n";
+			print $new_msj_DEFC '				<td style="width:90%; text-align:left;">'."$arreglo[3]</td>\n";
+			print $new_msj_DEFC "			</tr>\n";
+		}
 	}
-	elsif($diagnostico_DEF > 0)
-	{
-		$cont_DEF++;
-		print $new_msj_DEFC2  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
-		print $new_msj_DEFC3  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
-		print $new_msj_DEFC "			<tr>\n";
-		print $new_msj_DEFC '				<td style="width:10%;">'."$arreglo[2]</td>\n";
-		print $new_msj_DEFC '				<td style="width:90%; text-align:left;">'."$arreglo[3]</td>\n";
-		print $new_msj_DEFC "			</tr>\n";
-	}
+
 	if( ($analizarCrawler == 1) && ($diagnostico_PATH == 0 && $diagnostico_DEF == 0 && $diagnostico_XSS == 0 && $diagnostico_SQLi == 0) && (  ($recursoDecodificado ne "" &&  $recursoDecodificado =~/^[a-z0-9\.\-_\/#]*$/i ) || ($recursoDecodificado eq "" && $recurso =~ /^[a-z0-9\.\-_\/#]*$/i ) ) )
 	{
 	    #Checando que exista la ip $arreglo[0]
