@@ -658,6 +658,8 @@ def send_mail(mail, sitio, cont_time):
 		outputIP6, errIP6 = ipCount.communicate()
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "16" ], stdout=subprocess.PIPE)
 		outputIP7, errIP7 = ipCount.communicate()
+		ipCount = subprocess.Popen(["perl", ".cmd.perl", "22" ], stdout=subprocess.PIPE)
+		outputIP8, errIP8 = ipCount.communicate()
 		userCount = subprocess.Popen(["perl", ".cmd.perl", "6" ], stdout=subprocess.PIPE)
 		outputU1, errU1 = userCount.communicate()
 		userCount = subprocess.Popen(["perl", ".cmd.perl", "7" ], stdout=subprocess.PIPE)
@@ -674,6 +676,7 @@ def send_mail(mail, sitio, cont_time):
 		contIP5, ip5 = getfromPerl(outputIP5)
 		contIP6, ip6 = getfromPerl(outputIP6)
 		contIP7, ip7 = getfromPerl(outputIP7)
+		contIP8, ip8 = getfromPerl(outputIP8)
 		contUser1, agent1 = getfromPerl(outputU1)
 		contUser2, agent2 = getfromPerl(outputU2)
 		contUser3, agent3 = getfromPerl(outputU3)
@@ -683,23 +686,23 @@ def send_mail(mail, sitio, cont_time):
 		mail["html"] += "\n    <h1>Seccion 1 : Resumen de los hallazgos </h1>\n"
 		mail["html"] += "    <br><p>SQL injection: </p><br>\n"
 		sum = cont_encuentros + cont_encuentros_ref + cont_encuentros_user
-		mail["html"] += "    <p>------> Num. detecciones: <b>" + str(sum) + "</b></p>\n"
+		#mail["html"] += "    <p>------> Num. detecciones: <b>" + str(sum) + "</b></p>\n"
 		for inx, ip in enumerate(ip1):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP1[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
-		mail["html"] += "    <p>------> Num. detecciones: " + str(cont_XSS) + "</p>\n"
+		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_XSS) + "</p>\n"
 		for inx, ip in enumerate(ip2):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP2[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Path Traversal: </p><br>\n"
-		mail["html"] += "    <p>------> Num. detecciones: " + str(cont_PATH) + "</p><br>\n"
+		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_PATH) + "</p><br>\n"
 		for inx, ip in enumerate(ip3):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP3[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Crawler: </p><br>\n"
-		mail["html"] += "    <p>------> Num. detecciones: " + str(cont_CRAW) + "</p><br>\n"
+		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_CRAW) + "</p><br>\n"
 		for inx, ip in enumerate(ip4):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP4[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Defacement: </p><br>\n"
-		mail["html"] += "    <p>------> Num. detecciones: " + str(cont_DEF) + "</p><br>\n"
+		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_DEF) + "</p><br>\n"
 		for inx, ip in enumerate(ip5):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP5[inx] + "</b></p>\n"
 		mail_report["html"] += "\n    <h1>Secci&oacuten 2 : Resumen de los hallazgos ModSecurity</h1>\n"
@@ -710,6 +713,9 @@ def send_mail(mail, sitio, cont_time):
 		mail_report["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
 		for inx, ip in enumerate(ip7):
 			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP7[inx] + "</b></p>\n"
+		mail_report["html"] += "    <br><p>Path Traversal: </p><br>\n"
+		for inx, ip in enumerate(ip8):
+			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP8[inx] + "</b></p>\n"
 
 		mail["html"] += "    <br><h1>Secci&oacuten 3 : Detalles [No incluye ModSecurity] </h1><br>\n"
 		f = open("mensajeSQL.html", 'r+')

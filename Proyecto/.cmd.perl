@@ -89,5 +89,9 @@ elsif ($select == 21)
 {
 	$cmd = `cat extra/mensajeDEFC.txt | cut -d"|" -f 1 | sort | uniq -c`;
 }
+elsif ($select == 22)
+{
+	$cmd = `grep -i "traversal" ModSec.log | cut -d"[" -f 3 | cut -d"]" -f 1 | sort | uniq -c`;
+}
 chomp $cmd;
 print $cmd;
