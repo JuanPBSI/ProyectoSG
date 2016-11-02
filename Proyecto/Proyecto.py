@@ -34,6 +34,18 @@ from reportlab.platypus import Frame, Image
 from matplotlib import gridspec
 from os.path import expanduser
 
+#Diego Inicia
+#Obtenemos el peso de los archivos Templates 
+sizeCRAW =  os.stat("./Templates/mensajeCRAW.html").st_size
+sizeDEFC = os.stat("./Templates/mensajeDEFC.html").st_size
+sizePATH = os.stat("./Templates/mensajePATH.html").st_size
+sizePATmod = os.stat("./Templates/mensajePATHmod.html").st_size
+sizeSQL = os.stat("./Templates/mensajeSQL.html").st_size
+sizeSQLmod = os.stat("./Templates/mensajeSQLmod.html").st_size
+sizeXSS = os.stat("./Templates/mensajeXSS.html").st_size
+sizeXSSmod = os.stat("./Templates/mensajeXSSmod.html").st_size
+#Diego Fin
+
 # Obtenemos la carpeta home del usuario actual
 home = expanduser("~")
 # Necesario para crear las imagenes fuera de un ambiente grafico
@@ -751,40 +763,78 @@ def send_mail(mail, sitio, cont_time):
 				mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP8[inx] + "</b></p>\n"
 
 		mail["html"] += "    <br><h1>Secci&oacuten 3 : Detalles </h1><br>\n"
-		f = open("mensajeSQL.html", 'r+')
-		sqliHtml = f.read()
-		f.close()
-		f = open("mensajeXSS.html", 'r+')
-		xssHtml = f.read()
-		f.close()
-		f = open("mensajePATH.html", 'r+')
-		pathHtml = f.read()
-		f.close()
-		f = open("mensajeCRAW.html", 'r+')
-		pathCraw = f.read()
-		f.close()
-		f = open("mensajeDEFC.html", 'r+')
-		pathDEFC = f.read()
-		f.close()
-		mail["html"] += sqliHtml
-		mail["html"] += xssHtml
-		mail["html"] += pathHtml
-		mail["html"] += pathCraw
-		mail["html"] += pathDEFC
+		sqliHtml = " "
+		xssHtml = " "
+		pathHtml = " "
+		pathCraw = " "
+		pathDEFC = " "
+
+		#Diego Inicia
+		size = os.stat("mensajeSQL.html").st_size
+		if size != sizeSQL:
+			f = open("mensajeSQL.html", 'r+')
+			sqliHtml = f.read()
+			f.close()
+			mail["html"] += sqliHtml
+
+		size = os.stat("mensajeXSS.html").st_size
+		if size != sizeXSS:
+			f = open("mensajeXSS.html", 'r+')
+			xssHtml = f.read()
+			f.close()
+			mail["html"] += xssHtml
+
+		size = os.stat("mensajePATH.html").st_size
+		if size != sizePATH:
+			f = open("mensajePATH.html", 'r+')
+			pathHtml = f.read()
+			f.close()
+			mail["html"] += pathHtml
+	
+		size = os.stat("mensajeCRAW.html").st_size
+		if size != sizeCRAW:
+			f = open("mensajeCRAW.html", 'r+')
+			pathCraw = f.read()
+			f.close()
+			mail["html"] += pathCraw
+
+		size = os.stat("mensajeDEFC.html").st_size
+		if size != sizeDEFC:
+			f = open("mensajeDEFC.html", 'r+')
+			pathDEFC = f.read()
+			f.close()
+			mail["html"] += pathDEFC
+	
+		#Diego Fin
 		mail["html"] += "<br>"
 		if servidor_modsec["flagDetectionOnly"] == 1:
-			f = open("mensajeSQLmod.html", 'r+')
-			sqliHtml2 = f.read()
-			f.close()
-			f = open("mensajeXSSmod.html", 'r+')
-			xssHtml2 = f.read()
-			f.close()
-			f = open("mensajePATHmod.html", 'r+')
-			pathHtml2 = f.read()
-			f.close()
-			mail["html"] += sqliHtml2
-			mail["html"] += xssHtml2
-			mail["html"] += pathHtml2
+			#Diego Inicia
+			sqliHtml2 = " "
+			xssHtml2 = " "
+			pathHtml2 = " "		
+	
+			size = os.stat("mensajeSQLmod.html").st_size
+	                if size != sizeSQLmod:
+				f = open("mensajeSQLmod.html", 'r+')
+				sqliHtml2 = f.read()
+				f.close()
+				mail["html"] += sqliHtml2
+
+			size = os.stat("mensajeXSSmod.html").st_size
+	                if size != sizeXSSmod:
+				f = open("mensajeXSSmod.html", 'r+')
+				xssHtml2 = f.read()
+				f.close()
+				mail["html"] += xssHtml2
+			
+			size = os.stat("mensajePATHmod.html").st_size
+        	        if size != sizePATmod:
+				f = open("mensajePATHmod.html", 'r+')
+				pathHtml2 = f.read()
+				f.close()
+				mail["html"] += pathHtml2
+
+	                #Diego Fin
 		print colored(u"-------------------------->[ ¡¡¡¡¡Tal véz te esten atacando: ಠ_ಠ  !!!!!]<-----------------------------------------------------------",'red')
 		mail["cont-mail"] = mail["cont-mail"] + 1
 		cont_time = cont_time + 1;
