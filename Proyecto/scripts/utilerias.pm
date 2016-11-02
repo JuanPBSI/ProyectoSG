@@ -9,7 +9,7 @@ use Date::Parse;
 sub urlDecoder{
     my $url =  $_[0];
 #### Decodificando URL %Hexadecimal
-    #Se hace un while para atacer la doble codificación
+    #Se hace un while para atacar la doble codificación
     while($url =~ /%[0-9|a-f][0-9|a-f]/i){
 	my $uri = URI::Encode->new( { encode_reserved => 0 } );
 	$url = $uri->decode($url);
