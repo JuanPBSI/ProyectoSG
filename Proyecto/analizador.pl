@@ -50,7 +50,10 @@ my %ips;
 my $refUserAgent;
 my $refTiempo;
 my $refSolicitudes;
-
+#Diego inicia
+my @arrayHerramientas;
+my $nombreHerramienta;
+#Diego fin
 my $recursoDecodificado;
 my %hashCrawler;
 my $crawler;
@@ -108,6 +111,18 @@ my @DEFC;
 my @Path;
 my @Craw;
 
+
+#Diego Inicia
+#Cargamos la lista de nombres de herramientas a un array
+
+open(my $listaHerramientas, '<', $dirListas."herramientas.txt") or die "No se puede abrir el archivo: $dirApacheAccess herramientas.txt\n";
+while (my $nHerramienta = <$listaHerramientas>)
+{
+    chomp $nHerramienta;
+    push(@arrayHerramientas,$nHerramienta);
+}
+close $listaHerramientas;
+#Diego fin
 while (my $line1 = <$data_acces>)
 {
     chomp $line1;
@@ -154,6 +169,9 @@ while (my $line1 = <$data_acces>)
 	}
 	else
 	{
+		#Diego Inicia
+		$nombreHerramienta = utilerias::detectarHerramienta($line1,\@arrayHerramientas);
+		#Diego Fin
 		$cont_PATH++;
 		#print $new_msj "#-------------------------------PATH TRANSVERSAL----------------------------------#\n";
 		#print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
@@ -177,6 +195,9 @@ while (my $line1 = <$data_acces>)
 		}
 		print $new_msj_PATH '				<td style="width:4%;">'."$arreglo[6]</td>\n";
 		print $new_msj_PATH '				<td style="width:21%; text-align:left;" id="User-Agent">'."$arreglo[8]</td>\n";
+		#Diego Inicia
+		print $new_msj_PATH '				<td style="width:10%; text-align:left;" id="Herramienta Detectada">'."$nombreHerramienta</td>\n";
+		#Diego Fin
 		print $new_msj_PATH "			</tr>\n";
 	}
 	if($diagnostico_XSS == 0 && $diagnostico_PATH == 0)
@@ -191,6 +212,9 @@ while (my $line1 = <$data_acces>)
 		$cont_encuentros_mail += $aux7;
 		if ($aux1 != 0 or $aux2 !=0 or $aux3 !=0)
 		{
+			#Diego Inicia
+			$nombreHerramienta = utilerias::detectarHerramienta($line1,\@arrayHerramientas);
+			#Diego Fin
 			$diagnostico_SQLi = 1;
 			#print $new_msj "#-------------------------------SQL INJECTION-------------------------------------#\n";
 			#print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
@@ -223,6 +247,9 @@ while (my $line1 = <$data_acces>)
 				print $new_msj_SQLi '				<td style = "width:4%; color : green; font-weight: bold;">'."NO</td>\n";
 			}
 			print $new_msj_SQLi '				<td style="width:17%; text-align:left;">'."$arreglo[8]</td>\n";
+			#Diego Inicia
+			print $new_msj_SQLi '				<td style="width:10%; text-align:left;">'."$nombreHerramienta</td>\n";
+			#Diego Fin
 			print $new_msj_SQLi "			</tr>\n";
 		}
 		else
@@ -232,6 +259,9 @@ while (my $line1 = <$data_acces>)
 	}
 	elsif($diagnostico_XSS > 0)
 	{
+		#Diego Inicia
+		$nombreHerramienta = utilerias::detectarHerramienta($line1,\@arrayHerramientas);
+		#Diego Fin
 		$cont_XSS++;
 		#print $new_msj "#-------------------------------CROSS SITE SCRIPTING------------------------------#\n";
 		#print $new_msj "IP:		$arreglo[3]		User-Agent:	$arreglo[8]\n";
@@ -255,6 +285,9 @@ while (my $line1 = <$data_acces>)
 		}
 		print $new_msj_XSS '				<td style="width:4%;">'."$arreglo[6]</td>\n";
 		print $new_msj_XSS '				<td style="width:21%; text-align:left;">'."$arreglo[8]</td>\n";
+		#Diego Inicia
+		print $new_msj_XSS '				<td style="width:10%; text-align:left;">'."$nombreHerramienta</td>\n";
+		#Diego Fin
 		print $new_msj_XSS "			</tr>\n";
 	}
 	if($diagnostico_PATH == 0 && $analizarDefacement == 1 && $diagnostico_XSS == 0 && $diagnostico_SQLi == 0)
@@ -262,6 +295,7 @@ while (my $line1 = <$data_acces>)
 	    $diagnostico_DEF = Defacement::analizarDefacement($arreglo[2],$arreglo[5]);
 		if($diagnostico_DEF > 0)
 		{
+			$nombreHerramienta = utilerias::detectarHerramienta($line1,\@arrayHerramientas);
 			$cont_DEF++;
 			print $new_msj_DEFC2  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
 			print $new_msj_DEFC3  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
@@ -276,6 +310,9 @@ while (my $line1 = <$data_acces>)
 			{
 				print $new_msj_DEFC '				<td style = "width:10%; color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
 			}
+			#Diego Inicia
+			print $new_msj_DEFC '				<td style = "width:10%; color : green; font-weight: bold;">'."$nombreHerramienta</td>\n";
+			#Diego Fin
 			print $new_msj_DEFC "			</tr>\n";
 		}
 	}
@@ -293,9 +330,13 @@ while (my $line1 = <$data_acces>)
 				{
         	        $refSolicitudes = $ips{$arreglo[0]}{$arreglo[8]}{$arreglo[1]};
                         if($recursoDecodificado ne ""){
+			#Diego Inicia
                             push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
+			#Diego Fin
                         }else{
+				#Diego Inicia
                             push(@$refSolicitudes,"[$recurso][$arreglo[5]]");
+				#Diego Fin
                         }
             	}
 				else
@@ -303,7 +344,10 @@ while (my $line1 = <$data_acces>)
 	                #No existe la fecha
         	        my @solicitudes =();
                         if($recursoDecodificado ne ""){
-                            push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
+			        #Diego Inicia
+			    push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
+			#Diego Fin
+
                         }else{
                             push(@$refSolicitudes,"[$recurso][$arreglo[5]]");
                         }
@@ -316,9 +360,13 @@ while (my $line1 = <$data_acces>)
 	            #No existe el User-Agent $arreglo[8]
         	    my @solicitudes =();
                         if($recursoDecodificado ne ""){
+			 #Diego Inicia
                             push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
+			#Diego Fin
                         }else{
+			    #Diego Inicia
                             push(@$refSolicitudes,"[$recurso][$arreglo[5]]");
+			#Diego Fin
                         }
 				my %tiempo = ();
                 $tiempo{$arreglo[1]} = \@solicitudes;
@@ -331,9 +379,13 @@ while (my $line1 = <$data_acces>)
 			#No existe la ip $arreglo[0]
 	        my @solicitudes = ();
                         if($recursoDecodificado ne ""){
+			 #Diego Inicia
                             push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
+			#Diego Fin
                         }else{
+			 #Diego Inicia
                             push(@$refSolicitudes,"[$recurso][$arreglo[5]]");
+			#Diego Fin
                         }
 	        my %tiempo = ();
         	$tiempo{$arreglo[1]} = \@solicitudes;
@@ -369,9 +421,13 @@ if($analizarCrawler == 1 )
 		print $new_msj_CRAW '		<tbody>';
         foreach my $recurso(keys %recursosDistintos)
 		{
+			#Diego Inicia
 			print $new_crawler2 "$recurso $recursosDistintos{$recurso}.\n";
+			#Diego Fin
 			print $new_msj_CRAW "			<tr>\n";
+			#Diego Inicia
 			print $new_msj_CRAW '				<td style="width:100%; text-align:left;">'."$recurso $recursosDistintos{$recurso}</td>\n";
+			#Diego Fin
 			print $new_msj_CRAW "			</tr>\n";
         }
     }
