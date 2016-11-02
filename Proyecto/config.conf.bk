@@ -43,7 +43,7 @@ analizarPathTrasversal=1
 
 ######################################## OTROS ########################################
 
-tiempoMonitoreo = "10"
+tiempoMonitoreo = "30"
 maxLinesLog = "3000"
 tiempoReportes = "24" # tiempo en horas
 
