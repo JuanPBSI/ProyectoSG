@@ -9,7 +9,7 @@ use Date::Parse;
 sub urlDecoder{
     my $url =  $_[0];
 #### Decodificando URL %Hexadecimal
-    #Se hace un while para atacar la doble codificación
+    #Se hace un while para atacer la doble codificación
     while($url =~ /%[0-9|a-f][0-9|a-f]/i){
 	my $uri = URI::Encode->new( { encode_reserved => 0 } );
 	$url = $uri->decode($url);
@@ -44,17 +44,30 @@ sub read_config_file {
 
 sub suma_segundo_hora{
 
-#Se ingresa cualquier formato de la marca de tiempo y devuelve el siguiente formato:
-#Wed Oct 12 01:45:27 2016
+    #Se ingresa cualquier formato de la marca de tiempo y devuelve el siguiente formato:
+    #Wed Oct 12 01:45:27 2016
 
-my $tiempo=$_[0];
-my $tolerancia=$_[1];
+    my $tiempo=$_[0];
+    my $tolerancia=$_[1];
 
-#Pasando a fecha a EPOC
-my $unix_time = str2time($tiempo);
-$unix_time = $unix_time + $tolerancia;
-my $fecha = localtime($unix_time);
-return $fecha;
+    #Pasando a fecha a EPOC
+    my $unix_time = str2time($tiempo);
+    $unix_time = $unix_time + $tolerancia;
+    my $fecha = localtime($unix_time);
+    return $fecha;
+}
+
+sub detectarHerramienta{
+    my $herramienta = "-";
+    my $lineaLog = $_[0];
+    my @listaHerramientas = @{$_[1]};
+    foreach (@listaHerramientas){
+	if ($lineaLog =~ /$_/i){
+	    $herramienta = $_;
+	    last;
+	}
+    }
+    return $herramienta;
 }
 
 1;
