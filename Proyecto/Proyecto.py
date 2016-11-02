@@ -51,6 +51,28 @@ home = expanduser("~")
 # Necesario para crear las imagenes fuera de un ambiente grafico
 os.environ["MPLBACKEND"] = "agg"
 
+# Función clean: Copia el template usado en el envío de correo electrónico, se llama cada vez que se envia un eMail
+def check():
+	hrrDir = ['logs', 'parsedLogs', 'extra', 'img', 'sites']
+	hrrDirImportant = ['scripts', 'listas', 'Templates']
+	for folder in hrrDirImportant:
+		if not os.path.exists(folder):
+			print "Faltan archivos cruciales para el funcionamiento: " + folder
+			exit()
+	for folder in hrrDir:
+		if not os.path.exists(folder):
+			os.makedirs(folder)
+	file1 = open('extra/Reporte.html', 'w+')
+	file1.close()
+	open('extra/Reporte.html', 'w').close()
+	file2 = open('extra/ReporteMod.html', 'w+')
+	file2.close()
+	fecha = subprocess.Popen(["date"], stdout=subprocess.PIPE)
+	outputDate, errDate = fecha.communicate()
+	RepHrr = open("extra/Reporte.html", "w")
+	RepHrr.write('<h1>Reporte Aplicacion: [' + outputDate + ']</h1>')
+	RepHrr.close()
+
 # Eliminamos los archivos de losgs anteriores en cada ejecucion
 try:
 	map(os.remove,glob('./parsedLogs/*/*/*'))
@@ -61,6 +83,7 @@ try:
 	check()
 	print "logs OK (limpios)!"
 except:
+	check()
 	print "logs OK!"
 
 # Arreglos utilizados para almacenar la informacion de los servidores, cuerpo de correo electronico
@@ -116,7 +139,8 @@ mail = {"from":"unam.cert.log.send@gmail.com",
 		"html":"",
 		"text":"",
 		"cont-mail":0,
-		"flag-mail":0}
+		"flag-mail":0,
+		"TiempoMail":0}
 mail_report = {"from":"unam.cert.log.send@gmail.com",
 		"pass":"", 
 		"to":"",
@@ -124,7 +148,8 @@ mail_report = {"from":"unam.cert.log.send@gmail.com",
 		"html":"",
 		"text":"",
 		"cont-mail":0,
-		"flag-mail":0}
+		"flag-mail":0,
+		"TiempoMail":0}
 Sitios_listas = {}
 logcfg = {"time_log":0,
 		"max_size_log":0,
@@ -156,22 +181,6 @@ def banner():
 	outputDate, errDate = fecha.communicate()
 	print "\n" + outputDate + "\n"
 
-# Función clean: Copia el template usado en el envío de correo electrónico, se llama cada vez que se envia un eMail
-def check():
-	hrrDir = ['logs', 'parsedLogs', 'extra', 'img', 'sites']
-	hrrDirImportant = ['scripts', 'listas', 'Templates']
-	for folder in hrrDirImportant:
-		if not os.path.exists(folder):
-			print "Faltan archivos cruciales para el funcionamiento: " + folder
-			exit()
-	for folder in hrrDir:
-		if not os.path.exists(folder):
-			os.makedirs(folder)
-	file1 = open('extra/Reporte.html', 'w+')
-	file1.close()
-	file2 = open('extra/ReporteMod.html', 'w+')
-	file2.close()
-
 def clean():
 	shutil.copy('./Templates/mensajeSQL.html','./')
 	shutil.copy('./Templates/mensajeCRAW.html','./')
@@ -181,6 +190,16 @@ def clean():
 	shutil.copy('./Templates/mensajeSQLmod.html','./')
 	shutil.copy('./Templates/mensajeXSSmod.html','./')
 	shutil.copy('./Templates/mensajePATHmod.html','./')
+	# Inicializamos la informacion del correo electronico
+	text = "Enviamos el siguiente correo por que se cree que su servidor esta bajo ataque:\nRecomendamos realizar las modificaciones pertinentes\n"
+	html = """\
+	<html>
+	  <head></head>
+	  <body>
+		<h1>Se registro un aumento en la actividad maliciosa</h1>
+	"""
+	mail["html"] = html
+	mail["text"] = text
 
 
 # Función loadConfig: Carga las variables del archivo de configuración
@@ -222,6 +241,7 @@ def loadConfig(conFilesPath):
 		mail["pass"] = re.search('".*"', re.search('passMail.*', confContent).group(0)).group(0).split('"')[1]
 		mail["to"] = re.search('".*"', re.search('mailTo.*', confContent).group(0)).group(0).split('"')[1]
 		mail["asunto"] = re.search('".*"', re.search('subject.*', confContent).group(0)).group(0).split('"')[1]
+		mail["TiempoMail"] = re.search('".*"', re.search('TiempoMail.*', confContent).group(0)).group(0).split('"')[1]
 
 		logcfg["max_size_log"] = int(re.search('".*"', re.search('maxLinesLog.*', confContent).group(0)).group(0).split('"')[1])
 		logcfg["time_log"] = int(re.search('".*"', re.search('tiempoMonitoreo.*', confContent).group(0)).group(0).split('"')[1])
@@ -433,7 +453,7 @@ def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 			f.close()
 		except Exception as cadena:
 			print "El archivo de configuracion no se puede abrir: " + format(cadena)
-		#servidor_modsec["flagDetectionOnly"] = 1
+		servidor_modsec["flagDetectionOnly"] = 0
 		#--------------------#
 		if flag == 1:
 			print colored("No log actual: " + str(count), 'cyan')
@@ -548,12 +568,15 @@ def graficar(path):
 	ax5.set_xticks(ind + width)
 	ax5.set_xticklabels(x_axis, rotation='vertical')
 	
-	ax1.set_ybound(lower=0, upper=(max(y_PATH)+50))
-	ax2.set_ybound(lower=0, upper=(max(y_Xss)+50))
-	ax3.set_ybound(lower=0, upper=(max(y_SQLi)+50))
-	ax4.set_ybound(lower=0, upper=(max(y_DEF)+50))
-	ax5.set_ybound(lower=0, upper=(max(y_Craw)+50))
-	
+	try:
+		ax1.set_ybound(lower=0, upper=(max(y_PATH)+50))
+		ax2.set_ybound(lower=0, upper=(max(y_Xss)+50))
+		ax3.set_ybound(lower=0, upper=(max(y_SQLi)+50))
+		ax4.set_ybound(lower=0, upper=(max(y_DEF)+50))
+		ax5.set_ybound(lower=0, upper=(max(y_Craw)+50))
+	except Exception as cadena:
+		pass
+
 	autolabel(rects1,ax1)
 	autolabel(rects2,ax2)
 	autolabel(rects3,ax3)
@@ -674,7 +697,7 @@ def send_mail_reporte(mail_report):
 		else:
 			mail_report["html"] += '    <br><h1>[No se gener&oacute informaci&oacuten para este ataque]</h1><br>' + "\n"
 		mail_report["html"] += "    <br><p>Crawler: </p><br>\n"
-		if ip6:
+		if ip4:
 			mail_report["html"] += '    <br><img src="cid:image5"><br>' + "\n"
 		else:
 			mail_report["html"] += '    <br><h1>[No se gener&oacute informaci&oacuten para este ataque]</h1><br>' + "\n"
@@ -696,170 +719,165 @@ def send_mail(mail, sitio, cont_time):
 	cont_encuentros_user = int(res[4])
 	cont_DEF = int(res[5])
 	cont_CRAW = int(res[6])
-	cont_encuentros_mail = int(res[7])	
+	cont_encuentros_mail = int(res[7])
+	time.sleep(1)
 	#if ( (cont_PATH > 1) or (cont_encuentros > 30) or (cont_XSS > 30) or (cont_encuentros_user > 30) or (cont_encuentros_ref > 30) or (cont_encuentros_mail > 1) or (cont_DEF > 1) or (cont_CRAW > 1) ):
 	# Si en script analizador.pl genera eventos eniara correo electronico
-	if ( (cont_PATH >= 1) or (cont_encuentros >= 30) or (cont_XSS >= 1) or (cont_encuentros_user >= 30) or (cont_encuentros_ref >= 30) or (cont_encuentros_mail >= 1) or (cont_DEF >= 1) or (cont_CRAW >= 1) ) and (cont_time <= len(Sitios_listas)):
-		ipCount = subprocess.Popen(["perl", ".cmd.perl", "1" ], stdout=subprocess.PIPE)
-		outputIP1, errIP1 = ipCount.communicate()
-		ipCount = subprocess.Popen(["perl", ".cmd.perl", "2" ], stdout=subprocess.PIPE)
-		outputIP2, errIP2 = ipCount.communicate()
-		ipCount = subprocess.Popen(["perl", ".cmd.perl", "3" ], stdout=subprocess.PIPE)
-		outputIP3, errIP3 = ipCount.communicate()
-		ipCount = subprocess.Popen(["perl", ".cmd.perl", "4" ], stdout=subprocess.PIPE)
-		outputIP4, errIP4 = ipCount.communicate()
-		ipCount = subprocess.Popen(["perl", ".cmd.perl", "5" ], stdout=subprocess.PIPE)
-		outputIP5, errIP5 = ipCount.communicate()
-		ipCount = subprocess.Popen(["perl", ".cmd.perl", "15" ], stdout=subprocess.PIPE)
-		outputIP6, errIP6 = ipCount.communicate()
-		ipCount = subprocess.Popen(["perl", ".cmd.perl", "16" ], stdout=subprocess.PIPE)
-		outputIP7, errIP7 = ipCount.communicate()
-		ipCount = subprocess.Popen(["perl", ".cmd.perl", "22" ], stdout=subprocess.PIPE)
-		outputIP8, errIP8 = ipCount.communicate()
+
+	ipCount = subprocess.Popen(["perl", ".cmd.perl", "1" ], stdout=subprocess.PIPE)
+	outputIP1, errIP1 = ipCount.communicate()
+	ipCount = subprocess.Popen(["perl", ".cmd.perl", "2" ], stdout=subprocess.PIPE)
+	outputIP2, errIP2 = ipCount.communicate()
+	ipCount = subprocess.Popen(["perl", ".cmd.perl", "3" ], stdout=subprocess.PIPE)
+	outputIP3, errIP3 = ipCount.communicate()
+	ipCount = subprocess.Popen(["perl", ".cmd.perl", "4" ], stdout=subprocess.PIPE)
+	outputIP4, errIP4 = ipCount.communicate()
+	ipCount = subprocess.Popen(["perl", ".cmd.perl", "5" ], stdout=subprocess.PIPE)
+	outputIP5, errIP5 = ipCount.communicate()
+	ipCount = subprocess.Popen(["perl", ".cmd.perl", "15" ], stdout=subprocess.PIPE)
+	outputIP6, errIP6 = ipCount.communicate()
+	ipCount = subprocess.Popen(["perl", ".cmd.perl", "16" ], stdout=subprocess.PIPE)
+	outputIP7, errIP7 = ipCount.communicate()
+	ipCount = subprocess.Popen(["perl", ".cmd.perl", "22" ], stdout=subprocess.PIPE)
+	outputIP8, errIP8 = ipCount.communicate()
+	
+	contIP1, ip1 = getfromPerl(outputIP1)
+	contIP2, ip2 = getfromPerl(outputIP2)
+	contIP3, ip3 = getfromPerl(outputIP3)
+	contIP4, ip4 = getfromPerl(outputIP4)
+	contIP5, ip5 = getfromPerl(outputIP5)
+	contIP6, ip6 = getfromPerl(outputIP6)
+	contIP7, ip7 = getfromPerl(outputIP7)
+	contIP8, ip8 = getfromPerl(outputIP8)
 		
-		contIP1, ip1 = getfromPerl(outputIP1)
-		contIP2, ip2 = getfromPerl(outputIP2)
-		contIP3, ip3 = getfromPerl(outputIP3)
-		contIP4, ip4 = getfromPerl(outputIP4)
-		contIP5, ip5 = getfromPerl(outputIP5)
-		contIP6, ip6 = getfromPerl(outputIP6)
-		contIP7, ip7 = getfromPerl(outputIP7)
-		contIP8, ip8 = getfromPerl(outputIP8)
-			
-		mail["html"] += "\n    <h1>Sitio: " + sitio + " </h1>\n"
-		mail["html"] += "\n    <h1>Seccion 1 : Resumen de los hallazgos </h1>\n"
+	mail["html"] += "\n    <h1>Sitio: " + sitio + " </h1>\n"
+	mail["html"] += "\n    <h1>Seccion 1 : Resumen de los hallazgos </h1>\n"
+	mail["html"] += "    <br><p>SQL injection: </p><br>\n"
+	sum = cont_encuentros + cont_encuentros_ref + cont_encuentros_user
+	#mail["html"] += "    <p>------> Num. detecciones: <b>" + str(sum) + "</b></p>\n"
+	for inx, ip in enumerate(ip1):
+		mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP1[inx] + "</b></p>\n"
+	mail["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
+	#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_XSS) + "</p>\n"
+	for inx, ip in enumerate(ip2):
+		mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP2[inx] + "</b></p>\n"
+	mail["html"] += "    <br><p>Path Traversal: </p><br>\n"
+	#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_PATH) + "</p><br>\n"
+	for inx, ip in enumerate(ip3):
+		mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP3[inx] + "</b></p>\n"
+	mail["html"] += "    <br><p>Crawler: </p><br>\n"
+	#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_CRAW) + "</p><br>\n"
+	for inx, ip in enumerate(ip4):
+		mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP4[inx] + "</b></p>\n"
+	mail["html"] += "    <br><p>Defacement: </p><br>\n"
+	#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_DEF) + "</p><br>\n"
+	for inx, ip in enumerate(ip5):
+		mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP5[inx] + "</b></p>\n"
+	if servidor_modsec["flagDetectionOnly"] == 1:
+		mail["html"] += "\n    <h1>Secci&oacuten 2 : Resumen de los hallazgos ModSecurity</h1>\n"
+		#mail["html"] += "    <p>Detalles: archivo adjunto [ModSec.log] </p>\n"
 		mail["html"] += "    <br><p>SQL injection: </p><br>\n"
-		sum = cont_encuentros + cont_encuentros_ref + cont_encuentros_user
-		#mail["html"] += "    <p>------> Num. detecciones: <b>" + str(sum) + "</b></p>\n"
-		for inx, ip in enumerate(ip1):
-			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP1[inx] + "</b></p>\n"
+		for inx, ip in enumerate(ip6):
+			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP6[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
-		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_XSS) + "</p>\n"
-		for inx, ip in enumerate(ip2):
-			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP2[inx] + "</b></p>\n"
+		for inx, ip in enumerate(ip7):
+			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP7[inx] + "</b></p>\n"
 		mail["html"] += "    <br><p>Path Traversal: </p><br>\n"
-		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_PATH) + "</p><br>\n"
-		for inx, ip in enumerate(ip3):
-			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP3[inx] + "</b></p>\n"
-		mail["html"] += "    <br><p>Crawler: </p><br>\n"
-		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_CRAW) + "</p><br>\n"
-		for inx, ip in enumerate(ip4):
-			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP4[inx] + "</b></p>\n"
-		mail["html"] += "    <br><p>Defacement: </p><br>\n"
-		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_DEF) + "</p><br>\n"
-		for inx, ip in enumerate(ip5):
-			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP5[inx] + "</b></p>\n"
-		if servidor_modsec["flagDetectionOnly"] == 1:
-			mail["html"] += "\n    <h1>Secci&oacuten 2 : Resumen de los hallazgos ModSecurity</h1>\n"
-			#mail["html"] += "    <p>Detalles: archivo adjunto [ModSec.log] </p>\n"
-			mail["html"] += "    <br><p>SQL injection: </p><br>\n"
-			for inx, ip in enumerate(ip6):
-				mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP6[inx] + "</b></p>\n"
-			mail["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
-			for inx, ip in enumerate(ip7):
-				mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP7[inx] + "</b></p>\n"
-			mail["html"] += "    <br><p>Path Traversal: </p><br>\n"
-			for inx, ip in enumerate(ip8):
-				mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP8[inx] + "</b></p>\n"
-
+		for inx, ip in enumerate(ip8):
+			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP8[inx] + "</b></p>\n"
 		mail["html"] += "    <br><h1>Secci&oacuten 3 : Detalles </h1><br>\n"
-		sqliHtml = " "
-		xssHtml = " "
-		pathHtml = " "
-		pathCraw = " "
-		pathDEFC = " "
+	sqliHtml = " "
+	xssHtml = " "
+	pathHtml = " "
+	pathCraw = " "
+	pathDEFC = " "
+	#Diego Inicia
+	size = os.stat("mensajeSQL.html").st_size
+	if size != sizeSQL:
+		f = open("mensajeSQL.html", 'r+')
+		sqliHtml = f.read()
+		f.close()
+		mail["html"] += sqliHtml
+	size = os.stat("mensajeXSS.html").st_size
+	if size != sizeXSS:
+		f = open("mensajeXSS.html", 'r+')
+		xssHtml = f.read()
+		f.close()
+		mail["html"] += xssHtml
+	size = os.stat("mensajePATH.html").st_size
+	if size != sizePATH:
+		f = open("mensajePATH.html", 'r+')
+		pathHtml = f.read()
+		f.close()
+		mail["html"] += pathHtml
 
+	size = os.stat("mensajeCRAW.html").st_size
+	if size != sizeCRAW:
+		f = open("mensajeCRAW.html", 'r+')
+		pathCraw = f.read()
+		f.close()
+		mail["html"] += pathCraw
+	size = os.stat("mensajeDEFC.html").st_size
+	if size != sizeDEFC:
+		f = open("mensajeDEFC.html", 'r+')
+		pathDEFC = f.read()
+		f.close()
+		mail["html"] += pathDEFC
+
+	#Diego Fin
+	if servidor_modsec["flagDetectionOnly"] == 1:
 		#Diego Inicia
-		size = os.stat("mensajeSQL.html").st_size
-		if size != sizeSQL:
-			f = open("mensajeSQL.html", 'r+')
-			sqliHtml = f.read()
-			f.close()
-			mail["html"] += sqliHtml
+		sqliHtml2 = " "
+		xssHtml2 = " "
+		pathHtml2 = " "
 
-		size = os.stat("mensajeXSS.html").st_size
-		if size != sizeXSS:
-			f = open("mensajeXSS.html", 'r+')
-			xssHtml = f.read()
+		size = os.stat("mensajeSQLmod.html").st_size
+		if size != sizeSQLmod:
+			f = open("mensajeSQLmod.html", 'r+')
+			sqliHtml2 = f.read()
 			f.close()
-			mail["html"] += xssHtml
-
-		size = os.stat("mensajePATH.html").st_size
-		if size != sizePATH:
-			f = open("mensajePATH.html", 'r+')
-			pathHtml = f.read()
+			mail["html"] += sqliHtml2
+		size = os.stat("mensajeXSSmod.html").st_size
+		if size != sizeXSSmod:
+			f = open("mensajeXSSmod.html", 'r+')
+			xssHtml2 = f.read()
 			f.close()
-			mail["html"] += pathHtml
-	
-		size = os.stat("mensajeCRAW.html").st_size
-		if size != sizeCRAW:
-			f = open("mensajeCRAW.html", 'r+')
-			pathCraw = f.read()
+			mail["html"] += xssHtml2	
+		size = os.stat("mensajePATHmod.html").st_size
+		if size != sizePATmod:
+			f = open("mensajePATHmod.html", 'r+')
+			pathHtml2 = f.read()
 			f.close()
-			mail["html"] += pathCraw
-
-		size = os.stat("mensajeDEFC.html").st_size
-		if size != sizeDEFC:
-			f = open("mensajeDEFC.html", 'r+')
-			pathDEFC = f.read()
-			f.close()
-			mail["html"] += pathDEFC
-	
+			mail["html"] += pathHtml2
 		#Diego Fin
-		mail["html"] += "<br>"
-		if servidor_modsec["flagDetectionOnly"] == 1:
-			#Diego Inicia
-			sqliHtml2 = " "
-			xssHtml2 = " "
-			pathHtml2 = " "		
-	
-			size = os.stat("mensajeSQLmod.html").st_size
-	                if size != sizeSQLmod:
-				f = open("mensajeSQLmod.html", 'r+')
-				sqliHtml2 = f.read()
-				f.close()
-				mail["html"] += sqliHtml2
 
-			size = os.stat("mensajeXSSmod.html").st_size
-	                if size != sizeXSSmod:
-				f = open("mensajeXSSmod.html", 'r+')
-				xssHtml2 = f.read()
-				f.close()
-				mail["html"] += xssHtml2
-			
-			size = os.stat("mensajePATHmod.html").st_size
-        	        if size != sizePATmod:
-				f = open("mensajePATHmod.html", 'r+')
-				pathHtml2 = f.read()
-				f.close()
-				mail["html"] += pathHtml2
+	today = date.today()
+		
+	RepHrr = open("extra/Reporte.html", "a")
+	RepHrr.write(sqliHtml)
+	RepHrr.write(xssHtml)
+	RepHrr.write(pathHtml)
+	RepHrr.write(pathCraw)
+	RepHrr.write(pathDEFC)
+	RepHrr.close()
+	if servidor_modsec["flagDetectionOnly"] == 1:
+		RepHrrMod = open("extra/ReporteMod.html", "a")
+		#RepHrrMod.write('<h1>Reporte ModSecurity: [' + format(today) + ']</h1>')
+		RepHrrMod.write(sqliHtml2)
+		RepHrrMod.write(xssHtml2)
+		RepHrrMod.write(pathHtml2)
+		RepHrrMod.close()
 
-	                #Diego Fin
+	#if ( (cont_PATH >= 1) or (cont_encuentros >= 30) or (cont_XSS >= 1) or (cont_encuentros_user >= 30) or (cont_encuentros_ref >= 30) or (cont_encuentros_mail >= 1) or (cont_DEF >= 1) or (cont_CRAW >= 1) ) and (cont_time <= len(Sitios_listas)):
+	if ( (cont_PATH >= 1) or (cont_encuentros >= 30) or (cont_XSS >= 1) or (cont_encuentros_user >= 30) or (cont_encuentros_ref >= 30) or (cont_encuentros_mail >= 1) or (cont_DEF >= 1) or (cont_CRAW >= 1) ):
 		print colored(u"-------------------------->[ ¡¡¡¡¡Tal véz te esten atacando: ಠ_ಠ  !!!!!]<-----------------------------------------------------------",'red')
 		mail["cont-mail"] = mail["cont-mail"] + 1
 		cont_time = cont_time + 1;
 		sendEmail(mail["from"], mail["pass"], mail["to"], mail["asunto"], mail["html"], mail["text"])
-		
-		today = date.today()
-		if servidor_modsec["flagDetectionOnly"] == 1:
-			RepHrr = open("extra/Reporte.html", "a")
-			RepHrr.write('<h1>Reporte Aplicacion: [' + format(today) + ']</h1>')
-			RepHrr.write(sqliHtml)
-			RepHrr.write(xssHtml)
-			RepHrr.write(pathHtml)
-			RepHrr.write(pathCraw)
-			RepHrr.write(pathDEFC)
-			RepHrr.close()
-			RepHrrMod = open("extra/ReporteMod.html", "a")
-			RepHrrMod.write('<h1>Reporte ModSecurity: [' + format(today) + ']</h1>')
-			RepHrrMod.write(sqliHtml2)
-			RepHrrMod.write(xssHtml2)
-			RepHrrMod.write(pathHtml2)
-			RepHrrMod.close()
-		clean()
+	clean()
 	if (cont_time != 0):
 		cont_time = cont_time + 1;
-	if (cont_time == 700):
+	if (cont_time == mail["TiempoMail"]*60):
 		cont_time = 0;
 	return cont_time
 
@@ -949,6 +967,7 @@ def sendEmailMIME(user, pwd, recipient, subject, html, images):
 	open("./ModSecReport.log", 'w').close()
 	open("extra/Reporte.html", 'w').close()
 	open("extra/ReporteMod.html", 'w').close()
+	mail_report = mail
 	try:
 		server = smtplib.SMTP("smtp.gmail.com", 587)
 		server.ehlo()

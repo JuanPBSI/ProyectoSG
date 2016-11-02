@@ -411,24 +411,42 @@ if($analizarCrawler == 1 )
 	{
 		print $new_msj_CRAW2  "$ipUserAgent|$dirActual\n";
 		print $new_msj_CRAW3  "$ipUserAgent|$dirActual\n";
-		print $new_msj_CRAW '		<div style="background:#BB9100; text-align:center; color : white; font-family: verdana; font-size: 1em;">'."$ipUserAgent</div>";
-		my %recursosDistintos = %{$hashCrawler{$ipUserAgent}};
 		print $new_msj_CRAW '		<thead>';
 		print $new_msj_CRAW '		<tr>';
-		print $new_msj_CRAW '			<th style="width:100%;" >Recurso</th>';
+		print $new_msj_CRAW '			<th style="background:#BB9100; width:100%;" >'.$ipUserAgent.'</th>';
+		print $new_msj_CRAW '		</tr>';
+		print $new_msj_CRAW '		<tr>';
+		print $new_msj_CRAW '			<th style="width:90%;" >Recurso</th>';
+		print $new_msj_CRAW '			<th style="width:10%;" >Codigo</th>';
 		print $new_msj_CRAW '		</tr>';
 		print $new_msj_CRAW '		</thead>';
 		print $new_msj_CRAW '		<tbody>';
+		my %recursosDistintos = %{$hashCrawler{$ipUserAgent}};
         foreach my $recurso(keys %recursosDistintos)
 		{
-			#Diego Inicia
-			print $new_crawler2 "$recurso $recursosDistintos{$recurso}.\n";
-			#Diego Fin
-			print $new_msj_CRAW "			<tr>\n";
-			#Diego Inicia
-			print $new_msj_CRAW '				<td style="width:100%; text-align:left;">'."$recurso $recursosDistintos{$recurso}</td>\n";
-			#Diego Fin
-			print $new_msj_CRAW "			</tr>\n";
+			if ( not (($recurso eq '') or ($recurso eq ' ')) )
+			{
+				#Diego Inicia
+				print $new_crawler2 "$recurso $recursosDistintos{$recurso}.\n";
+				#Diego Fin
+				print $new_msj_CRAW "			<tr>\n";
+				#Diego Inicia
+				print $new_msj_CRAW '				<td style="width:90%; text-align:left;">'."$recurso</td>\n";
+				if(($recursosDistintos{$recurso} =~ /4..\b/i) || ($recursosDistintos{$recurso} =~ /5..\b/i))
+				{
+					print $new_msj_CRAW '				<td style = "width:10%; color : red; font-weight: bold;">'."$recursosDistintos{$recurso}</td>\n";
+				}
+				elsif($recursosDistintos{$recurso} =~ /2..\b/i)
+				{
+					print $new_msj_CRAW '				<td style = "width:10%; color : green; font-weight: bold;">'."$recursosDistintos{$recurso}</td>\n";
+				}
+				else
+				{
+					print $new_msj_CRAW '				<td style = "width:10%; color : black; font-weight: bold;">'."$recursosDistintos{$recurso}</td>\n";
+				}
+				#Diego Fin
+				print $new_msj_CRAW "			</tr>\n";
+			}
         }
     }
 }
