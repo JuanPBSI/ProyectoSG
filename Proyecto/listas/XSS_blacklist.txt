@@ -1,11 +1,9 @@
 script
 src
-.js
 onerror
 onclick
 onmouseover
 iframe
-http
 eval
 base64
 fromCharCode
