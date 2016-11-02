@@ -407,20 +407,20 @@ def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 				flag = 0
 		#------Comprueba se ModSecurity esta activado----------#
 		#servidor_modsec["flagDetectionOnly"] = 0
-		# try:
-			# f = open(servidor_modsec["rutaWafConfig"])
-			# try:
-				# for line in f:
-					# if re.search('SecRuleEngine DetectionOnly', line):
-						# servidor_modsec["flagDetectionOnly"] = 1
-						# break;
-				# else:
-					# servidor_modsec["flagDetectionOnly"] = 0
-			# except Exception as cadena:
-				# print "Error en el archivo de configuracion: " + format(cadena)
-			# f.close()
-		# except Exception as cadena:
-			# print "El archivo de configuracion no se puede abrir: " + format(cadena)
+		try:
+			f = open(servidor_modsec["rutaWafConfig"])
+			try:
+				for line in f:
+					if re.search('SecRuleEngine DetectionOnly', line):
+						servidor_modsec["flagDetectionOnly"] = 1
+						break;
+				else:
+					servidor_modsec["flagDetectionOnly"] = 0
+			except Exception as cadena:
+				print "Error en el archivo de configuracion: " + format(cadena)
+			f.close()
+		except Exception as cadena:
+			print "El archivo de configuracion no se puede abrir: " + format(cadena)
 		#servidor_modsec["flagDetectionOnly"] = 1
 		#--------------------#
 		if flag == 1:
@@ -581,8 +581,8 @@ def graficar(path):
 def send_mail_reporte(mail_report):
 	while 1:
 		tiempo = logcfg["tiempoReportes"]
-		#time.sleep(tiempo*3600)
-		time.sleep(1)
+		time.sleep(tiempo*3600)
+		#time.sleep(1)
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "17" ], stdout=subprocess.PIPE)
 		outputIP1, errIP1 = ipCount.communicate()
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "18" ], stdout=subprocess.PIPE)
