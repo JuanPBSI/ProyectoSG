@@ -293,9 +293,9 @@ while (my $line1 = <$data_acces>)
 				{
         	        $refSolicitudes = $ips{$arreglo[0]}{$arreglo[8]}{$arreglo[1]};
                         if($recursoDecodificado ne ""){
-                            push(@$refSolicitudes,"[$recursoDecodificado]");
+                            push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
                         }else{
-                            push(@$refSolicitudes,"[$recurso]");
+                            push(@$refSolicitudes,"[$recurso][$arreglo[5]]");
                         }
             	}
 				else
@@ -303,9 +303,9 @@ while (my $line1 = <$data_acces>)
 	                #No existe la fecha
         	        my @solicitudes =();
                         if($recursoDecodificado ne ""){
-                            push(@$refSolicitudes,"[$recursoDecodificado]");
+                            push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
                         }else{
-                            push(@$refSolicitudes,"[$recurso]");
+                            push(@$refSolicitudes,"[$recurso][$arreglo[5]]");
                         }
 					$refTiempo= $ips{$arreglo[0]}{$arreglo[8]};
 	       	        $$refTiempo{$arreglo[1]} = \@solicitudes;
@@ -316,9 +316,9 @@ while (my $line1 = <$data_acces>)
 	            #No existe el User-Agent $arreglo[8]
         	    my @solicitudes =();
                         if($recursoDecodificado ne ""){
-                            push(@$refSolicitudes,"[$recursoDecodificado]");
+                            push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
                         }else{
-                            push(@$refSolicitudes,"[$recurso]");
+                            push(@$refSolicitudes,"[$recurso][$arreglo[5]]");
                         }
 				my %tiempo = ();
                 $tiempo{$arreglo[1]} = \@solicitudes;
@@ -331,9 +331,9 @@ while (my $line1 = <$data_acces>)
 			#No existe la ip $arreglo[0]
 	        my @solicitudes = ();
                         if($recursoDecodificado ne ""){
-                            push(@$refSolicitudes,"[$recursoDecodificado]");
+                            push(@$refSolicitudes,"[$recursoDecodificado][$arreglo[5]]");
                         }else{
-                            push(@$refSolicitudes,"[$recurso]");
+                            push(@$refSolicitudes,"[$recurso][$arreglo[5]]");
                         }
 	        my %tiempo = ();
         	$tiempo{$arreglo[1]} = \@solicitudes;
@@ -369,9 +369,9 @@ if($analizarCrawler == 1 )
 		print $new_msj_CRAW '		<tbody>';
         foreach my $recurso(keys %recursosDistintos)
 		{
-			print $new_crawler2 "$recurso.\n";
+			print $new_crawler2 "$recurso $recursosDistintos{$recurso}.\n";
 			print $new_msj_CRAW "			<tr>\n";
-			print $new_msj_CRAW '				<td style="width:100%; text-align:left;">'."$recurso</td>\n";
+			print $new_msj_CRAW '				<td style="width:100%; text-align:left;">'."$recurso $recursosDistintos{$recurso}</td>\n";
 			print $new_msj_CRAW "			</tr>\n";
         }
     }
