@@ -1,0 +1,13 @@
+Acunetix
+Nikto
+sqlmap
+Nessus
+Vega
+Zed Attack Proxy
+OpenVAS
+Burp
+wget
+curl
+Skipfish
+AppScan
+Wikto
