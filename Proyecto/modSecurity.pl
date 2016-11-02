@@ -15,6 +15,16 @@ use scripts::utilerias;
 #	MODO DE EJECUCION:  perl scripts/modSecurity.pl ruta/error.log ruta/modsec_audit.log
 #	[+] NOTA: No ejecutar dentro del directorio scripts, sino un directorio fuera de scripts (Proyecto)
 ####
+
+open(my $new_msj_SQLi, '>>', "./mensajeSQLmod.html") or die "Could not open file 'mensajeSQLmod.html' $!";
+open(my $new_msj_XSS, '>>', "./mensajeXSSmod.html") or die "Could not open file 'mensajeXSSmod.html' $!";
+open(my $new_msj_PATH, '>>', "./mensajePATHmod.html") or die "Could not open file 'mensajePATHmod.html' $!";
+
+open(my $new_msj_SQLi3, '>>', "extra/mensajeSQLmod.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_XSS3, '>>', "extra/mensajeXSSmod.txt") or die "Could not open file 'mensaje.txt' $!";
+open(my $new_msj_PATH3, '>>', "extra/mensajePATHmod.txt") or die "Could not open file 'mensaje.txt' $!";
+
+
 my $logErrorPath = $ARGV[0] or die "Leer log de apache\n";
 my $logAuditPath = $ARGV[1];
 my $fecha;
@@ -96,11 +106,51 @@ while (my $lineaError = <$logError>){
 }
 close $logError;
 
+my $cont_sql = 0;
+my $cont_path = 0;
+my $cont_xss = 0;
 foreach my $id(keys %alertas){
     print $ModSec "ID: $id $alertas{$id}\n";
 	print $ModSecReport "ID: $id $alertas{$id}\n";
+	# Obtiene la informacion de modsecurity
+	my $string = "ID: $id $alertas{$id}";
+	my @parsed_fields = ($string =~ m/(?<=\[)[^]]+(?=\])/g);
+	# identifica el tipo de ataque
+	my $ifpath = ($parsed_fields[5] =~ m/path/ig);
+	my $ifsql = ($parsed_fields[5] =~ m/sql/ig);
+	my $ifxss = ($parsed_fields[5] =~ m/xss/ig);
+	if ($ifpath)
+	{
+		$cont_path++;
+		print $new_msj_PATH "			<tr>\n";
+		print $new_msj_PATH '				<td style="width:10%;">'."$parsed_fields[1]</td>\n"	;
+		print $new_msj_PATH '				<td style="width:15%;">'."$parsed_fields[0]</td>\n";
+		print $new_msj_PATH '				<td style="width:50%; text-align:left;">'."$parsed_fields[4]</td>\n";
+		print $new_msj_PATH '				<td style="width:25%; text-align:left;">'."$parsed_fields[2]</td>\n";
+		print $new_msj_PATH "			</tr>\n";
+	}
+	if ($ifxss)
+	{
+		$cont_xss++;
+		print $new_msj_XSS "			<tr>\n";
+		print $new_msj_XSS '				<td style="width:10%;">'."$parsed_fields[1]</td>\n"	;
+		print $new_msj_XSS '				<td style="width:15%;">'."$parsed_fields[0]</td>\n";
+		print $new_msj_XSS '				<td style="width:50%; text-align:left;">'."$parsed_fields[4]</td>\n";
+		print $new_msj_XSS '				<td style="width:25%; text-align:left;">'."$parsed_fields[2]</td>\n";
+		print $new_msj_XSS "			</tr>\n";
+	}
+	if ($ifsql)
+	{
+		$cont_sql++;
+		print $new_msj_SQLi "			<tr>\n";
+		print $new_msj_SQLi '				<td style="width:10%;">'."$parsed_fields[1]</td>\n"	;
+		print $new_msj_SQLi '				<td style="width:15%;">'."$parsed_fields[0]</td>\n";
+		print $new_msj_SQLi '				<td style="width:50%; text-align:left;">'."$parsed_fields[4]</td>\n";
+		print $new_msj_SQLi '				<td style="width:25%; text-align:left;">'."$parsed_fields[2]</td>\n";
+		print $new_msj_SQLi "			</tr>\n";
+	}
 }
 close($ModSec);
-my $detectModSec = `wc -l ModSec.log | cut -d" " -f 1`;
-chomp $detectModSec;
-print "Detecciones ModSecurity: \[$detectModSec\] Ver archivo: ModSec.log para mas información";
+#my $detectModSec = `wc -l ModSec.log | cut -d" " -f 1`;
+#chomp $detectModSec;
+print "Detecciones ModSecurity --> PATH: \[$cont_path\], XSS: \[$cont_xss\], SQLi: \[$cont_sql\] Ver archivo: ModSec.log para mas información";

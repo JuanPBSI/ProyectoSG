@@ -14,7 +14,7 @@ sub urlDecoder{
 	my $uri = URI::Encode->new( { encode_reserved => 0 } );
 	$url = $uri->decode($url);
     }
-
+	$url =~ s/\+/ /ig;
 #### Decodificando BASE64
      #usamos /i para case INSENSITIVE
     if($url =~ /data:.*;base64,(.*)/i){

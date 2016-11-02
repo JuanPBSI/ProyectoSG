@@ -267,7 +267,15 @@ while (my $line1 = <$data_acces>)
 			print $new_msj_DEFC3  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
 			print $new_msj_DEFC "			<tr>\n";
 			print $new_msj_DEFC '				<td style="width:10%;">'."$arreglo[2]</td>\n";
-			print $new_msj_DEFC '				<td style="width:90%; text-align:left;">'."$arreglo[3]</td>\n";
+			print $new_msj_DEFC '				<td style="width:80%; text-align:left;">'."$arreglo[3]</td>\n";
+			if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
+			{
+				print $new_msj_DEFC '				<td style = "width:10%; color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
+			}
+			elsif($arreglo[5] =~ /2..\b/i)
+			{
+				print $new_msj_DEFC '				<td style = "width:10%; color : green; font-weight: bold;">'."$arreglo[5]</td>\n";
+			}
 			print $new_msj_DEFC "			</tr>\n";
 		}
 	}
@@ -351,22 +359,21 @@ if($analizarCrawler == 1 )
 	{
 		print $new_msj_CRAW2  "$ipUserAgent|$dirActual\n";
 		print $new_msj_CRAW3  "$ipUserAgent|$dirActual\n";
+		print $new_msj_CRAW '		<div style="background:#BB9100; text-align:center; color : white; font-family: verdana; font-size: 1em;">'."$ipUserAgent</div>";
 		my %recursosDistintos = %{$hashCrawler{$ipUserAgent}};
-		print $new_msj_CRAW '		<div style="background:#C0C0C0; text-align:center; color : white; font-family: verdana; font-size: 1em;">' + "\n\n\n[Ataque] [IP] [User Agent] [Periodo de tiempo]: $ipUserAgent\n[RecursoDistinto][Codigo de estado]:\n\n" + '</div>';
 		print $new_msj_CRAW '		<thead>';
 		print $new_msj_CRAW '		<tr>';
 		print $new_msj_CRAW '			<th style="width:100%;" >Recurso</th>';
 		print $new_msj_CRAW '		</tr>';
 		print $new_msj_CRAW '		</thead>';
 		print $new_msj_CRAW '		<tbody>';
-		print $new_msj_CRAW "			<tr>\n";
-
         foreach my $recurso(keys %recursosDistintos)
 		{
-			#print $new_crawler "$recurso.\n";
+			print $new_crawler2 "$recurso.\n";
+			print $new_msj_CRAW "			<tr>\n";
 			print $new_msj_CRAW '				<td style="width:100%; text-align:left;">'."$recurso</td>\n";
+			print $new_msj_CRAW "			</tr>\n";
         }
-		print $new_msj_CRAW "			</tr>\n";
     }
 }
 

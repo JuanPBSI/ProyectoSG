@@ -149,6 +149,7 @@ sub decode
 	my $coded_string=$_[0];
 
 	$coded_string=~ s/%20/ /ig;
+	$coded_string=~ s/\+/ /ig;
 	$coded_string=~ s/%22/"/ig;
 	$coded_string=~ s/%25/%/ig;
 	$coded_string=~ s/%27/'/ig;

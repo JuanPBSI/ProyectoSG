@@ -46,6 +46,7 @@ try:
 	cp = subprocess.Popen(["perl", ".cmd.perl", "11" ], stdout=subprocess.PIPE)
 	outputcp, errcp = cp.communicate()
 	clean()
+	check()
 	print "logs OK (limpios)!"
 except:
 	print "logs OK!"
@@ -94,7 +95,8 @@ servidor_modsec = {"ip": " ",
 			   "folder":[],
 			   "log_type":[],
 			   "logs":[],
-			   "rutaWafConfig": " "}
+			   "rutaWafConfig": " ",
+			   "flagDetectionOnly": 0}
 mail = {"from":"unam.cert.log.send@gmail.com",
 		"pass":"", 
 		"to":"",
@@ -143,12 +145,31 @@ def banner():
 	print "\n" + outputDate + "\n"
 
 # Función clean: Copia el template usado en el envío de correo electrónico, se llama cada vez que se envia un eMail
+def check():
+	hrrDir = ['logs', 'parsedLogs', 'extra', 'img', 'sites']
+	hrrDirImportant = ['scripts', 'listas', 'Templates']
+	for folder in hrrDirImportant:
+		if not os.path.exists(folder):
+			print "Faltan archivos cruciales para el funcionamiento: " + folder
+			exit()
+	for folder in hrrDir:
+		if not os.path.exists(folder):
+			os.makedirs(folder)
+	file1 = open('extra/Reporte.html', 'w+')
+	file1.close()
+	file2 = open('extra/ReporteMod.html', 'w+')
+	file2.close()
+
 def clean():
 	shutil.copy('./Templates/mensajeSQL.html','./')
 	shutil.copy('./Templates/mensajeCRAW.html','./')
 	shutil.copy('./Templates/mensajeXSS.html','./')
 	shutil.copy('./Templates/mensajePATH.html','./')
 	shutil.copy('./Templates/mensajeDEFC.html','./')
+	shutil.copy('./Templates/mensajeSQLmod.html','./')
+	shutil.copy('./Templates/mensajeXSSmod.html','./')
+	shutil.copy('./Templates/mensajePATHmod.html','./')
+
 
 # Función loadConfig: Carga las variables del archivo de configuración
 def loadConfig(conFilesPath):
@@ -326,12 +347,9 @@ def get_log_servidor(srv, shell, pathSrv, lineas_inicio, tiempo_logs, file_name,
 		for i,lineas_act in enumerate(lineas_actuales):
 			lineas[i] = int(lineas_act)
 			
-		print colored("No log actual: " + str(count_log), 'cyan')
-		print colored("eMail enviados: " + str(mail["cont-mail"]), 'cyan')
-		print ""
-		for i,lineaNueva in enumerate(lineas):
-			print colored("Nuevas lineas --> " + file_name2[i] +  ": [" + str(lineaNueva - 1) + "], Sitio: " + sitios[i], 'blue')
-		print "Numero maximo de lineas tomadas: " + str(lineas_MAX)
+		#for i,lineaNueva in enumerate(lineas):
+		#	print colored("Nuevas lineas --> " + file_name2[i] +  ": [" + str(lineaNueva - 1) + "], Sitio: " + sitios[i], 'blue')
+		#print "Numero maximo de lineas tomadas: " + str(lineas_MAX)
 
 		# Actualizamos el contador para el nombre del archivo
 		# Borramos el archivo del servidor actual
@@ -387,28 +405,32 @@ def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 				flag = 1
 			else:
 				flag = 0
-		flagDetectionOnly = 0
 		#------Comprueba se ModSecurity esta activado----------#
-		try:
-			f = open(servidor_modsec["rutaWafConfig"])
-			try:
-				for line in f:
-					if re.search('SecRuleEngine DetectionOnly', line):
-						flagDetectionOnly = 1
-						break;
-				else:
-					flagDetectionOnly = 0
-			except Exception as cadena:
-				print "Error en el archivo de configuracion: " + format(cadena)
-			f.close()
-		except Exception as cadena:
-			print "El archivo de configuracion no se puede abrir: " + format(cadena)
-		#flagDetectionOnly = 1
+		#servidor_modsec["flagDetectionOnly"] = 0
+		# try:
+			# f = open(servidor_modsec["rutaWafConfig"])
+			# try:
+				# for line in f:
+					# if re.search('SecRuleEngine DetectionOnly', line):
+						# servidor_modsec["flagDetectionOnly"] = 1
+						# break;
+				# else:
+					# servidor_modsec["flagDetectionOnly"] = 0
+			# except Exception as cadena:
+				# print "Error en el archivo de configuracion: " + format(cadena)
+			# f.close()
+		# except Exception as cadena:
+			# print "El archivo de configuracion no se puede abrir: " + format(cadena)
+		#servidor_modsec["flagDetectionOnly"] = 1
 		#--------------------#
 		if flag == 1:
+			print colored("No log actual: " + str(count), 'cyan')
+			print colored("eMail enviados: " + str(mail["cont-mail"]), 'cyan')
+			print ""
 			for site in Sitios_listas:
+				print u"\nAnálisis para el sitio: "+ colored("[" + site + "]\n", 'yellow')
 				#-------Analisis del mod Security----------#
-				if flagDetectionOnly == 1:
+				if servidor_modsec["flagDetectionOnly"] == 1:
 					print "Mod Security mod: " + colored("[Detection Only]", 'blue');
 					errorWAF = "./logs/" + site + "/ErrorWaf/" + Sitios_listas[site][3] + str(count) + ".txt"
 					auditWAF = "./logs/Audit/ModSec/modsec_audit.log" + str(count) + ".txt"
@@ -419,7 +441,6 @@ def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 				else:
 					print "Mod Security mod: " + colored("[Active]", 'red');
 				#------------------------------------------#
-				print u"\nAnálisis para el sitio: "+ colored("[" + site + "]", 'yellow')
 				accesLog = Sitios_listas[site][2] + str(count) + ".txt"
 				errorLog = Sitios_listas[site][1] + str(count) + ".txt"
 				postgresLog = "./parsedLogs/bd/postgres/" + servidor_bd["file_name_list2"][0] + str(count) + ".txt"
@@ -560,8 +581,8 @@ def graficar(path):
 def send_mail_reporte(mail_report):
 	while 1:
 		tiempo = logcfg["tiempoReportes"]
-		time.sleep(tiempo*3600)
-		#time.sleep(1)
+		#time.sleep(tiempo*3600)
+		time.sleep(1)
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "17" ], stdout=subprocess.PIPE)
 		outputIP1, errIP1 = ipCount.communicate()
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "18" ], stdout=subprocess.PIPE)
@@ -576,6 +597,8 @@ def send_mail_reporte(mail_report):
 		outputIP6, errIP6 = ipCount.communicate()
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "14" ], stdout=subprocess.PIPE)
 		outputIP7, errIP7 = ipCount.communicate()
+		ipCount = subprocess.Popen(["perl", ".cmd.perl", "23" ], stdout=subprocess.PIPE)
+		outputIP8, errIP8 = ipCount.communicate()
 		
 		contIP1, ip1 = getfromPerl(outputIP1)
 		contIP2, ip2 = getfromPerl(outputIP2)
@@ -584,17 +607,18 @@ def send_mail_reporte(mail_report):
 		contIP5, ip5 = getfromPerl(outputIP5)
 		contIP6, ip6 = getfromPerl(outputIP6)
 		contIP7, ip7 = getfromPerl(outputIP7)
+		contIP8, ip8 = getfromPerl(outputIP8)
 		
 		today = date.today()
 		mail_report["html"] += "\n    <h1>Reporte de actividad maliciosa [" + format(today) + "].</h1>\n"
 		mail_report["html"] += "\n    <h1>Secci&oacuten 1 : Resumen de los hallazgos </h1>\n"
-		mail_report["html"] += "    <br><p>Path Traversal: </p><br>\n"
+		mail_report["html"] += "    <br><p>SQL injection: </p><br>\n"
 		for inx, ip in enumerate(ip1):
 			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP1[inx] + "</b></p>\n"
 		mail_report["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
 		for inx, ip in enumerate(ip2):
 			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP2[inx] + "</b></p>\n"
-		mail_report["html"] += "    <br><p>SQL injection: </p><br>\n"
+		mail_report["html"] += "    <br><p>Path Traversal: </p><br>\n"
 		for inx, ip in enumerate(ip3):
 			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP3[inx] + "</b></p>\n"
 		mail_report["html"] += "    <br><p>Crawler: </p><br>\n"
@@ -603,25 +627,45 @@ def send_mail_reporte(mail_report):
 		mail_report["html"] += "    <br><p>Defacement: </p><br>\n"
 		for inx, ip in enumerate(ip5):
 			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP5[inx] + "</b></p>\n"
-		mail_report["html"] += "\n    <h1>Secci&oacuten 2 : Resumen de los hallazgos ModSecurity</h1>\n"
-		mail_report["html"] += "    <p>Detalles: archivo adjunto [ModSecReport.log] </p>\n"
-		mail_report["html"] += "    <br><p>SQL injection: </p><br>\n"
-		for inx, ip in enumerate(ip6):
-			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP6[inx] + "</b></p>\n"
-		mail_report["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
-		for inx, ip in enumerate(ip7):
-			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP7[inx] + "</b></p>\n"
+		if servidor_modsec["flagDetectionOnly"] == 1:
+			mail_report["html"] += "\n    <h1>Secci&oacuten 2 : Resumen de los hallazgos ModSecurity</h1>\n"
+			mail_report["html"] += "    <p>Detalles: archivo adjunto [ModSecReport.log] </p>\n"
+			mail_report["html"] += "    <br><p>SQL injection: </p><br>\n"
+			for inx, ip in enumerate(ip6):
+				mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP6[inx] + "</b></p>\n"
+			mail_report["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
+			for inx, ip in enumerate(ip7):
+				mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP7[inx] + "</b></p>\n"
+			mail_report["html"] += "    <br><p>Path Traversal: </p><br>\n"
+			for inx, ip in enumerate(ip8):
+				mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP8[inx] + "</b></p>\n"
+		
 		mail_report["html"] += "    <br><h1>Secci&oacuten 3 : Gr&aacuteficas [No incluye ModSecurity]</h1><br>\n"
-		mail_report["html"] += "    <br><p>SQL injection: </p><br>\n"
-		mail_report["html"] += '    <br><img src="cid:image1"><br>' + "\n"
-		mail_report["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
-		mail_report["html"] += '    <br><img src="cid:image2"><br>' + "\n"
 		mail_report["html"] += "    <br><p>Path Traversal: </p><br>\n"
-		mail_report["html"] += '    <br><img src="cid:image3"><br>' + "\n"
+		if ip3:
+			mail_report["html"] += '    <br><img src="cid:image1"><br>' + "\n"
+		else:
+			mail_report["html"] += '    <br><h1>[No se gener&oacute informaci&oacuten para este ataque]</h1><br>' + "\n"
+		mail_report["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
+		if ip2:
+			mail_report["html"] += '    <br><img src="cid:image2"><br>' + "\n"
+		else:
+			mail_report["html"] += '    <br><h1>[No se gener&oacute informaci&oacuten para este ataque]</h1><br>' + "\n"
+		mail_report["html"] += "    <br><p>SQL injection: </p><br>\n"
+		if ip1:
+			mail_report["html"] += '    <br><img src="cid:image3"><br>' + "\n"
+		else:
+			mail_report["html"] += '    <br><h1>[No se gener&oacute informaci&oacuten para este ataque]</h1><br>' + "\n"
 		mail_report["html"] += "    <br><p>Defacement: </p><br>\n"
-		mail_report["html"] += '    <br><img src="cid:image4"><br>' + "\n"
+		if ip5:
+			mail_report["html"] += '    <br><img src="cid:image4"><br>' + "\n"
+		else:
+			mail_report["html"] += '    <br><h1>[No se gener&oacute informaci&oacuten para este ataque]</h1><br>' + "\n"
 		mail_report["html"] += "    <br><p>Crawler: </p><br>\n"
-		mail_report["html"] += '    <br><img src="cid:image5"><br>' + "\n"
+		if ip6:
+			mail_report["html"] += '    <br><img src="cid:image5"><br>' + "\n"
+		else:
+			mail_report["html"] += '    <br><h1>[No se gener&oacute informaci&oacuten para este ataque]</h1><br>' + "\n"
 		graficar('cod_status.txt')
 		print colored(u"Se envio correo de reporte diario",'red')
 		report = ['img/report1.png','img/report2.png','img/report3.png','img/report4.png','img/report5.png']
@@ -643,7 +687,7 @@ def send_mail(mail, sitio, cont_time):
 	cont_encuentros_mail = int(res[7])	
 	#if ( (cont_PATH > 1) or (cont_encuentros > 30) or (cont_XSS > 30) or (cont_encuentros_user > 30) or (cont_encuentros_ref > 30) or (cont_encuentros_mail > 1) or (cont_DEF > 1) or (cont_CRAW > 1) ):
 	# Si en script analizador.pl genera eventos eniara correo electronico
-	if ( (cont_PATH > 1) or (cont_encuentros > 30) or (cont_XSS > 1) or (cont_encuentros_user > 30) or (cont_encuentros_ref > 30) or (cont_encuentros_mail > 1) or (cont_DEF > 1) or (cont_CRAW > 1) ) and (cont_time <= len(Sitios_listas)):
+	if ( (cont_PATH >= 1) or (cont_encuentros >= 30) or (cont_XSS >= 1) or (cont_encuentros_user >= 30) or (cont_encuentros_ref >= 30) or (cont_encuentros_mail >= 1) or (cont_DEF >= 1) or (cont_CRAW >= 1) ) and (cont_time <= len(Sitios_listas)):
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "1" ], stdout=subprocess.PIPE)
 		outputIP1, errIP1 = ipCount.communicate()
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "2" ], stdout=subprocess.PIPE)
@@ -660,14 +704,6 @@ def send_mail(mail, sitio, cont_time):
 		outputIP7, errIP7 = ipCount.communicate()
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "22" ], stdout=subprocess.PIPE)
 		outputIP8, errIP8 = ipCount.communicate()
-		userCount = subprocess.Popen(["perl", ".cmd.perl", "6" ], stdout=subprocess.PIPE)
-		outputU1, errU1 = userCount.communicate()
-		userCount = subprocess.Popen(["perl", ".cmd.perl", "7" ], stdout=subprocess.PIPE)
-		outputU2, errU1 = userCount.communicate()
-		userCount = subprocess.Popen(["perl", ".cmd.perl", "8" ], stdout=subprocess.PIPE)
-		outputU3, errU1 = userCount.communicate()
-		userCount = subprocess.Popen(["perl", ".cmd.perl", "10" ], stdout=subprocess.PIPE)
-		outputU5, errU5 = userCount.communicate()
 		
 		contIP1, ip1 = getfromPerl(outputIP1)
 		contIP2, ip2 = getfromPerl(outputIP2)
@@ -677,10 +713,6 @@ def send_mail(mail, sitio, cont_time):
 		contIP6, ip6 = getfromPerl(outputIP6)
 		contIP7, ip7 = getfromPerl(outputIP7)
 		contIP8, ip8 = getfromPerl(outputIP8)
-		contUser1, agent1 = getfromPerl(outputU1)
-		contUser2, agent2 = getfromPerl(outputU2)
-		contUser3, agent3 = getfromPerl(outputU3)
-		contUser5, agent5 = getfromPerl(outputU5)
 			
 		mail["html"] += "\n    <h1>Sitio: " + sitio + " </h1>\n"
 		mail["html"] += "\n    <h1>Seccion 1 : Resumen de los hallazgos </h1>\n"
@@ -705,19 +737,20 @@ def send_mail(mail, sitio, cont_time):
 		#mail["html"] += "    <p>------> Num. detecciones: " + str(cont_DEF) + "</p><br>\n"
 		for inx, ip in enumerate(ip5):
 			mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP5[inx] + "</b></p>\n"
-		mail_report["html"] += "\n    <h1>Secci&oacuten 2 : Resumen de los hallazgos ModSecurity</h1>\n"
-		mail_report["html"] += "    <p>Detalles: archivo adjunto [ModSec.log] </p>\n"
-		mail_report["html"] += "    <br><p>SQL injection: </p><br>\n"
-		for inx, ip in enumerate(ip6):
-			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP6[inx] + "</b></p>\n"
-		mail_report["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
-		for inx, ip in enumerate(ip7):
-			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP7[inx] + "</b></p>\n"
-		mail_report["html"] += "    <br><p>Path Traversal: </p><br>\n"
-		for inx, ip in enumerate(ip8):
-			mail_report["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP8[inx] + "</b></p>\n"
+		if servidor_modsec["flagDetectionOnly"] == 1:
+			mail["html"] += "\n    <h1>Secci&oacuten 2 : Resumen de los hallazgos ModSecurity</h1>\n"
+			#mail["html"] += "    <p>Detalles: archivo adjunto [ModSec.log] </p>\n"
+			mail["html"] += "    <br><p>SQL injection: </p><br>\n"
+			for inx, ip in enumerate(ip6):
+				mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP6[inx] + "</b></p>\n"
+			mail["html"] += "    <br><p>Cross Site Scripting: </p><br>\n"
+			for inx, ip in enumerate(ip7):
+				mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP7[inx] + "</b></p>\n"
+			mail["html"] += "    <br><p>Path Traversal: </p><br>\n"
+			for inx, ip in enumerate(ip8):
+				mail["html"] += "    <p>------> IP de origen: <b>" + ip + "</b>  Cantidad: <b>" + contIP8[inx] + "</b></p>\n"
 
-		mail["html"] += "    <br><h1>Secci&oacuten 3 : Detalles [No incluye ModSecurity] </h1><br>\n"
+		mail["html"] += "    <br><h1>Secci&oacuten 3 : Detalles </h1><br>\n"
 		f = open("mensajeSQL.html", 'r+')
 		sqliHtml = f.read()
 		f.close()
@@ -738,10 +771,41 @@ def send_mail(mail, sitio, cont_time):
 		mail["html"] += pathHtml
 		mail["html"] += pathCraw
 		mail["html"] += pathDEFC
+		mail["html"] += "<br>"
+		if servidor_modsec["flagDetectionOnly"] == 1:
+			f = open("mensajeSQLmod.html", 'r+')
+			sqliHtml2 = f.read()
+			f.close()
+			f = open("mensajeXSSmod.html", 'r+')
+			xssHtml2 = f.read()
+			f.close()
+			f = open("mensajePATHmod.html", 'r+')
+			pathHtml2 = f.read()
+			f.close()
+			mail["html"] += sqliHtml2
+			mail["html"] += xssHtml2
+			mail["html"] += pathHtml2
 		print colored(u"-------------------------->[ ¡¡¡¡¡Tal véz te esten atacando: ಠ_ಠ  !!!!!]<-----------------------------------------------------------",'red')
 		mail["cont-mail"] = mail["cont-mail"] + 1
 		cont_time = cont_time + 1;
 		sendEmail(mail["from"], mail["pass"], mail["to"], mail["asunto"], mail["html"], mail["text"])
+		
+		today = date.today()
+		if servidor_modsec["flagDetectionOnly"] == 1:
+			RepHrr = open("extra/Reporte.html", "a")
+			RepHrr.write('<h1>Reporte Aplicacion: [' + format(today) + ']</h1>')
+			RepHrr.write(sqliHtml)
+			RepHrr.write(xssHtml)
+			RepHrr.write(pathHtml)
+			RepHrr.write(pathCraw)
+			RepHrr.write(pathDEFC)
+			RepHrr.close()
+			RepHrrMod = open("extra/ReporteMod.html", "a")
+			RepHrrMod.write('<h1>Reporte ModSecurity: [' + format(today) + ']</h1>')
+			RepHrrMod.write(sqliHtml2)
+			RepHrrMod.write(xssHtml2)
+			RepHrrMod.write(pathHtml2)
+			RepHrrMod.close()
 		clean()
 	if (cont_time != 0):
 		cont_time = cont_time + 1;
@@ -751,7 +815,7 @@ def send_mail(mail, sitio, cont_time):
 
 # Funcion sendEmail: configura para poder enviar correo con HTML
 def sendEmail(user, pwd, recipient, subject, html, text):
-	print "adentro"
+	#print "adentro"
 	mail["flag-mail"] = 0
 	gmail_user = user
 	gmail_pwd = pwd
@@ -765,11 +829,11 @@ def sendEmail(user, pwd, recipient, subject, html, text):
 	part2 = MIMEText(html, 'html')
 	msg.attach(part1)
 	msg.attach(part2)
-	fil = open('./ModSec.log', "rb")
-	file = MIMEApplication(fil.read(), Name=basename('./ModSec.log'))
-	file['Content-Disposition'] = 'attachment; filename="%s"' % basename('./ModSec.log')
-	msg.attach(file)
-	fil.close()
+	#fil = open('./ModSec.log', "rb")
+	#file = MIMEApplication(fil.read(), Name=basename('./ModSec.log'))
+	#file['Content-Disposition'] = 'attachment; filename="%s"' % basename('./ModSec.log')
+	#msg.attach(file)
+	#fil.close()
 	try:
 		server = smtplib.SMTP("smtp.gmail.com", 587)
 		server.ehlo()
@@ -783,7 +847,7 @@ def sendEmail(user, pwd, recipient, subject, html, text):
 
 # Funcion sendEmail: configura para poder enviar correo con HTML e imagenes adjuntas
 def sendEmailMIME(user, pwd, recipient, subject, html, images):
-	print "adentro"
+	#print "adentro"
 	mail["flag-mail"] = 0
 	gmail_user = user
 	gmail_pwd = pwd
@@ -810,12 +874,19 @@ def sendEmailMIME(user, pwd, recipient, subject, html, images):
 
 		msgImage.add_header('Content-ID', '<image' + str(i+1) + '>')
 		msgRoot.attach(msgImage)
-
-	fil = open('./ModSec.log', "rb")
-	file = MIMEApplication(fil.read(), Name=basename('./ModSecReport.log'))
-	file['Content-Disposition'] = 'attachment; filename="%s"' % basename('./ModSecReport.log')
-	msgRoot.attach(file)
-	fil.close()
+	
+	today = date.today()
+	fil1 = open('extra/Reporte.html', "rb")
+	file1 = MIMEApplication(fil1.read(), Name=basename('./Report[' + format(today) + '].html'))
+	file1['Content-Disposition'] = 'attachment; filename="%s"' % basename('./Report[' + format(today) + '].html')
+	
+	fil2 = open('extra/ReporteMod.html', "rb")
+	file2 = MIMEApplication(fil2.read(), Name=basename('./ReportModSec[' + format(today) + '].html'))
+	file2['Content-Disposition'] = 'attachment; filename="%s"' % basename('./ReportModSec[' + format(today) + '].html')
+	msgRoot.attach(file1)
+	msgRoot.attach(file2)
+	fil1.close()
+	fil2.close()
 
 	# Limpia los archivos que contienen la info utilizada para los reportes
 	open("extra/mensajeSQL.txt", 'w').close()
@@ -824,8 +895,10 @@ def sendEmailMIME(user, pwd, recipient, subject, html, images):
 	open("extra/mensajeCRAW.txt", 'w').close()
 	open("extra/mensajeDEFC.txt", 'w').close()
 	open("extra/CrawlerData.txt", 'w').close()
-	open("extra/cod_status.txt", 'w').close()
+	open("cod_status.txt", 'w').close()
 	open("./ModSecReport.log", 'w').close()
+	open("extra/Reporte.html", 'w').close()
+	open("extra/ReporteMod.html", 'w').close()
 	try:
 		server = smtplib.SMTP("smtp.gmail.com", 587)
 		server.ehlo()
