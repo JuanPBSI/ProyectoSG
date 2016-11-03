@@ -45,24 +45,28 @@ export PERL_MM_USE_DEFAULT=1
 	pip install pysftp
 
 } || { # catch
+	echo "Error al intentar instalar pysftp reitentando....."
 	pip install pysftp
 }
 { # try
 	pip install pysftp
 
 } || { # catch
+	echo "Error al intentar instalar pysftp reitentando....."
 	pip install pysftp
 }
 { # try
 	pip install spur
 
 } || { # catch
+	echo "Error al intentar instalar Spur reitentando....."
 	pip install spur
 }
 { # try
 	pip install spur
 
 } || { # catch
+	echo "Error al intentar instalar Spur reitentando....."
 	pip install spur
 }
 pip install termcolor
