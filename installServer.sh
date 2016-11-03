@@ -34,7 +34,7 @@ chmod -R 755 /home/$usuario/Proyecto
 echo "=== Se instalaran los paquetes correspondientes: es necesariio tener conexión a internet ==="
 apt-get update
 apt-get install openssh-server python-pip  build-essential libssl-dev libffi-dev python-dev -y
-apt-get install python-pandas python-reportlab python-numpy python-matplotlib -y
+apt-get install python-pandas python-reportlab python-numpy python-spur python-matplotlib -y
 clear
 echo "=== INSTALAR SERVER ==="echo
 echo
@@ -42,16 +42,16 @@ echo
 echo "[+] NOTA: Posiblemente pida alguna autorizacion, escribir yes en todas las solicitudes:"
 export PERL_MM_USE_DEFAULT=1
 { # try
-	pip install pysftp && pip install spur
+	pip install pysftp
 
 } || { # catch
-	pip install pysftp && pip install spur
+	pip install pysftp
 }
 { # try
-	pip install pysftp && pip install spur
+	pip install pysftp
 
 } || { # catch
-	pip install pysftp && pip install spur
+	pip install pysftp
 }
 pip install termcolor
 cpan MIME::Base64
