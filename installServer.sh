@@ -70,10 +70,30 @@ export PERL_MM_USE_DEFAULT=1
 	echo "[ERROR] No se pudo instalar spur vuelva a ejecutar el script para intentar de nuevo....."
 	exit
 }
-pip install termcolor
-cpan MIME::Base64
-cpan URI::Encode
-cpan Date::Parse
+{ # try
+	pip install termcolor
+} || { # catch
+	echo "[ERROR] No se pudo instalar termcolor vuelva a ejecutar el script para intentar de nuevo....."
+	exit
+}
+{ # try
+	cpan MIME::Base64
+} || { # catch
+	echo "[ERROR] No se pudo instalar MIME::Base64 vuelva a ejecutar el script para intentar de nuevo....."
+	exit
+}
+{ # try
+	cpan URI::Encode
+} || { # catch
+	echo "[ERROR] No se pudo instalar URI::Encode vuelva a ejecutar el script para intentar de nuevo....."
+	exit
+}
+{ # try
+	cpan Date::Parse
+} || { # catch
+	echo "[ERROR] No se pudo instalar Date::Parse vuelva a ejecutar el script para intentar de nuevo....."
+	exit
+}
 { # try
 	chmod 755 /etc/modsecurity/modsecurity.conf
 } || { # catch
