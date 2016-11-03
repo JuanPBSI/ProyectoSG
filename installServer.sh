@@ -53,6 +53,7 @@ export PERL_MM_USE_DEFAULT=1
 } || { # catch
 	pip install pysftp
 }
+pip install spur
 pip install termcolor
 cpan MIME::Base64
 cpan URI::Encode
