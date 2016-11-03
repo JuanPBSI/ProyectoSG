@@ -41,8 +41,18 @@ echo
 echo
 echo "[+] NOTA: Posiblemente pida alguna autorizacion, escribir yes en todas las solicitudes:"
 export PERL_MM_USE_DEFAULT=1
-pip install pysftp
-pip install spur
+{ # try
+	pip install pysftp && pip install spur
+
+} || { # catch
+	pip install pysftp && pip install spur
+}
+{ # try
+	pip install pysftp && pip install spur
+
+} || { # catch
+	pip install pysftp && pip install spur
+}
 pip install termcolor
 cpan MIME::Base64
 cpan URI::Encode
