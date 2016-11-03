@@ -33,8 +33,12 @@ chmod -R 755 /home/$usuario/Proyecto
 
 echo "=== Se instalaran los paquetes correspondientes: es necesariio tener conexión a internet ==="
 apt-get update
-apt-get install openssh-server python-pip  build-essential libssl-dev libffi-dev python-dev -y
-apt-get install python-pandas python-reportlab python-numpy python-matplotlib -y
+{ # try
+	apt-get install openssh-server python-pip  build-essential libssl-dev libffi-dev python-dev python-pandas python-reportlab python-numpy python-matplotlib -y
+} || { # catch
+	echo "[+] Hubo un error en la instalación vuelva a ejecutar el script para intentar de nuevo....."
+	exit
+}
 clear
 echo "=== INSTALAR SERVER ==="echo
 echo
@@ -50,30 +54,32 @@ export PERL_MM_USE_DEFAULT=1
 }
 { # try
 	pip install pysftp
-
 } || { # catch
-	echo "Error al intentar instalar pysftp reitentando....."
-	pip install pysftp
+	echo "[ERROR] No se pudo instalar pysftp vuelva a ejecutar el script para intentar de nuevo....."
+	exit
 }
 { # try
 	pip install spur
-
 } || { # catch
 	echo "Error al intentar instalar Spur reitentando....."
 	pip install spur
 }
 { # try
 	pip install spur
-
 } || { # catch
-	echo "Error al intentar instalar Spur reitentando....."
-	pip install spur
+	echo "[ERROR] No se pudo instalar spur vuelva a ejecutar el script para intentar de nuevo....."
+	exit
 }
 pip install termcolor
 cpan MIME::Base64
 cpan URI::Encode
 cpan Date::Parse
-chmod 755 /etc/modsecurity/modsecurity.conf
+{ # try
+	chmod 755 /etc/modsecurity/modsecurity.conf
+} || { # catch
+	echo "[ERROR] No se encontró en archivo de configuración de ModSecurity....."
+	exit
+}
 # Necesario para crear las imagenes fuera de un ambiente grafico
 sed -i -e 's/backend      : TkAgg/backend      : Agg/g' /etc/matplotlibrc
 clear
