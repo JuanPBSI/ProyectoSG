@@ -34,7 +34,7 @@ chmod -R 755 /home/$usuario/Proyecto
 echo "=== Se instalaran los paquetes correspondientes: es necesariio tener conexión a internet ==="
 apt-get update
 apt-get install openssh-server python-pip  build-essential libssl-dev libffi-dev python-dev -y
-apt-get install python-pandas python-reportlab python-numpy python-spur python-matplotlib -y
+apt-get install python-pandas python-reportlab python-numpy python-matplotlib -y
 clear
 echo "=== INSTALAR SERVER ==="echo
 echo
