@@ -26,7 +26,7 @@ echo "=== COPIAR LLAVE PUBLICA SERVIDOR APACHE ==="
 echo
 echo
 echo
-echo -n "[?]Ingresa la direccion IP del servidor APACHE: "
+echo -n "[?]Ingresa la direccion IP del servidor APACHE:  "
 read ipApache
 #Validando que la ip no este vacio
 until [ ! -z "$ipApache" ]; do
@@ -35,14 +35,14 @@ until [ ! -z "$ipApache" ]; do
     echo
     echo
     echo
-    echo -n "[X] Error: Ingresa la direccion IP del servidor APACHE "
+    echo -n "[X] Error: Ingresa la direccion IP del servidor APACHE:  "
     read ipApache
 done
 
 #Guardando la ip en el archivo de configuracion, por defecto en el archivo no tiene un valor la variable ipApache
 sed -i -e"s/ipApache =/ipApache = \x22$ipApache\x22/" ~/Proyecto/config.conf
 echo
-echo -n "[?]Ingresa cualquier USUARIO con permisos de lectura en el log de APACHE:  "
+echo -n "[?]Ingresa cualquier USUARIO con permisos de lectura en el log de APACHE y además que sea capaz de cambiar la fecha y hora del servidor:  "
 read usuarioApache
 #Validando que el usuario no este vacio
 until [ ! -z "$usuarioApache" ]; do
@@ -51,7 +51,7 @@ until [ ! -z "$usuarioApache" ]; do
     echo
     echo
     echo
-    echo -n "[X]Error: Ingresa cualquier usuario con permisos de lectura en el log de APACHE:  "
+    echo -n "[X]Error: Ingresa cualquier usuario con permisos de lectura en el log de APACHE y además que sea capaz de cambiar la fecha y hora del servidor:  "
     read usuarioApache
 done
 
@@ -59,7 +59,7 @@ done
 #Guardando el usuario en el archivo de configuracion, por defecto en el archivo no tiene un valor la variable usuarioApache
 sed -i -e"s/usuarioWeb =/usuarioWeb = \x22$usuarioApache\x22/" ~/Proyecto/config.conf
 echo
-echo -n "[+] NOTA: Probablemente pida alguna autorización, favor de decir yes a todas las preguntas y escribir la contraseña del servidor POSTGRES cuando lo solicite, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar. Verifica la IP y el usuario"
+echo -n "[+] NOTA: Probablemente se le solicitará  autorizar algunas acciones, favor de decir yes a todas las preguntas y escribir la contraseña del servidor APACHE las veces que se le indique, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar. Verifica la IP y el usuario"
 echo
 echo
 #Se crea el directorio .ssh porque por defecto no existe y en ese directorio se va a encontrar el repositorio de llaves autorizadas.
@@ -89,7 +89,7 @@ until [ ! -z "$ipBD" ]; do
     echo
     echo
     echo
-    echo -n "[X] Error: Ingresa la direccion IP del servidor POSTGRES  "
+    echo -n "[X] Error: Ingresa la direccion IP del servidor POSTGRES:  "
     read ipBD
 done
 
@@ -97,7 +97,7 @@ done
 sed -i -e"s/ipPostgres =/ipPostgres = \x22$ipBD\x22/" ~/Proyecto/config.conf
 
 echo
-echo -n "[?]Ingresa cualquier USUARIO con permisos de lectura en el log de POSTGRES:  "
+echo -n "[?]Ingresa cualquier USUARIO con permisos de lectura en el log de POSTGRES y además que sea capaz de cambiar la fecha y hora del servidor: "
 read usuarioBD
 #Validando que el usuario no este vacio
 until [ ! -z "$usuarioBD" ]; do
@@ -106,7 +106,7 @@ until [ ! -z "$usuarioBD" ]; do
     echo
     echo
     echo
-    echo -n "[X]Error: Ingresa cualquier usuario con permisos de lectura en el log de POSTGRES:"
+    echo -n "[X]Error: Ingresa cualquier usuario con permisos de lectura en el log de POSTGRES y además que sea capaz de cambiar la fecha y hora del servidor: "
     read usuarioBD
 done
 
@@ -114,7 +114,7 @@ done
 #Guardando el usuario en el archivo de configuracion, por defecto en el archivo no tiene un valor la variable usuarioPostgres
 sed -i -e"s/usuarioBD =/usuarioBD = \x22$usuarioBD\x22/" ~/Proyecto/config.conf
 echo
-echo -n "[+] NOTA: Probablemente pida alguna autorización, favor de decir yes a todas las preguntas y escribir la contraseña del servidor POSTGRES cuando lo solicite, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar. Verifica la IP y el usuario"
+echo -n "[+] NOTA: Probablemente se le solicitará  autorizar algunas acciones, favor de decir yes a todas las preguntas y escribir la contraseña del servidor POSTGRESE las veces que se le indique, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar. Verifica la IP y el usuario"
 echo
 echo
 #Se crea el directorio .ssh porque por defecto no existe y en ese directorio se va a encontrar el repositorio de llaves autorizadas.
@@ -133,7 +133,7 @@ ssh $usuarioBD@$ipBD "chmod 700 .ssh; chmod 640 ~/.ssh/authorized_keys"
 
 
 clear
-echo "=== COPIAR LLAVE PUBLICA SERVIDOR WAF ==="
+echo "=== COPIAR LLAVE PUBLICA SERVIDOR WAF (ModSecurity) ==="
 echo
 echo
 echo
@@ -142,11 +142,11 @@ read ipWAF
 #Validando que la ip no este vacio
 until [ ! -z "$ipWAF" ]; do
     clear
-    echo "=== COPIAR LLAVE PUBLICA SERVIDOR WAF ==="
+    echo "=== COPIAR LLAVE PUBLICA SERVIDOR WAF (ModSecurity) ==="
     echo
     echo
     echo
-    echo -n "[X] Error: Ingresa la direccion IP del servidor WAF "
+    echo -n "[X] Error: Ingresa la direccion IP del servidor WAF:  "
     read ipWAF
 done
 
@@ -154,16 +154,16 @@ done
 sed -i -e"s/ipWaf =/ipWaf = \x22$ipWAF\x22/"  ~/Proyecto/config.conf
 
 echo
-echo -n "[?]Ingresa cualquier USUARIO con permisos de lectura en el log de WAF y también para poder cambiar la fecha y hora:  "
+echo -n "[?]Ingresa cualquier USUARIO con permisos de lectura en los logs de ModSecurity y Apache, y además que sea capaz para cambiar la fecha y hora del servidor:  "
 read usuarioWAF
 #Validando que el usuario no este vacio
 until [ ! -z "$usuarioWAF" ]; do
     clear
-    echo "=== COPIAR LLAVE PUBLICA SERVIDOR WAF ==="
+    echo "=== COPIAR LLAVE PUBLICA SERVIDOR WAF (ModSecurity) ==="
     echo
     echo
     echo
-    echo -n "[X]Error: Ingresa cualquier usuario con permisos de lectura en el log de WAF y también para poder cambiar la fecha y hora:"
+    echo -n "[X]Error: Ingresa cualquier usuario con permisos de lectura en en los logs de ModSecurity y Apache, y además que sea capaz cambiar la fecha y hora del servidor:  "
     read usuarioWAF
 done
 
@@ -171,7 +171,7 @@ done
 #Guardando el usuario en el archivo de configuracion, por defecto en el archivo no tiene un valor la variable usuarioPostgres
 sed -i -e"s/usuarioWaf =/usuarioWaf = \x22$usuarioWAF\x22/"  ~/Proyecto/config.conf
 echo
-echo -n "[+] NOTA: Probablemente pida alguna autorización, favor de decir yes a todas las preguntas y escribir la contraseña del servidor WAF cuando lo solicite, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar. Verifica la IP y el usuario"
+echo -n "[+] NOTA: Probablemente se le solicitará  autorizar algunas acciones, favor de decir yes a todas las preguntas y escribir la contraseña del servidor WAF(ModSecurity) las veces que se le indique, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar. Verifica la IP y el usuario"
 echo
 echo
 #Se crea el directorio .ssh porque por defecto no existe y en ese directorio se va a encontrar el repositorio de llaves autorizadas.
@@ -220,8 +220,8 @@ done
 	echo
 	echo
 	echo
-	echo  "-Presione 1 para ingresar la hora manualmente."
-	echo  "-Presione 2 para que los servidores Apache y Postgres tengan la misma hora y fecha del servidor WAF."
+	echo  "-Presione 1 para ingresar la fecha y hora."
+	echo  "-Presione 2 para sincronizar la fecha y hora automaticamente."
 	echo -n "Seleccione una opcion: "
 	read opcionTiempo
 	until !([ "$opcionTiempo" != "1" ] &&  [ "$opcionTiempo" != "2" ] ); do
@@ -231,8 +231,8 @@ done
 	    echo
 	    echo
 	    echo -n "[X] Error:"
-	    echo  "-Presione 1 para ingresar la hora manualmente."
-	    echo  "-Presione 2 para que los servidores Apache y Postgres tengan la misma hora y fecha del servidor WAF."
+	    echo  "-Presione 1 para ingresar la fecha y hora."
+	    echo  "-Presione 2 para sincronizar la fecha y hora automaticamente."
 	    echo -n "Seleccione una opcion: "
 	    read opcionTiempo
 	done
@@ -243,7 +243,10 @@ done
 	    echo
 	    echo
 	    echo  "[?] Ingrese la fecha bajo el siguiente formato: AnioMesDia Hora:Minuto:Segundo 20161102 06:10:00 \n"
+   	    echo  "[+] NOTA: Para indicar las horas se usara el formato de 24 horas."
+	    echo
    	    echo  "[+] NOTA: Después de ingresar la hora deberá escribir la contraseña de usuario $usuarioWAF del  servidor WAF, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar."
+	    echo
  	    echo -n "Ingrese una hora: "
 	    read hora
 	    until [ ! -z "$hora" ]; do
@@ -253,13 +256,18 @@ done
 	        echo
         	echo
 	        echo  "[X] Error: Ingrese la fecha bajo el siguiente formato: AnioMesDia Hora:Minuto:Segundo 20161102 06:10:00 \n"
-		echo  "[+] NOTA: Después de ingresar la hora deberá escribir la contraseña de usuario $usuarioWAF del  servidor WAF, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar."
+   		echo  "[+] NOTA: Para indicar las horas se usara el formato de 24 horas."
+		echo
+	  	echo  "[+] NOTA: Después de ingresar la hora deberá escribir la contraseña de usuario $usuarioWAF del  servidor WAF, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar."
+		echo
 		echo -n "Ingrese una hora: "
         	read hora
 	    done
 	    hora1=\"$hora\"
-	    su -c "date --set=$hora1" -
+	    su -c "echo ;echo -n Servidor WAF:   ;date --set=$hora1" -
+	    echo -n "Servidor Web:  "
 	    ssh $usuarioApache@$ipApache "date --set=$hora1"
+	    echo -n "Servidor de Base de datos:  "
 	    ssh $usuarioBD@$ipBD "date --set=$hora1"
 
 
@@ -272,13 +280,15 @@ done
    	    echo  "[+] NOTA: Favor de escribir la contraseña de usuario $usuarioWAF del  servidor WAF, si la contraseña es incorrecta, favor de cancelar el script y volverlo a ejecutar."
 	    hora=$(date "+%Y%m%d %H:%M:%S")
 	    hora1=\"$hora\"
-	    su -c "date --set=$hora1" -
+	    su -c "echo ;echo -n Servidor WAF:   ;date --set=$hora1" -
+            echo -n "Servidor Web:  "
 	    ssh $usuarioApache@$ipApache "date --set=$hora1"
+            echo -n "Servidor de Base de datos:  "
 	    ssh $usuarioBD@$ipBD "date --set=$hora1"
 
 	fi
 
-    else
-    	exit 1;
     fi
 
+echo "La instalación ha terminado"
+echo
