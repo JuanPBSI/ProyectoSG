@@ -153,7 +153,11 @@ mail_report = {"from":"unam.cert.log.send@gmail.com",
 Sitios_listas = {}
 logcfg = {"time_log":0,
 		"max_size_log":0,
-		"tiempoReportes":0}
+		"tiempoReportes":0,
+		"eventSQL":1,
+		"eventXSS":1,
+		"eventCRAW":1,
+		"eventPATH":1}
 
 # Clase bcolors: necesaria para mostrar colores de letra en la terminal
 class bcolors:
@@ -246,6 +250,11 @@ def loadConfig(conFilesPath):
 		logcfg["max_size_log"] = int(re.search('".*"', re.search('maxLinesLog.*', confContent).group(0)).group(0).split('"')[1])
 		logcfg["time_log"] = int(re.search('".*"', re.search('tiempoMonitoreo.*', confContent).group(0)).group(0).split('"')[1])
 		logcfg["tiempoReportes"] = int(re.search('".*"', re.search('tiempoReportes.*', confContent).group(0)).group(0).split('"')[1])
+		logcfg["eventSQL"] = int(re.search('".*"', re.search('eventSQL.*', confContent).group(0)).group(0).split('"')[1])
+		logcfg["eventXSS"] = int(re.search('".*"', re.search('eventXSS.*', confContent).group(0)).group(0).split('"')[1])
+		logcfg["eventCRAW"] = int(re.search('".*"', re.search('eventCRAW.*', confContent).group(0)).group(0).split('"')[1])
+		logcfg["eventPATH"] = int(re.search('".*"', re.search('eventPATH.*', confContent).group(0)).group(0).split('"')[1])
+		logcfg["eventDEFACEMENT"] = int(re.search('".*"', re.search('eventDEFACEMENT.*', confContent).group(0)).group(0).split('"')[1])
 		f.close()
 	except Exception as cadena:
 		print "Error en el archivo de configuracion: " + format(cadena)
@@ -868,7 +877,7 @@ def send_mail(mail, sitio, cont_time):
 		RepHrrMod.close()
 
 	#if ( (cont_PATH >= 1) or (cont_encuentros >= 30) or (cont_XSS >= 1) or (cont_encuentros_user >= 30) or (cont_encuentros_ref >= 30) or (cont_encuentros_mail >= 1) or (cont_DEF >= 1) or (cont_CRAW >= 1) ) and (cont_time <= len(Sitios_listas)):
-	if ( (cont_PATH >= 1) or (cont_encuentros >= 30) or (cont_XSS >= 1) or (cont_encuentros_user >= 30) or (cont_encuentros_ref >= 30) or (cont_encuentros_mail >= 1) or (cont_DEF >= 1) or (cont_CRAW >= 1) ):
+	if ( (cont_PATH >= logcfg["eventPATH"]) or (cont_encuentros >= logcfg["eventSQL"]) or (cont_XSS >= logcfg["eventXSS"]) or (cont_encuentros_user >= logcfg["eventSQL"]) or (cont_encuentros_ref >= logcfg["eventSQL"]) or (cont_encuentros_mail >= logcfg["eventSQL"]) or (cont_DEF >= logcfg["eventDEFACEMENT"]) or (cont_CRAW >= logcfg["eventCRAW"]) ):
 		print colored(u"-------------------------->[ ¡¡¡¡¡Tal véz te esten atacando: ಠ_ಠ  !!!!!]<-----------------------------------------------------------",'red')
 		mail["cont-mail"] = mail["cont-mail"] + 1
 		cont_time = cont_time + 1;
