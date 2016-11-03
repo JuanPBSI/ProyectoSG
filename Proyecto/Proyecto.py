@@ -453,7 +453,7 @@ def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 			f.close()
 		except Exception as cadena:
 			print "El archivo de configuracion no se puede abrir: " + format(cadena)
-		servidor_modsec["flagDetectionOnly"] = 0
+		#servidor_modsec["flagDetectionOnly"] = 1
 		#--------------------#
 		if flag == 1:
 			print colored("No log actual: " + str(count), 'cyan')
@@ -616,7 +616,7 @@ def graficar(path):
 def send_mail_reporte(mail_report):
 	while 1:
 		tiempo = logcfg["tiempoReportes"]
-		time.sleep(tiempo*3600)
+		time.sleep(tiempo*60)
 		#time.sleep(1)
 		ipCount = subprocess.Popen(["perl", ".cmd.perl", "17" ], stdout=subprocess.PIPE)
 		outputIP1, errIP1 = ipCount.communicate()
@@ -720,7 +720,6 @@ def send_mail(mail, sitio, cont_time):
 	cont_DEF = int(res[5])
 	cont_CRAW = int(res[6])
 	cont_encuentros_mail = int(res[7])
-	time.sleep(1)
 	#if ( (cont_PATH > 1) or (cont_encuentros > 30) or (cont_XSS > 30) or (cont_encuentros_user > 30) or (cont_encuentros_ref > 30) or (cont_encuentros_mail > 1) or (cont_DEF > 1) or (cont_CRAW > 1) ):
 	# Si en script analizador.pl genera eventos eniara correo electronico
 

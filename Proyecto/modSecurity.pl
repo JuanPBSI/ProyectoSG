@@ -119,6 +119,8 @@ foreach my $id(keys %alertas){
 	my $ifpath = ($parsed_fields[5] =~ m/path/ig);
 	my $ifsql = ($parsed_fields[5] =~ m/sql/ig);
 	my $ifxss = ($parsed_fields[5] =~ m/xss/ig);
+	$parsed_fields[4] =~ s/\</\&lt/;
+	$parsed_fields[4] =~ s/\>/\&gt/;
 	if ($ifpath)
 	{
 		$cont_path++;

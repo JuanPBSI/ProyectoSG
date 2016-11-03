@@ -139,6 +139,9 @@ while (my $line1 = <$data_acces>)
     #$arreglo[8] = User-Agent
 
 	@arreglo= split (/<-->/, $line1);
+	my @arreglo2 = split (/<-->/, $line1);
+	$arreglo2[3] =~ s/\</\&lt/;
+	$arreglo2[3] =~ s/\>/\&gt/;
 	#Checando que exista algun metodo
     #if ($arreglo[2] ne "-" && $arreglo[7] eq "-")
 	if ($arreglo[2] ne "-" && $arreglo[7] eq "-")
@@ -183,7 +186,8 @@ while (my $line1 = <$data_acces>)
 		print $new_msj_PATH '				<td style="width:8%;">'."$arreglo[0]</td>\n";
 		print $new_msj_PATH '				<td style="width:8%;">'."$arreglo[1]</td>\n";
 		print $new_msj_PATH '				<td style="width:4%;">'."$arreglo[2]</td>\n";
-		print $new_msj_PATH '				<td style="width:30%; text-align:left;">'."$recursoDecodificado</td>\n";
+		#print $new_msj_PATH '				<td style="width:30%; text-align:left;">'."$recursoDecodificado</td>\n";
+		print $new_msj_PATH '				<td style="width:30%; text-align:left;">'."$arreglo2[3]</td>\n";
 		print $new_msj_PATH '				<td style="width:21%; text-align:left;">'."$arreglo[7]</td>\n";
 		if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
 		{
@@ -227,7 +231,7 @@ while (my $line1 = <$data_acces>)
 			print $new_msj_SQLi '				<td style="width:8%;">'."$arreglo[0]</td>\n";
 			print $new_msj_SQLi '				<td style="width:8%;">'."$arreglo[1]</td>\n";
 			print $new_msj_SQLi '				<td style="width:4%;">'."$arreglo[2]</td>\n";
-			print $new_msj_SQLi '				<td style="width:30%; text-align:left;">'."$arreglo[3]</td>\n";
+			print $new_msj_SQLi '				<td style="width:30%; text-align:left;">'."$arreglo2[3]</td>\n";
 			print $new_msj_SQLi '				<td style="width:21%; text-align:left;">'."$arreglo[7]</td>\n";
 			if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
 			{
@@ -273,7 +277,7 @@ while (my $line1 = <$data_acces>)
 		print $new_msj_XSS '				<td style="width:8%;">'."$arreglo[0]</td>\n";
 		print $new_msj_XSS '				<td style="width:8%;">'."$arreglo[1]</td>\n";
 		print $new_msj_XSS '				<td style="width:4%;">'."$arreglo[2]</td>\n";
-		print $new_msj_XSS '				<td style="width:30%; text-align:left;">'."$arreglo[3]</td>\n";
+		print $new_msj_XSS '				<td style="width:30%; text-align:left;">'."$arreglo2[3]</td>\n";
 		print $new_msj_XSS '				<td style="width:21%; text-align:left;">'."$arreglo[7]</td>\n";
 		if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
 		{
@@ -301,7 +305,7 @@ while (my $line1 = <$data_acces>)
 			print $new_msj_DEFC3  "$arreglo[0]|$arreglo[1]|$arreglo[8]|$dirActual\n";
 			print $new_msj_DEFC "			<tr>\n";
 			print $new_msj_DEFC '				<td style="width:10%;">'."$arreglo[2]</td>\n";
-			print $new_msj_DEFC '				<td style="width:80%; text-align:left;">'."$arreglo[3]</td>\n";
+			print $new_msj_DEFC '				<td style="width:80%; text-align:left;">'."$arreglo2[3]</td>\n";
 			if(($arreglo[5] =~ /4..\b/i) || ($arreglo[5] =~ /5..\b/i))
 			{
 				print $new_msj_DEFC '				<td style = "width:10%; color : red; font-weight: bold;">'."$arreglo[5]</td>\n";
@@ -413,7 +417,8 @@ if($analizarCrawler == 1 )
 		print $new_msj_CRAW3  "$ipUserAgent|$dirActual\n";
 		print $new_msj_CRAW '		<thead>';
 		print $new_msj_CRAW '		<tr>';
-		print $new_msj_CRAW '			<th style="background:#BB9100; width:100%;" >'.$ipUserAgent.'</th>';
+		print $new_msj_CRAW '			<th style="background:#BB9100; width:90%;" >'.$ipUserAgent.'</th>';
+		print $new_msj_CRAW '			<th style="background:#BB9100; width:10%;" > </th>';
 		print $new_msj_CRAW '		</tr>';
 		print $new_msj_CRAW '		<tr>';
 		print $new_msj_CRAW '			<th style="width:90%;" >Recurso</th>';
