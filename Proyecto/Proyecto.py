@@ -225,14 +225,22 @@ def loadConfig(conFilesPath):
 		ipWaf = re.search('".*"', re.search('ipWaf.*', confContent).group(0)).group(0).split('"')[1]
 		servidor_bd["logs"].append(re.search('".*"', re.search('postgresErrorLog.*', confContent).group(0)).group(0).split('"')[1])
 		servidor_bd["serverIndex"].append(2)
-		servidor_bd["file_name_list"].append("/tmp/" + re.search('(?!\/?.*\/).*', servidor_bd["logs"][0]).group(0))
+		if re.search("root", usuarioBD, re.IGNORECASE):
+			var_path_db = "/" + usuarioBD + "/"
+		else:
+			var_path_db = "/home/" + usuarioBD + "/"
+		servidor_bd["file_name_list"].append(var_path_db + re.search('(?!\/?.*\/).*', servidor_bd["logs"][0]).group(0))
 		servidor_bd["file_name_list2"].append(re.search('(?!\/?.*\/).*', servidor_bd["logs"][0]).group(0))
 		servidor_bd["folder"].append("postgres")
 		servidor_bd["log_type"].append(3)
 		
 		rutaWafConfig = re.search('".*"', re.search('rutaWafConfig.*', confContent).group(0)).group(0).split('"')[1]
 		modSecAuditLog = re.search('".*"', re.search('modSecAuditLog.*', confContent).group(0)).group(0).split('"')[1]
-		servidor_modsec["file_name_list"].append("/tmp/" + re.search('(?!\/?.*\/).*', modSecAuditLog).group(0))
+		if re.search("root", usuarioWaf, re.IGNORECASE):
+			var_path_waf = "/" + usuarioWaf + "/"
+		else:
+			var_path_waf = "/home/" + usuarioWaf + "/"
+		servidor_modsec["file_name_list"].append(var_path_waf + re.search('(?!\/?.*\/).*', modSecAuditLog).group(0))
 		servidor_modsec["file_name_list2"].append(re.search('(?!\/?.*\/).*', modSecAuditLog).group(0))
 		servidor_modsec["serverIndex"].append(1)
 		servidor_modsec["logs"].append(modSecAuditLog)
@@ -308,13 +316,17 @@ def loadConfig(conFilesPath):
 		servidor_waf["logs"].append(wafApacheError)
 		servidor_waf["folder"].append("ErrorWaf")
 		
-		servidor_web["file_name_list"].append("/tmp/" + re.search('(?!\/?.*\/).*', webApacheAccess).group(0))
+		if re.search("root", usuarioWeb, re.IGNORECASE):
+			var_path_web = "/" + usuarioWeb + "/"
+		else:
+			var_path_web = "/home/" + usuarioWeb + "/"
+		servidor_web["file_name_list"].append(var_path_web + re.search('(?!\/?.*\/).*', webApacheAccess).group(0))
 		servidor_web["file_name_list2"].append(re.search('(?!\/?.*\/).*', webApacheAccess).group(0))
-		servidor_web["file_name_list"].append("/tmp/" + re.search('(?!\/?.*\/).*', webApacheError).group(0))
+		servidor_web["file_name_list"].append(var_path_web + re.search('(?!\/?.*\/).*', webApacheError).group(0))
 		servidor_web["file_name_list2"].append(re.search('(?!\/?.*\/).*', webApacheError).group(0))
-		servidor_waf["file_name_list"].append("/tmp/" + re.search('(?!\/?.*\/).*', wafApacheAccess).group(0))
+		servidor_waf["file_name_list"].append(var_path_waf + re.search('(?!\/?.*\/).*', wafApacheAccess).group(0))
 		servidor_waf["file_name_list2"].append(re.search('(?!\/?.*\/).*', wafApacheAccess).group(0))
-		servidor_waf["file_name_list"].append("/tmp/" + re.search('(?!\/?.*\/).*', wafApacheError).group(0))
+		servidor_waf["file_name_list"].append(var_path_waf + re.search('(?!\/?.*\/).*', wafApacheError).group(0))
 		servidor_waf["file_name_list2"].append(re.search('(?!\/?.*\/).*', wafApacheError).group(0))
 		
 		Sitios_listas[Site_name] = [servidor_web["file_name_list2"][-2],servidor_web["file_name_list2"][-1],servidor_waf["file_name_list2"][-2],servidor_waf["file_name_list2"][-1]]
@@ -455,6 +467,12 @@ def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 					if re.search('SecRuleEngine DetectionOnly', line):
 						servidor_modsec["flagDetectionOnly"] = 1
 						break;
+					elif re.search('SecRuleEngine Off', line, re.IGNORECASE):
+						servidor_modsec["flagDetectionOnly"] = 0
+						break;
+					elif re.search('SecRuleEngine On', line, re.IGNORECASE):
+						servidor_modsec["flagDetectionOnly"] = 2
+						break;
 				else:
 					servidor_modsec["flagDetectionOnly"] = 0
 			except Exception as cadena:
@@ -479,8 +497,10 @@ def init_analizer(file_name2, tipo_log, folder, sitios, mail):
 					output, err = proceso.communicate()
 					print "Error Script ./modSecurity.pl: " + str(err)
 					print colored("Salida ModSecurity: " + str(output),'green')
+				elif servidor_modsec["flagDetectionOnly"] == 2:
+					print "Mod Security mod: " + colored("[On]", 'green');
 				else:
-					print "Mod Security mod: " + colored("[Active]", 'red');
+					print "Mod Security mod: " + colored("[Off]", 'red');
 				#------------------------------------------#
 				accesLog = Sitios_listas[site][2] + str(count) + ".txt"
 				errorLog = Sitios_listas[site][1] + str(count) + ".txt"
